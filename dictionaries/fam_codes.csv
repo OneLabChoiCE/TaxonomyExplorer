@@ -1,0 +1,13 @@
+code,name,status,domain,industry_anchor,successor,since_snapshot
+SPR,Selective pallet rack,ACTIVE,MH,RMI / ANSI MH16.1 scope,,SNAP-1.0.0
+CLR,Cantilever rack,ACTIVE,MH,RMI cantilever scope (ANSI MH16.3),,SNAP-1.0.0
+DKG,Industrial storage rack decking,ACTIVE,MH,RMI decking scope (ANSI MH26.2),,SNAP-1.0.0
+RSP,Rack-supported platforms,ACTIVE,MH,RMI scope,,SNAP-1.0.0
+RPA,Rack protection & accessories,ACTIVE,MH,Rack accessory scope,,SNAP-1.0.0
+SHV,Steel shelving,ACTIVE,MH,SMA shelving scope,,SNAP-1.0.0
+WPL,Industrial work platforms,ACTIVE,MH,SMA scope,,SNAP-1.0.0
+WKS,Workstations,ACTIVE,MH,SMA scope,,SNAP-1.0.0
+MDR,Modular drawer storage,ACTIVE,MH,SMA scope,,SNAP-1.0.0
+LCK,Lockers,ACTIVE,MH,SMA scope,,SNAP-1.0.0
+MBS,Movable-base storage,ACTIVE,MH,SMA scope,,SNAP-1.0.0
+STC,Storage containers,ACTIVE,MH,SMA scope,,SNAP-1.0.0

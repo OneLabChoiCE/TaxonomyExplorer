@@ -1,0 +1,17 @@
+code,name,status,definition,successor,since_snapshot
+DCK,Deck superclass,SUPERCLASS,Rollup for all decking assemblies; classifier-only,,SNAP-1.0.0
+WDK,Wire deck,ACTIVE,Mesh + support members; all edge/attachment variants via configuration,,SNAP-1.0.0
+SDK,Solid deck,ACTIVE,Solid panel deck,,SNAP-1.0.0
+PDK,Perforated deck,ACTIVE,Perforated panel deck,,SNAP-1.0.0
+BGD,Bar grating deck,ACTIVE,Bearing bar + crossbar grating deck,,SNAP-1.0.0
+FRM,Upright frame,ACTIVE,Columns + bracing (+ base plates) as a braced frame,,SNAP-1.0.0
+BMA,Beam assembly,ACTIVE,Beam member + end connectors (+ locks),,SNAP-1.0.0
+CBA,Column-base assembly,ACTIVE,Column + footplate/base plate joined,,SNAP-1.0.0
+ACA,Arm-column assembly,ACTIVE,Cantilever arm + column connection set,,SNAP-1.0.0
+CVB,Cantilever base assembly,ACTIVE,Base rail + column interface (+ anchors),,SNAP-1.0.0
+SHU,Shelving unit,ACTIVE,Posts + shelves + sway bracing etc.,,SNAP-1.0.0
+WPF,Work platform,ACTIVE,Elevated platform assembly (rack-supported or freestanding via family),,SNAP-1.0.0
+GDA,Guarding assembly,ACTIVE,Guard rail systems; mesh partitions; protector systems,,SNAP-1.0.0
+CNT,Container,ACTIVE,Rigid container assemblies,,SNAP-1.0.0
+DRW,Drawer system,ACTIVE,Modular drawer cabinets and inserts,,SNAP-1.0.0
+LKR,Locker,ACTIVE,Locker units,,SNAP-1.0.0

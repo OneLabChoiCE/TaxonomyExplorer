@@ -1,0 +1,30 @@
+code,name,status,form_class,definition,maps_from,successor,since_snapshot
+OCS,Open C superclass,SUPERCLASS,FOLDED_UNIFORM_T,Any open C-family profile; classifier-only rollup,Legacy SMHE OCS records,,SNAP-1.0.0
+OCL,Open C lipped,ACTIVE,FOLDED_UNIFORM_T,Folded C with one stiffening lip fold per flange,AISI lipped C; rack upright base topology,,SNAP-1.0.0
+OCU,Open C unlipped,ACTIVE,FOLDED_UNIFORM_T,Folded plain C with uniform thickness and no lips,AISI plain C track/channel,,SNAP-1.0.0
+OCR,Open C return-lipped,ACTIVE,FOLDED_UNIFORM_T,Folded C with return (second-fold) lips,Proprietary rack upright profiles,,SNAP-1.0.0
+CHN,Channel hot-rolled,ACTIVE,HOT_ROLLED_FILLETED,Filleted channel with tapered or parallel flanges,AISC C/MC; EN UPN/UPE; GB/T channel; JIS channel; AS/NZS PFC,,SNAP-1.0.0
+IWF,I-shape wide/parallel flange,ACTIVE,HOT_ROLLED_FILLETED,Filleted I/H with parallel flange faces,AISC W/HP/M; EN HE/IPE; UB/UC; GB/T HW/HM/HN; JIS H,,SNAP-1.0.0
+ITF,I-shape taper flange,ACTIVE,HOT_ROLLED_FILLETED,Filleted I with sloped inner flange faces,AISC S; EN IPN; GB/T 706 I; JIS I,,SNAP-1.0.0
+ANG,Angle,ACTIVE,HOT_ROLLED_FILLETED,Two-leg L equal or unequal (by parameters),AISC L; EN/GB/JIS/AS-NZS angles,,SNAP-1.0.0
+TEE,Tee,ACTIVE,HOT_ROLLED_FILLETED,T-profile including split tees,AISC WT/MT/ST; EN T,,SNAP-1.0.0
+HSS,Hollow structural superclass,SUPERCLASS,WELDED,Any closed single-cell hollow; classifier-only rollup,AISC HSS usage,,SNAP-1.0.0
+RHS,Rectangular hollow,ACTIVE,WELDED,Closed rectangular single-cell hollow,AISC HSS rect; EN/AS-NZS RHS; GB/T; JIS,,SNAP-1.0.0
+SHS,Square hollow,ACTIVE,WELDED,Closed square single-cell hollow,AISC HSS square; EN/AS-NZS SHS,,SNAP-1.0.0
+CHS,Circular hollow,ACTIVE,WELDED,Closed circular hollow including pipe geometry,AISC HSS round and Pipe; EN/AS-NZS CHS; GB/T; JIS,,SNAP-1.0.0
+PLT,Plate / flat,ACTIVE,HOT_ROLLED_FILLETED,Rectangular solid plate or sheet stock,AISC PL; plate in all systems,,SNAP-1.0.0
+BAR,Solid bar superclass,SUPERCLASS,HOT_ROLLED_FILLETED,Any solid bar; classifier-only rollup,,,SNAP-1.0.0
+RBR,Round bar / rod / wire,ACTIVE,HOT_ROLLED_FILLETED,Solid circular section including wire stock,Round bar; mesh wire stock,,SNAP-1.0.0
+FBR,Flat bar,ACTIVE,HOT_ROLLED_FILLETED,Solid narrow rectangular bar,Flat bar; grating bearing bar,,SNAP-1.0.0
+SBR,Square bar,RESERVED,HOT_ROLLED_FILLETED,Reserved pending demand,,,SNAP-1.0.0
+HBR,Hex bar,RESERVED,HOT_ROLLED_FILLETED,Reserved pending demand,,,SNAP-1.0.0
+ZEE,Z superclass,SUPERCLASS,FOLDED_UNIFORM_T,Any Z-family profile; classifier-only rollup,,,SNAP-1.0.0
+ZLP,Z lipped,ACTIVE,FOLDED_UNIFORM_T,Folded Z with stiffening lips,AISI lipped Z purlins,,SNAP-1.0.0
+ZUN,Z unlipped,ACTIVE,FOLDED_UNIFORM_T,Folded plain Z,AISI plain Z,,SNAP-1.0.0
+OMG,Omega / hat open,ACTIVE,FOLDED_UNIFORM_T,Open hat profile (crown + two webs + two outstand flanges),Hat channels; deck supports,,SNAP-1.0.0
+SGM,Sigma,ACTIVE,FOLDED_UNIFORM_T,Folded C-family profile with web indents,Sigma purlins and rack members,,SNAP-1.0.0
+STB,Step beam profile,ACTIVE,FOLDED_UNIFORM_T,Closed/semi-closed roll-formed beam profile with integral step ledge,Rack step beams,,SNAP-1.0.0
+BXB,Interlocked box beam profile,ACTIVE,FOLDED_UNIFORM_T,Closed multi-piece interlocked/seamed rectangular beam profile,Rack box beams,,SNAP-1.0.0
+CFS,,REJECTED,,Rejected: material/manufacturing category not a shape (Ruling R6),,,SNAP-1.0.0
+PIP,,REJECTED,,Rejected: pipe is a designation system; geometry is CHS,ASTM pipe designations map via DSG records,CHS,SNAP-1.0.0
+TUB,,REJECTED,,Rejected: ambiguous; use RHS/SHS/CHS,,,SNAP-1.0.0

@@ -1,0 +1,18 @@
+code,name,status,definition,successor,since_snapshot
+COL,Column / upright post,ACTIVE,Rack uprights; shelving posts; platform columns,,SNAP-1.0.0
+BEM,Beam / load member,ACTIVE,Pallet rack load beams; shelf beams; platform joists,,SNAP-1.0.0
+BRC,Brace,ACTIVE,Diagonal/horizontal bracing members (orientation via CFG:SUP fields),,SNAP-1.0.0
+ARM,Arm,ACTIVE,Cantilever arms; straight/inclined via fields,,SNAP-1.0.0
+BAS,Base member,ACTIVE,Cantilever base rails; movable-base members,,SNAP-1.0.0
+BPL,Base plate / footplate,ACTIVE,Column base/foot plates; style (extended/seismic) is a configuration field,,SNAP-1.0.0
+DKS,Deck support member,ACTIVE,Support channels; hat stiffeners; deck reinforcements,,SNAP-1.0.0
+MSH,Wire mesh panel,ACTIVE,Welded/woven mesh treated as a single homogeneous panel component,,SNAP-1.0.0
+PAN,Panel,ACTIVE,Solid or perforated panel; perforation is CFG:PRF fields not a role split,,SNAP-1.0.0
+SHF,Shelf,ACTIVE,Formed shelf components in shelving and workstations,,SNAP-1.0.0
+CON,Connector,ACTIVE,Beam end connectors; clip-in brackets; arm connectors,,SNAP-1.0.0
+CLP,Clip / retainer,ACTIVE,Safety clips; deck retainers; shelf clips,,SNAP-1.0.0
+ADP,Adapter,ACTIVE,Interface adapters between systems,,SNAP-1.0.0
+GRD,Guard member,ACTIVE,Column protectors; rail members; mesh guard members,,SNAP-1.0.0
+STP,Stop,ACTIVE,Pallet stops; backstops,,SNAP-1.0.0
+SPC,Spacer,ACTIVE,Row spacers; wall spacers,,SNAP-1.0.0
+ANC,Anchor,ACTIVE,Concrete anchors; hold-downs,,SNAP-1.0.0

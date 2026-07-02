@@ -1,0 +1,13 @@
+code,name,status,example_fields,since_snapshot
+DIM,Principal dimensions,ACTIVE,width; depth; length; height; nominal vs actual,SNAP-1.0.0
+MAT,Material specification,ACTIVE,spec; grade; Fy; raw-material coating class,SNAP-1.0.0
+EDG,Edge condition,ACTIVE,edge_style (FLUSH|WATERFALL|REVERSE_WATERFALL|BOXED); waterfall drop; edge reinforcement,SNAP-1.0.0
+MPT,Mesh pattern,ACTIVE,aperture_x; aperture_y; pattern (SQUARE|RECT); orientation,SNAP-1.0.0
+WIR,Wire specification,ACTIVE,wire_diameter; wire grade; pre/post-galvanized,SNAP-1.0.0
+SPD,Span direction,ACTIVE,span (FRONT_TO_BACK|SIDE_TO_SIDE),SNAP-1.0.0
+SUP,Support arrangement,ACTIVE,support_count; support_role ref; spacing[]; orientation (LEGS_DOWN|LEGS_UP); inversion,SNAP-1.0.0
+JNT,Joining / attachment,ACTIVE,method (RESISTANCE_WELD|FUSION_WELD|CLINCH|BOLT|RIVET|INTERLOCK); weld schedule class; fastener spec,SNAP-1.0.0
+FIN,Finish system,ACTIVE,system (POWDER|PAINT|PRE_GALV|HOT_DIP_GALV|ZINC_PLATE); color (informative),SNAP-1.0.0
+PRF,Perforation pattern,ACTIVE,pattern id; open_area_pct; hole shape/size/pitch,SNAP-1.0.0
+HOL,Hole / punch pattern,ACTIVE,pattern id; pitch; gauge; hole geometry; start offset,SNAP-1.0.0
+END,End condition,ACTIVE,end fittings; cope/notch; cap; swage; end-flare,SNAP-1.0.0

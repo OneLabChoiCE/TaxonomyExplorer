@@ -1,0 +1,7 @@
+prefix,name,contains,code_form,governed_by,notes
+,Domain,Top-level industry domains,2-char alpha (bare),Taxonomy Standard,Only MH defined in v1.0
+SEC:,Section shape,Cross-section topology classes,3-char alpha,GSID Standard v2.0,Domain-neutral shared infrastructure
+FAM:,Product family,Market/system families,3-char alpha,Taxonomy Standard,Domain-scoped (MH)
+ASM:,Assembly type,Assembly structural/functional types,3-char alpha,Taxonomy Standard,Domain-scoped (MH)
+ROL:,Component role,Functional roles of components,3-char alpha,Taxonomy Standard,Orthogonal to shape and family
+CFG:,Configuration group,Named structured-attribute groups,3-char alpha,Taxonomy Standard,Schema organizers; never object identifiers
