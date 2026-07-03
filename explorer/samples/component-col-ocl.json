@@ -19,6 +19,48 @@
     "Product family (FAM) level is outside Phase 1 scope; the path enters at the assembly/role level (rule H3: entry at any level is valid).",
     "Geometry parameters, CanonicalGeometryID computation, and GSID lookup are outside Phase 1 scope; gsid is emitted as null."
   ],
+  "decision_trace": [
+    {
+      "rule_id": "R-ROL-001",
+      "input": "What functional role does this part play? → Column / upright post",
+      "decision": "ROL:COL",
+      "dictionary": "rules/question_nodes.csv · data/rol_codes.csv",
+      "standard_reference": "Taxonomy Standard draft Part 3.3 (component roles)",
+      "explanation": "The part carries vertical load as an upright: role COL."
+    },
+    {
+      "rule_id": "R-ROL-005",
+      "input": "Is it a prismatic member (constant cross-section along its length)? → Yes — constant cross-section",
+      "decision": "continue → next question",
+      "dictionary": "rules/question_nodes.csv",
+      "standard_reference": "Taxonomy Standard draft §4.9 (prismatic test); rule G-3",
+      "explanation": "Prismatic member: its cross-section is classified next and referenced by the component."
+    },
+    {
+      "rule_id": "R-SEC-001",
+      "input": "Is the cross-section profile open, closed (hollow), or solid? → Open profile",
+      "decision": "continue → next question",
+      "dictionary": "rules/question_nodes.csv",
+      "standard_reference": "Taxonomy Standard draft Part 13.3 (node S1)",
+      "explanation": "An open profile was selected, so the open-form families apply."
+    },
+    {
+      "rule_id": "R-SEC-004",
+      "input": "Which open form is it? → C-form (web + two flanges, same side)",
+      "decision": "continue → next question",
+      "dictionary": "rules/question_nodes.csv",
+      "standard_reference": "Taxonomy Standard draft Part 13.3 (node S2)",
+      "explanation": "A C-form open profile was selected; lip condition decides the terminal code."
+    },
+    {
+      "rule_id": "R-SEC-008",
+      "input": "Are there stiffening lips on the flange ends? → Simple lips (one fold per flange)",
+      "decision": "SEC:OCL",
+      "dictionary": "rules/question_nodes.csv · data/sec_codes.csv",
+      "standard_reference": "Taxonomy Standard draft Part 3.1 (Ruling R1)",
+      "explanation": "One stiffening lip fold per flange: open C lipped, OCL."
+    }
+  ],
   "identifiers": {
     "gsid": null,
     "canonical_geometry_id": null

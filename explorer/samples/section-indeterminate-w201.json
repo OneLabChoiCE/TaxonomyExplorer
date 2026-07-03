@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "SNAP-0.1.0-DEMO",
+  "object_type": "section",
+  "status": "INDETERMINATE",
+  "classification_path": [],
+  "codes": {},
+  "warnings": [
+    {
+      "code": "W-201",
+      "message": "Lip condition unknown — classification halts at the OCS rollup with status INDETERMINATE. OCS is a superclass and is never emitted as a terminal code."
+    }
+  ],
+  "explanations": [
+    "An open profile was selected, so the open-form families apply.",
+    "A C-form open profile was selected; lip condition decides the terminal code.",
+    "Lip condition could not be determined; the engine refuses to guess (determinism rule P7)."
+  ],
+  "decision_trace": [
+    {
+      "rule_id": "R-SEC-001",
+      "input": "Is the cross-section profile open, closed (hollow), or solid? → Open profile",
+      "decision": "continue → next question",
+      "dictionary": "rules/question_nodes.csv",
+      "standard_reference": "Taxonomy Standard draft Part 13.3 (node S1)",
+      "explanation": "An open profile was selected, so the open-form families apply."
+    },
+    {
+      "rule_id": "R-SEC-004",
+      "input": "Which open form is it? → C-form (web + two flanges, same side)",
+      "decision": "continue → next question",
+      "dictionary": "rules/question_nodes.csv",
+      "standard_reference": "Taxonomy Standard draft Part 13.3 (node S2)",
+      "explanation": "A C-form open profile was selected; lip condition decides the terminal code."
+    },
+    {
+      "rule_id": "R-WRN-201",
+      "input": "Are there stiffening lips on the flange ends? → I don't know",
+      "decision": "Stop at SEC:OCS rollup (INDETERMINATE)",
+      "dictionary": "rules/question_nodes.csv · data/sec_codes.csv",
+      "standard_reference": "Taxonomy Standard draft Part 3.1 (Ruling R3); Part 13.7 (W-201); principle P7",
+      "explanation": "Lip condition could not be determined; the engine refuses to guess (determinism rule P7).",
+      "warning": "W-201"
+    }
+  ],
+  "rollup": "SEC:OCS",
+  "refusal": {
+    "why_stopped": "Terminal shape assignment requires the lip condition (it changes section behavior fundamentally); the answer given was UNKNOWN.",
+    "required_information": "Inspect the flange free edges: no fold → OCU (unlipped); one fold per flange → OCL (lipped). Return-lipped profiles (OCR) are outside the Phase 1/2 demo subset.",
+    "principle": "Deterministic classification SHALL refuse ambiguous terminal assignment when required input is missing (Taxonomy Standard principle P7). A guessed code would be unreproducible and untraceable."
+  }
+}

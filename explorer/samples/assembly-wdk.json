@@ -15,6 +15,32 @@
     "Support count 3 recorded as configuration (CFG:SUP).",
     "Product family (FAM) level is outside Phase 1 scope; the path enters at the assembly/role level (rule H3: entry at any level is valid)."
   ],
+  "decision_trace": [
+    {
+      "rule_id": "R-ASM-001",
+      "input": "What kind of assemblage is it? → Mesh/wire deck laid on beams",
+      "decision": "ASM:WDK",
+      "dictionary": "rules/question_nodes.csv · data/asm_codes.csv",
+      "standard_reference": "Taxonomy Standard draft Part 3.4 (WDK); §4.9 (assembly test)",
+      "explanation": "Mesh joined to distinct-role support members: assembly type WDK."
+    },
+    {
+      "rule_id": "R-CFG-002",
+      "input": "Front edge condition of the deck? → Waterfall (drops over the beam)",
+      "decision": "CFG:EDG front=WATERFALL",
+      "dictionary": "rules/question_nodes.csv",
+      "standard_reference": "Taxonomy Standard draft P5; Part 3.6 (CFG:EDG)",
+      "explanation": "Front edge WATERFALL recorded as configuration (CFG:EDG) — variation lives in fields, not codes (rule P5)."
+    },
+    {
+      "rule_id": "R-CFG-004",
+      "input": "How many support channels? → 3",
+      "decision": "CFG:SUP support_count=3",
+      "dictionary": "rules/question_nodes.csv",
+      "standard_reference": "Taxonomy Standard draft P5; rule D-6; Part 3.6 (CFG:SUP)",
+      "explanation": "Support count 3 recorded as configuration (CFG:SUP)."
+    }
+  ],
   "configuration": {
     "CFG:EDG": {
       "front": "WATERFALL"

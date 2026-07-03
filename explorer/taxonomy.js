@@ -1,20 +1,26 @@
 /*
- * SectionHub Taxonomy Explorer — Phase 1 MVP
- * ------------------------------------------
+ * SectionHub Taxonomy Explorer — Phase 2: Rule Traceability & Standards Credibility Layer
+ * ---------------------------------------------------------------------------------------
  * Pure static, deterministic taxonomy navigation demo.
  *
  * Contract (from the Taxonomy Standard draft, Part 13):
- *   - Classification is a pure function of (answers, dictionaries).
+ *   - Classification is a pure function of (answers, dictionaries, rules).
  *   - The engine never guesses: missing/unknown answers halt with a warning.
+ *     Deterministic classification SHALL refuse ambiguous terminal assignment
+ *     when required input is missing (principle P7).
  *   - Codes come only from the loaded dictionaries; the UI never invents codes.
+ *   - Every decision is traceable: each answered question applies exactly one
+ *     rule row from rules/question_nodes.csv, and the trace is shown in the UI
+ *     and embedded in the JSON output (decision_trace).
  *   - No persistence, no editing, no network beyond loading local data files.
  *
  * Layout of this file:
  *   1. Constants
- *   2. CSV parsing + dictionary loading (fetch, with embedded file:// fallback)
- *   3. Decision tables (data — mirrors the target rules/question_nodes.csv)
+ *   2. CSV parsing + dictionary/rule loading (fetch, with embedded file:// fallback)
+ *   3. Decision tables (question nodes; each option points at one rule_id —
+ *      explanation text lives in rules/question_nodes.csv, not here)
  *   4. Engine (state machine over the decision tables)
- *   5. Output builder (classification path, codes, designation, JSON envelope)
+ *   5. Output builder (classification path, codes, designation, trace, JSON envelope)
  *   6. UI rendering (vanilla DOM, no dependencies)
  */
 
@@ -27,9 +33,16 @@
 const SCHEMA_VERSION = "1.0";
 const SNAPSHOT_ID = "SNAP-0.1.0-DEMO"; // demo dictionary subset — NOT the SNAP-1.0.0 seed registry
 const DICTIONARY_FILES = ["sec_codes", "rol_codes", "asm_codes"];
+const RULES_FILE = "question_nodes";
+const REFUSAL_PRINCIPLE =
+  "Deterministic classification SHALL refuse ambiguous terminal assignment when required input is missing " +
+  "(Taxonomy Standard principle P7). A guessed code would be unreproducible and untraceable.";
+
+/** Which dictionary file backs each code namespace (for trace provenance). */
+const NAMESPACE_DICTIONARY = { SEC: "data/sec_codes.csv", ROL: "data/rol_codes.csv", ASM: "data/asm_codes.csv" };
 
 /* ------------------------------------------------------------------ */
-/* 2. CSV parsing + dictionary loading                                 */
+/* 2. CSV parsing + dictionary/rule loading                            */
 /* ------------------------------------------------------------------ */
 
 /** Minimal CSV parser: handles quoted fields and escaped quotes (""). */
@@ -61,42 +74,48 @@ function parseCsv(text) {
 }
 
 /**
- * Load one dictionary. Over http(s) the .csv file is fetched; when the page
- * is opened from disk (file://), browsers block fetch, so we fall back to
- * data/embedded.js (a maintained copy of the same CSV text).
+ * Load one CSV file. Over http(s) the file is fetched; when the page is
+ * opened from disk (file://), browsers block fetch, so we fall back to
+ * data/embedded.js (a maintained byte-identical copy of the same CSV text).
  */
-async function loadDictionary(name) {
+async function loadCsv(name, path) {
   try {
-    const res = await fetch(`data/${name}.csv`, { cache: "no-store" });
+    const res = await fetch(path, { cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return { rows: parseCsv(await res.text()), source: "csv" };
   } catch (err) {
     const embedded = window.EMBEDDED_DICTIONARIES && window.EMBEDDED_DICTIONARIES[name];
     if (embedded) return { rows: parseCsv(embedded), source: "embedded" };
-    throw new Error(`Cannot load dictionary "${name}": ${err.message}`);
+    throw new Error(`Cannot load "${path}": ${err.message}`);
   }
 }
 
-async function loadAllDictionaries() {
+async function loadAllData() {
   const dicts = {}, sources = new Set();
   for (const name of DICTIONARY_FILES) {
-    const { rows, source } = await loadDictionary(name);
+    const { rows, source } = await loadCsv(name, `data/${name}.csv`);
     dicts[name] = Object.fromEntries(rows.map(r => [r.code, r]));
     sources.add(source);
   }
-  dicts._source = sources.has("embedded") ? "embedded fallback (file://)" : "CSV files";
-  return dicts;
+  const { rows: ruleRows, source: ruleSource } = await loadCsv(RULES_FILE, `rules/${RULES_FILE}.csv`);
+  const rules = Object.fromEntries(ruleRows.map(r => [r.rule_id, r]));
+  sources.add(ruleSource);
+  const provenance = {
+    source: sources.has("embedded") ? "embedded fallback (file://)" : "CSV files",
+    snapshot: SNAPSHOT_ID,
+    demoCodes: Object.values(dicts).flatMap(d => Object.values(d)).filter(r => r.status === "DEMO").map(r => r.code),
+  };
+  return { dicts, rules, provenance };
 }
 
 /* ------------------------------------------------------------------ */
 /* 3. Decision tables                                                  */
 /* ------------------------------------------------------------------ */
 /*
- * These tables are the classifier. Each node is one question; each option
- * carries a controlled answer token, an optional code assignment, an optional
- * configuration assignment, the next node, and a "because" line that feeds
- * the explanation output. In the target architecture this data lives in
- * rules/question_nodes.csv; it is inlined here for Phase 1 readability.
+ * Each node is one question; each option carries a controlled answer token,
+ * the rule_id that governs it (rules/question_nodes.csv is the source of
+ * truth for explanation and standard reference), an optional code or
+ * configuration assignment, and the next node.
  */
 
 const ROUTES = { section: "S1", component: "R1", assembly: "A1" };
@@ -107,41 +126,34 @@ const NODES = {
     question: "Is the cross-section profile open, closed (hollow), or solid?",
     help: "Look at the profile end-on. Open: you can trace the outline without enclosing a void. Closed: it encloses a hollow cell. Solid: no void, full material.",
     options: [
-      { token: "OPEN", label: "Open profile", next: "S2",
-        because: "An open profile was selected, so the open-form families apply." },
-      { token: "CLOSED", label: "Closed / hollow profile", assign: { ns: "SEC", code: "HSS" },
-        because: "A closed single-cell hollow resolves to HSS in this demo subset (the full standard resolves further to RHS / SHS / CHS)." },
-      { token: "SOLID", label: "Solid (plate / flat)", assign: { ns: "SEC", code: "PLT" },
-        because: "A solid rectangular profile is plate/flat stock: PLT." },
+      { token: "OPEN", label: "Open profile", rule: "R-SEC-001", next: "S2" },
+      { token: "CLOSED", label: "Closed / hollow profile", rule: "R-SEC-002", assign: { ns: "SEC", code: "HSS" } },
+      { token: "SOLID", label: "Solid (plate / flat)", rule: "R-SEC-003", assign: { ns: "SEC", code: "PLT" } },
     ],
   },
   S2: {
     question: "Which open form is it?",
     help: "Match the silhouette: C (web with two parallel flanges), Z (flanges on opposite sides), or L (two legs).",
     options: [
-      { token: "C_FORM", label: "C-form (web + two flanges, same side)", next: "S3",
-        because: "A C-form open profile was selected; lip condition decides the terminal code." },
-      { token: "Z_FORM", label: "Z-form (flanges on opposite sides)", assign: { ns: "SEC", code: "ZED" },
-        because: "A Z-form profile resolves to ZED in this demo subset (SNAP-1.0.0 splits the Z family into ZLP / ZUN under the ZEE rollup)." },
-      { token: "L_FORM", label: "L-form (two legs / angle)", assign: { ns: "SEC", code: "ANG" },
-        because: "A two-leg L profile is an angle: ANG." },
+      { token: "C_FORM", label: "C-form (web + two flanges, same side)", rule: "R-SEC-004", next: "S3" },
+      { token: "Z_FORM", label: "Z-form (flanges on opposite sides)", rule: "R-SEC-005", assign: { ns: "SEC", code: "ZED" } },
+      { token: "L_FORM", label: "L-form (two legs / angle)", rule: "R-SEC-006", assign: { ns: "SEC", code: "ANG" } },
     ],
   },
   S3: {
     question: "Are there stiffening lips on the flange ends?",
     help: "A lip is a short return fold at the free edge of each flange. Lip condition changes section behavior fundamentally, so it can never be guessed.",
     options: [
-      { token: "NONE", label: "No lips (plain C)", assign: { ns: "SEC", code: "OCU" },
-        because: "No lip elements: open C unlipped, OCU." },
-      { token: "SIMPLE_LIP", label: "Simple lips (one fold per flange)", assign: { ns: "SEC", code: "OCL" },
-        because: "One stiffening lip fold per flange: open C lipped, OCL." },
-      { token: "UNKNOWN", label: "I don't know",
+      { token: "NONE", label: "No lips (plain C)", rule: "R-SEC-007", assign: { ns: "SEC", code: "OCU" } },
+      { token: "SIMPLE_LIP", label: "Simple lips (one fold per flange)", rule: "R-SEC-008", assign: { ns: "SEC", code: "OCL" } },
+      { token: "UNKNOWN", label: "I don't know", rule: "R-WRN-201",
         halt: {
           warning: "W-201",
           rollup: "SEC:OCS",
-          message: "Lip condition unknown — classification halts at the OCS rollup with status INDETERMINATE. OCS is a superclass and is never emitted as a terminal code. Measure the flange ends and try again.",
-        },
-        because: "Lip condition could not be determined; the engine refuses to guess (determinism rule P7)." },
+          message: "Lip condition unknown — classification halts at the OCS rollup with status INDETERMINATE. OCS is a superclass and is never emitted as a terminal code.",
+          whyStopped: "Terminal shape assignment requires the lip condition (it changes section behavior fundamentally); the answer given was UNKNOWN.",
+          needed: "Inspect the flange free edges: no fold → OCU (unlipped); one fold per flange → OCL (lipped). Return-lipped profiles (OCR) are outside the Phase 1/2 demo subset.",
+        } },
     ],
   },
 
@@ -150,24 +162,18 @@ const NODES = {
     question: "What functional role does this part play?",
     help: "Roles describe function inside assemblies, independent of shape or family.",
     options: [
-      { token: "COL", label: "Column / upright post", assign: { ns: "ROL", code: "COL" }, next: "R2",
-        because: "The part carries vertical load as an upright: role COL." },
-      { token: "BEM", label: "Beam / load member", assign: { ns: "ROL", code: "BEM" }, next: "R2",
-        because: "The part spans horizontally carrying load: role BEM." },
-      { token: "ARM", label: "Cantilever arm", assign: { ns: "ROL", code: "ARM" }, next: "R2",
-        because: "The part projects from a column to carry load: role ARM." },
-      { token: "CHL", label: "Support channel (under decks/panels)", assign: { ns: "ROL", code: "CHL" }, next: "R2",
-        because: "The part stiffens/supports a deck or panel: role CHL (SNAP-1.0.0 names this role DKS)." },
+      { token: "COL", label: "Column / upright post", rule: "R-ROL-001", assign: { ns: "ROL", code: "COL" }, next: "R2" },
+      { token: "BEM", label: "Beam / load member", rule: "R-ROL-002", assign: { ns: "ROL", code: "BEM" }, next: "R2" },
+      { token: "ARM", label: "Cantilever arm", rule: "R-ROL-003", assign: { ns: "ROL", code: "ARM" }, next: "R2" },
+      { token: "CHL", label: "Support channel (under decks/panels)", rule: "R-ROL-004", assign: { ns: "ROL", code: "CHL" }, next: "R2" },
     ],
   },
   R2: {
     question: "Is it a prismatic member (constant cross-section along its length)?",
     help: "Punched holes and end cuts do not break prismatic-ness — only the continuous profile counts. Prismatic members reference a section; formed parts do not.",
     options: [
-      { token: "YES", label: "Yes — constant cross-section", next: "S1",
-        because: "Prismatic member: its cross-section is classified next and referenced by the component." },
-      { token: "NO", label: "No — formed / non-prismatic",
-        because: "Non-prismatic parts carry no section reference; role classification is complete." },
+      { token: "YES", label: "Yes — constant cross-section", rule: "R-ROL-005", next: "S1" },
+      { token: "NO", label: "No — formed / non-prismatic", rule: "R-ROL-006" },
     ],
   },
 
@@ -176,47 +182,38 @@ const NODES = {
     question: "What kind of assemblage is it?",
     help: "An assembly joins parts with distinct roles. Assemblies are never sections and never receive geometry identity (GSID).",
     options: [
-      { token: "MESH_DECK", label: "Mesh/wire deck laid on beams", assign: { ns: "ASM", code: "WDK" }, next: "A2W",
-        because: "Mesh joined to distinct-role support members: assembly type WDK." },
-      { token: "BRACED_FRAME", label: "Braced column pair (upright frame)", assign: { ns: "ASM", code: "FRM" }, next: "A2F",
-        because: "Columns joined by bracing with distinct roles: assembly type FRM." },
+      { token: "MESH_DECK", label: "Mesh/wire deck laid on beams", rule: "R-ASM-001", assign: { ns: "ASM", code: "WDK" }, next: "A2W" },
+      { token: "BRACED_FRAME", label: "Braced column pair (upright frame)", rule: "R-ASM-002", assign: { ns: "ASM", code: "FRM" }, next: "A2F" },
     ],
   },
   A2W: {
     question: "Front edge condition of the deck?",
     help: "Edge condition is a configuration field (CFG:EDG) — it never changes the assembly type code.",
     options: [
-      { token: "FLUSH", label: "Flush", config: { group: "CFG:EDG", field: "front", value: "FLUSH" }, next: "A3W",
-        because: "Front edge FLUSH recorded as configuration (CFG:EDG) — variation lives in fields, not codes (rule P5)." },
-      { token: "WATERFALL", label: "Waterfall (drops over the beam)", config: { group: "CFG:EDG", field: "front", value: "WATERFALL" }, next: "A3W",
-        because: "Front edge WATERFALL recorded as configuration (CFG:EDG) — variation lives in fields, not codes (rule P5)." },
+      { token: "FLUSH", label: "Flush", rule: "R-CFG-001", config: { group: "CFG:EDG", field: "front", value: "FLUSH" }, next: "A3W" },
+      { token: "WATERFALL", label: "Waterfall (drops over the beam)", rule: "R-CFG-002", config: { group: "CFG:EDG", field: "front", value: "WATERFALL" }, next: "A3W" },
     ],
   },
   A3W: {
     question: "How many support channels?",
     help: "Support count is configuration (CFG:SUP). Changing it creates a new configuration identity, never a new code.",
     options: [
-      { token: "TWO", label: "2", config: { group: "CFG:SUP", field: "support_count", value: 2 },
-        because: "Support count 2 recorded as configuration (CFG:SUP)." },
-      { token: "THREE", label: "3", config: { group: "CFG:SUP", field: "support_count", value: 3 },
-        because: "Support count 3 recorded as configuration (CFG:SUP)." },
-      { token: "FOUR", label: "4", config: { group: "CFG:SUP", field: "support_count", value: 4 },
-        because: "Support count 4 recorded as configuration (CFG:SUP)." },
+      { token: "TWO", label: "2", rule: "R-CFG-003", config: { group: "CFG:SUP", field: "support_count", value: 2 } },
+      { token: "THREE", label: "3", rule: "R-CFG-004", config: { group: "CFG:SUP", field: "support_count", value: 3 } },
+      { token: "FOUR", label: "4", rule: "R-CFG-005", config: { group: "CFG:SUP", field: "support_count", value: 4 } },
     ],
   },
   A2F: {
     question: "How is the bracing joined to the columns?",
     help: "Joining method is configuration (CFG:JNT); a bolted and a welded frame are two configurations of the same assembly type.",
     options: [
-      { token: "BOLT", label: "Bolted", config: { group: "CFG:JNT", field: "brace_to_column", value: "BOLT" },
-        because: "Bolted bracing recorded as configuration (CFG:JNT)." },
-      { token: "FUSION_WELD", label: "Welded", config: { group: "CFG:JNT", field: "brace_to_column", value: "FUSION_WELD" },
-        because: "Welded bracing recorded as configuration (CFG:JNT)." },
+      { token: "BOLT", label: "Bolted", rule: "R-CFG-006", config: { group: "CFG:JNT", field: "brace_to_column", value: "BOLT" } },
+      { token: "FUSION_WELD", label: "Welded", rule: "R-CFG-007", config: { group: "CFG:JNT", field: "brace_to_column", value: "FUSION_WELD" } },
     ],
   },
 };
 
-/** Bill of roles emitted per assembly type (Phase 1 demo scope). */
+/** Bill of roles emitted per assembly type (Phase 1/2 demo scope). */
 const ASSEMBLY_COMPONENTS = {
   WDK: (config) => [
     { role: "ROL:CHL", count: (config["CFG:SUP"] || {}).support_count ?? null,
@@ -235,10 +232,10 @@ function newSession(objectType) {
   return {
     objectType,                 // "section" | "component" | "assembly"
     nodeId: ROUTES[objectType], // current question node, null when finished
-    trail: [],                  // [{nodeId, token, because}]
+    trail: [],                  // [{nodeId, token, ruleId}]
     codes: {},                  // { SEC: "OCL", ROL: "COL", ASM: "WDK" }
     config: {},                 // { "CFG:EDG": {front: "WATERFALL"}, ... }
-    halt: null,                 // {warning, rollup, message} when refused
+    halt: null,                 // halt descriptor when the engine refuses
   };
 }
 
@@ -247,7 +244,7 @@ function answer(session, token) {
   const node = NODES[session.nodeId];
   const opt = node.options.find(o => o.token === token);
   if (!opt) throw new Error(`Token ${token} is not a controlled answer for node ${session.nodeId}`);
-  session.trail.push({ nodeId: session.nodeId, token, because: opt.because });
+  session.trail.push({ nodeId: session.nodeId, token, ruleId: opt.rule });
   if (opt.assign) session.codes[opt.assign.ns] = opt.assign.code;
   if (opt.config) {
     session.config[opt.config.group] = session.config[opt.config.group] || {};
@@ -306,8 +303,39 @@ function suggestedCodes(session, dicts) {
   return out;
 }
 
-function explanations(session, dicts) {
-  const lines = session.trail.map(t => t.because);
+/** One trace entry per answered question — the rule row is the source of truth. */
+function buildTrace(session, rules) {
+  return session.trail.map(t => {
+    const node = NODES[t.nodeId];
+    const opt = node.options.find(o => o.token === t.token);
+    const rule = rules[t.ruleId] || {};
+    let decision, dictionary = "rules/question_nodes.csv";
+    if (opt.halt) {
+      decision = `Stop at ${opt.halt.rollup} rollup (INDETERMINATE)`;
+      dictionary += " · data/sec_codes.csv";
+    } else if (opt.assign) {
+      decision = qualified(opt.assign.ns, opt.assign.code);
+      dictionary += ` · ${NAMESPACE_DICTIONARY[opt.assign.ns]}`;
+    } else if (opt.config) {
+      decision = `${opt.config.group} ${opt.config.field}=${opt.config.value}`;
+    } else {
+      decision = "continue → next question";
+    }
+    const entry = {
+      rule_id: t.ruleId,
+      input: `${node.question} → ${opt.label}`,
+      decision,
+      dictionary,
+      standard_reference: rule.standard_reference || "(reference pending)",
+      explanation: rule.explanation || "",
+    };
+    if (rule.warning_code_if_any) entry.warning = rule.warning_code_if_any;
+    return entry;
+  });
+}
+
+function explanations(session, rules, dicts) {
+  const lines = session.trail.map(t => (rules[t.ruleId] || {}).explanation || "");
   for (const c of suggestedCodes(session, dicts)) {
     if (c.demo_note) lines.push(`${c.code}: ${c.demo_note}.`);
   }
@@ -320,7 +348,7 @@ function explanations(session, dicts) {
   return lines;
 }
 
-function buildOutput(session, dicts) {
+function buildOutput(session, dicts, rules) {
   const halted = !!session.halt;
   const output = {
     schema_version: SCHEMA_VERSION,
@@ -331,11 +359,17 @@ function buildOutput(session, dicts) {
     codes: {},
     warnings: [],
     explanations: [],
+    decision_trace: buildTrace(session, rules),
   };
   if (halted) {
     output.rollup = session.halt.rollup;
     output.warnings.push({ code: session.halt.warning, message: session.halt.message });
-    output.explanations = session.trail.map(t => t.because);
+    output.explanations = session.trail.map(t => (rules[t.ruleId] || {}).explanation || "");
+    output.refusal = {
+      why_stopped: session.halt.whyStopped,
+      required_information: session.halt.needed,
+      principle: REFUSAL_PRINCIPLE,
+    };
     return output;
   }
   if (session.objectType !== "section") output.codes.domain = "MH";
@@ -348,7 +382,7 @@ function buildOutput(session, dicts) {
     output.components = ASSEMBLY_COMPONENTS[session.codes.ASM](session.config);
   }
   output.designation = designation(session);
-  output.explanations = explanations(session, dicts);
+  output.explanations = explanations(session, rules, dicts);
   output.db_mapping = {
     table: session.codes.ASM ? "assembly_product" : (session.codes.ROL ? "component" : "section_geometry"),
     natural_key: session.codes.ASM ? "assembly_product_id" : (session.codes.ROL ? "component_id" : "gsid"),
@@ -363,7 +397,7 @@ function buildOutput(session, dicts) {
 
 const el = (id) => document.getElementById(id);
 
-const state = { dicts: null, session: null };
+const state = { dicts: null, rules: null, provenance: null, session: null };
 
 function render() {
   renderTrail();
@@ -436,22 +470,20 @@ function optionButton(label, onClick) {
   return b;
 }
 
+function statusBadge(status) {
+  const span = document.createElement("span");
+  span.className = `badge badge-${(status || "unknown").toLowerCase()}`;
+  span.textContent = status || "—";
+  return span;
+}
+
 function renderResult() {
   const box = el("result");
   box.innerHTML = "";
   const s = state.session;
   if (!s || s.nodeId) { box.hidden = true; return; }
   box.hidden = false;
-  const output = buildOutput(s, state.dicts);
-
-  if (output.warnings.length) {
-    for (const w of output.warnings) {
-      const div = document.createElement("div");
-      div.className = "warning";
-      div.innerHTML = `<strong>${w.code}</strong> — ${w.message}`;
-      box.appendChild(div);
-    }
-  }
+  const output = buildOutput(s, state.dicts, state.rules);
 
   if (output.status === "CLASSIFIED") {
     box.appendChild(heading("Classification path"));
@@ -463,12 +495,15 @@ function renderResult() {
     box.appendChild(heading("Suggested codes"));
     box.appendChild(codesTable(suggestedCodes(s, state.dicts)));
   } else {
-    box.appendChild(heading("Classification halted"));
-    const p = document.createElement("p");
-    p.className = "path";
-    p.textContent = `Rollup: ${output.rollup} (INDETERMINATE — not a terminal code)`;
-    box.appendChild(p);
+    renderRefusal(box, output);
   }
+
+  box.appendChild(heading("Decision trace"));
+  const traceNote = document.createElement("p");
+  traceNote.className = "help";
+  traceNote.textContent = "Every decision below is one rule row from rules/question_nodes.csv applied to one answer. Same answers, same rules — same result, every time.";
+  box.appendChild(traceNote);
+  box.appendChild(traceList(output.decision_trace));
 
   box.appendChild(heading("Why these codes"));
   const ul = document.createElement("ol");
@@ -492,17 +527,70 @@ function renderResult() {
   box.appendChild(actions);
 }
 
+function renderRefusal(box, output) {
+  const w = output.warnings[0];
+  const panel = document.createElement("div");
+  panel.className = "refusal";
+  panel.innerHTML = `
+    <div class="refusal-code">${w.code} — classification refused, status INDETERMINATE</div>
+    <dl>
+      <dt>Why classification stopped</dt><dd></dd>
+      <dt>What is needed to continue</dt><dd></dd>
+      <dt>Why the system refuses to infer</dt><dd></dd>
+    </dl>
+    <p class="path"></p>`;
+  const dds = panel.querySelectorAll("dd");
+  dds[0].textContent = output.refusal.why_stopped;
+  dds[1].textContent = output.refusal.required_information;
+  dds[2].textContent = output.refusal.principle;
+  panel.querySelector(".path").textContent =
+    `Nearest rollup: ${output.rollup} (classifier-only superclass — never a terminal code)`;
+  box.appendChild(panel);
+}
+
+function traceList(trace) {
+  const list = document.createElement("div");
+  list.className = "trace";
+  for (const t of trace) {
+    const card = document.createElement("div");
+    card.className = "trace-entry" + (t.warning ? " trace-warning" : "");
+    const rows = [
+      ["Input", t.input],
+      ["Decision", t.decision],
+      ["Reason", t.explanation],
+      ["Dictionary", t.dictionary],
+      ["Standard reference", t.standard_reference],
+    ];
+    if (t.warning) rows.push(["Warning", t.warning]);
+    const head = document.createElement("div");
+    head.className = "trace-id";
+    head.textContent = t.rule_id;
+    card.appendChild(head);
+    const dl = document.createElement("dl");
+    for (const [k, v] of rows) {
+      const dt = document.createElement("dt"); dt.textContent = k;
+      const dd = document.createElement("dd"); dd.textContent = v;
+      dl.appendChild(dt); dl.appendChild(dd);
+    }
+    card.appendChild(dl);
+    list.appendChild(card);
+  }
+  return list;
+}
+
 function codesTable(codes) {
   const table = document.createElement("table");
-  table.innerHTML = "<thead><tr><th>Code</th><th>Name</th><th>Status</th><th>Definition</th></tr></thead>";
+  table.innerHTML = "<thead><tr><th>Code</th><th>Name</th><th>Status</th><th>Definition</th><th>Provenance note</th></tr></thead>";
   const tbody = document.createElement("tbody");
   for (const c of codes) {
     const tr = document.createElement("tr");
-    for (const v of [c.code, c.name, c.status, c.definition]) {
-      const td = document.createElement("td");
-      td.textContent = v;
-      tr.appendChild(td);
-    }
+    const tdCode = document.createElement("td"); tdCode.textContent = c.code; tr.appendChild(tdCode);
+    const tdName = document.createElement("td"); tdName.textContent = c.name; tr.appendChild(tdName);
+    const tdStatus = document.createElement("td"); tdStatus.appendChild(statusBadge(c.status)); tr.appendChild(tdStatus);
+    const tdDef = document.createElement("td"); tdDef.textContent = c.definition; tr.appendChild(tdDef);
+    const tdNote = document.createElement("td"); tdNote.textContent = c.demo_note || "—";
+    if (c.demo_note) tdNote.className = "note";
+    tr.appendChild(tdNote);
     tbody.appendChild(tr);
   }
   table.appendChild(tbody);
@@ -516,12 +604,18 @@ function resetSession() {
 
 async function init() {
   try {
-    state.dicts = await loadAllDictionaries();
-    el("meta").textContent = `Dictionaries: ${state.dicts._source} · Snapshot: ${SNAPSHOT_ID}`;
+    const { dicts, rules, provenance } = await loadAllData();
+    state.dicts = dicts;
+    state.rules = rules;
+    state.provenance = provenance;
+    el("meta").innerHTML =
+      `Dictionaries: <strong>${provenance.source}</strong> · Rules: <strong>rules/question_nodes.csv</strong> · ` +
+      `Snapshot: <strong>${provenance.snapshot}</strong> · ` +
+      `Demo subset: <strong>${provenance.demoCodes.length} codes (${provenance.demoCodes.join(", ")}) deviate from SNAP-1.0.0</strong> — see README caveats`;
     el("restart").addEventListener("click", resetSession);
     render();
   } catch (err) {
-    el("question").innerHTML = `<p class="warning">Failed to load dictionaries: ${err.message}.
+    el("question").innerHTML = `<p class="warning">Failed to load dictionaries/rules: ${err.message}.
       Serve this folder over HTTP (e.g. <code>python -m http.server</code>) or open via GitHub Pages.</p>`;
   }
 }

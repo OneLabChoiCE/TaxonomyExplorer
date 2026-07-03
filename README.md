@@ -14,7 +14,11 @@ Working repository for the **SMHE / SectionHub Material Handling Taxonomy Standa
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Contributor Covenant 2.1 plus project-specific standards for a vendor-neutral standards effort |
 | [ROADMAP.md](ROADMAP.md) | Seven-phase plan from foundation to formal governance |
 | [docs/repository-structure.md](docs/repository-structure.md) | Target repository layout for the data layer and future Explorer application, with rationale and migration plan |
-| [explorer/](explorer/) | Phase 1 Explorer MVP — pure static, deterministic taxonomy navigation demo (GitHub Pages-ready; see [explorer/README.md](explorer/README.md)) |
+| [explorer/](explorer/) | Explorer (Phases 1–2) — pure static, deterministic taxonomy navigation demo with rule traceability (GitHub Pages-ready; see [explorer/README.md](explorer/README.md)) |
+
+## Why the Explorer is different
+
+The Explorer is **deterministic and traceable by construction**: every classification is a pure function of your answers plus versioned dictionaries ([explorer/data/](explorer/data/)) and a machine-readable rule table ([explorer/rules/question_nodes.csv](explorer/rules/question_nodes.csv)). Each result shows a **Decision trace** — the exact rule IDs applied, the dictionary rows used, the reason, and the standard reference — and embeds it in the JSON output. When required input is missing, the engine **refuses to guess** (warning `W-201`, status `INDETERMINATE`) and states what information is needed. The current dictionaries are an honestly-labeled demo subset (`SNAP-0.1.0-DEMO`), not the final standard; known deviations are tracked as an [open governance item](proposals/2026-07-03-phase1-demo-alias-deviations.md). Dictionary and rule changes go through the proposal process in [CONTRIBUTING.md](CONTRIBUTING.md) — never through the app.
 
 ## Architecture in one paragraph
 

@@ -1,32 +1,4 @@
-/*
- * AUTO-MAINTAINED FALLBACK — do not edit the CSV text here.
- * Source of truth: the .csv files in this directory and in ../rules/.
- * This file exists only so the Explorer works when index.html is opened
- * directly from disk (file://), where browsers block fetch() of local files.
- * When served over http(s) — e.g. GitHub Pages — the .csv files are fetched
- * and this fallback is ignored. Keep the strings byte-identical to the CSVs.
- */
-window.EMBEDDED_DICTIONARIES = {
-  "sec_codes": `code,name,status,definition,demo_note
-OCL,Open C lipped,ACTIVE,Folded C-profile with one stiffening lip fold per flange,
-OCU,Open C unlipped,ACTIVE,Folded plain C-profile with uniform thickness and no lips,
-ZED,Z-section,DEMO,Folded Z-family profile,Demo code: SNAP-1.0.0 defines ZEE as a superclass with leaves ZLP (lipped) and ZUN (unlipped)
-HSS,Hollow structural section,DEMO,Closed single-cell hollow profile,Demo terminal code: SNAP-1.0.0 defines HSS as a superclass with leaves RHS / SHS / CHS
-ANG,Angle,ACTIVE,Two-leg L-profile equal or unequal,
-PLT,Plate / flat,ACTIVE,Rectangular solid plate or sheet stock,
-OCS,Open C superclass,SUPERCLASS,Any open C-family profile; classifier-only rollup — never a terminal assignment,Displayed only when lip condition is unknown (warning W-201)
-`,
-  "rol_codes": `code,name,status,definition,demo_note
-COL,Column / upright post,ACTIVE,Vertical load-bearing member: rack uprights and shelving posts,
-BEM,Beam / load member,ACTIVE,Horizontal load member: pallet rack load beams and shelf beams,
-ARM,Arm,ACTIVE,Cantilever arm carrying loads from a column,
-CHL,Support channel,DEMO,Channel-form support member under decks and panels,Demo code: SNAP-1.0.0 names this role DKS (deck support member)
-`,
-  "asm_codes": `code,name,status,definition,demo_note
-WDK,Wire deck,ACTIVE,Welded wire mesh joined to support members; laid on pallet rack beams,
-FRM,Upright frame,ACTIVE,Two columns joined by bracing (plus base plates) forming a braced frame,
-`,
-  "question_nodes": `rule_id,object_type,question_or_condition,input_value,output_code,output_namespace,explanation,standard_reference,warning_code_if_any,status
+rule_id,object_type,question_or_condition,input_value,output_code,output_namespace,explanation,standard_reference,warning_code_if_any,status
 R-SEC-001,section,"Is the cross-section profile open, closed (hollow), or solid?",OPEN,,,"An open profile was selected, so the open-form families apply.",Taxonomy Standard draft Part 13.3 (node S1),,ACTIVE
 R-SEC-002,section,"Is the cross-section profile open, closed (hollow), or solid?",CLOSED,HSS,SEC,A closed single-cell hollow resolves to HSS in this demo subset (the full standard resolves further to RHS / SHS / CHS).,Taxonomy Standard draft Part 3.2 (HSS superclass; leaves RHS/SHS/CHS),,DEMO
 R-SEC-003,section,"Is the cross-section profile open, closed (hollow), or solid?",SOLID,PLT,SEC,A solid rectangular profile is plate/flat stock: PLT.,Taxonomy Standard draft Part 3.2 (PLT),,ACTIVE
@@ -51,5 +23,3 @@ R-CFG-004,assembly,How many support channels?,THREE,support_count=3,CFG:SUP,Supp
 R-CFG-005,assembly,How many support channels?,FOUR,support_count=4,CFG:SUP,Support count 4 recorded as configuration (CFG:SUP).,Taxonomy Standard draft P5; rule D-6; Part 3.6 (CFG:SUP),,ACTIVE
 R-CFG-006,assembly,How is the bracing joined to the columns?,BOLT,brace_to_column=BOLT,CFG:JNT,Bolted bracing recorded as configuration (CFG:JNT).,Taxonomy Standard draft P5; rule D-6; Part 3.6 (CFG:JNT),,ACTIVE
 R-CFG-007,assembly,How is the bracing joined to the columns?,FUSION_WELD,brace_to_column=FUSION_WELD,CFG:JNT,Welded bracing recorded as configuration (CFG:JNT).,Taxonomy Standard draft P5; rule D-6; Part 3.6 (CFG:JNT),,ACTIVE
-`
-};

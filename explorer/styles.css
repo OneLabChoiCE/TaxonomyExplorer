@@ -89,6 +89,64 @@ pre {
   margin-bottom: .75rem;
 }
 
+/* Refusal panel — the W-201 "refuse to guess" centerpiece */
+.refusal {
+  background: var(--warn-bg);
+  border: 1px solid var(--warn-edge);
+  border-left-width: 5px;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+.refusal-code {
+  font-family: var(--mono);
+  font-weight: 700;
+  color: var(--warn-edge);
+  margin-bottom: .5rem;
+}
+.refusal dl { margin: 0; }
+.refusal dt { font-weight: 600; margin-top: .6rem; }
+.refusal dd { margin: .15rem 0 0; color: var(--ink); }
+.refusal .path { margin-top: .75rem; }
+
+/* Decision trace */
+.trace { display: grid; gap: .6rem; }
+.trace-entry {
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
+  padding: .6rem .9rem;
+  background: #fff;
+}
+.trace-entry.trace-warning { border-left-color: var(--warn-edge); }
+.trace-id { font-family: var(--mono); font-weight: 700; color: var(--accent); margin-bottom: .3rem; }
+.trace-entry.trace-warning .trace-id { color: var(--warn-edge); }
+.trace-entry dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: .1rem .8rem;
+  font-size: .88rem;
+}
+.trace-entry dt { color: var(--muted); }
+.trace-entry dd { margin: 0; }
+
+/* Dictionary status badges */
+.badge {
+  font-family: var(--mono);
+  font-size: .72rem;
+  font-weight: 700;
+  padding: .1rem .5rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.badge-active { background: var(--accent-soft); color: var(--accent); }
+.badge-demo { background: var(--warn-bg); color: var(--warn-edge); }
+.badge-superclass { background: #e8eaf0; color: #444d5c; }
+.badge-reserved, .badge-deprecated, .badge-unknown { background: #eee; color: var(--muted); }
+
+.note { color: var(--warn-edge); font-size: .85rem; }
+
 .actions { display: flex; gap: .6rem; margin-top: 1rem; }
 
 footer {
