@@ -13,6 +13,7 @@ Working repository for the **SMHE / SectionHub Material Handling Taxonomy Standa
 | [GOVERNANCE.md](GOVERNANCE.md) | Roles, decision rights, release train, industry participation, amendment process |
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Contributor Covenant 2.1 plus project-specific standards for a vendor-neutral standards effort |
 | [ROADMAP.md](ROADMAP.md) | Seven-phase plan from foundation to formal governance |
+| [docs/repository-structure.md](docs/repository-structure.md) | Target repository layout for the data layer and future Explorer application, with rationale and migration plan |
 
 ## Architecture in one paragraph
 
