@@ -14,6 +14,7 @@ Working repository for the **SMHE / SectionHub Material Handling Taxonomy Standa
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Contributor Covenant 2.1 plus project-specific standards for a vendor-neutral standards effort |
 | [ROADMAP.md](ROADMAP.md) | Seven-phase plan from foundation to formal governance |
 | [docs/repository-structure.md](docs/repository-structure.md) | Target repository layout for the data layer and future Explorer application, with rationale and migration plan |
+| [explorer/](explorer/) | Phase 1 Explorer MVP — pure static, deterministic taxonomy navigation demo (GitHub Pages-ready; see [explorer/README.md](explorer/README.md)) |
 
 ## Architecture in one paragraph
 
@@ -22,3 +23,20 @@ Identity is split into **separate but compatible layers**: canonical 2D section 
 ## Status
 
 DRAFT for senior-engineer review, dated 2026-07-02. Nothing here is a released snapshot; all example identifiers in the draft are illustrative.
+
+## Try the Explorer
+
+The Phase 1 TaxonomyExplorer MVP is a static deterministic browser app.
+
+It demonstrates:
+
+- Section classification
+- Component role classification
+- Assembly classification
+- Suggested code output
+- JSON output
+- refusal-to-guess behavior for indeterminate cases
+
+Live demo:
+
+[Open TaxonomyExplorer](./explorer/)
