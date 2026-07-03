@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "SNAP-0.1.0-DEMO",
+  "object_type": "section",
+  "status": "CLASSIFIED",
+  "classification_path": ["SEC:OCL"],
+  "codes": {
+    "section_shape": "SEC:OCL"
+  },
+  "warnings": [],
+  "explanations": [
+    "An open profile was selected, so the open-form families apply.",
+    "A C-form open profile was selected; lip condition decides the terminal code.",
+    "One stiffening lip fold per flange: open C lipped, OCL.",
+    "Geometry parameters, CanonicalGeometryID computation, and GSID lookup are outside Phase 1 scope; gsid is emitted as null."
+  ],
+  "identifiers": {
+    "gsid": null,
+    "canonical_geometry_id": null
+  },
+  "designation": "SMHE OCL (dimensions not captured in Phase 1)",
+  "db_mapping": {
+    "table": "section_geometry",
+    "natural_key": "gsid",
+    "note": "Registered identifiers are issued by the SMHE registry, never by this tool."
+  }
+}

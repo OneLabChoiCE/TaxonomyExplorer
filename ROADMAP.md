@@ -1,22 +1,23 @@
+if (!(Test-Path "ROADMAP.md")) {
+@"
 # TaxonomyExplorer Roadmap
 
 ## Phase 1
-Foundation and Taxonomy Constitution
+Taxonomy constitution, seed dictionaries, and static Explorer MVP.
 
 ## Phase 2
-Code Dictionary Standardization
+Dictionary governance and contribution process.
 
 ## Phase 3
-Deterministic Classification Engine
+Data-driven rule tables and validation schemas.
 
 ## Phase 4
-Public Taxonomy Explorer
+Expanded material-handling product coverage.
 
 ## Phase 5
-Community Contributions
+Community proposals and industry mapping libraries.
 
 ## Phase 6
-Industry Mapping Libraries
-
-## Phase 7
-Formal Governance
+Formal versioned releases and public adoption workflow.
+"@ | Set-Content "ROADMAP.md"
+}

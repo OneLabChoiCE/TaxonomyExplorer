@@ -1,0 +1,5 @@
+code,name,status,definition,demo_note
+COL,Column / upright post,ACTIVE,Vertical load-bearing member: rack uprights and shelving posts,
+BEM,Beam / load member,ACTIVE,Horizontal load member: pallet rack load beams and shelf beams,
+ARM,Arm,ACTIVE,Cantilever arm carrying loads from a column,
+CHL,Support channel,DEMO,Channel-form support member under decks and panels,Demo code: SNAP-1.0.0 names this role DKS (deck support member)

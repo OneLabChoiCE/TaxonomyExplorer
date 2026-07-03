@@ -1,6 +1,14 @@
+
+if (!(Test-Path ".gitignore")) {
+@"
+.claude/
 node_modules/
 dist/
 build/
 .vscode/
 .temp/
 .env
+.DS_Store
+Thumbs.db
+"@ | Set-Content ".gitignore"
+}

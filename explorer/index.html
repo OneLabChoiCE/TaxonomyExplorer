@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SectionHub Taxonomy Explorer — Phase 1 MVP</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>SectionHub Taxonomy Explorer</h1>
+    <p class="subtitle">
+      Phase 1 MVP — deterministic taxonomy navigation for sections, components, and assemblies.
+      Demo dictionary subset; no persistence, no editing, no registry access.
+    </p>
+    <p id="meta" class="meta"></p>
+  </header>
+
+  <main>
+    <section id="wizard" aria-label="Classification wizard">
+      <div id="trail" class="trail" aria-label="Answers so far"></div>
+      <div id="question"></div>
+    </section>
+
+    <section id="result" hidden aria-label="Classification result"></section>
+  </main>
+
+  <footer>
+    <button id="restart" type="button" class="linklike">Start over</button>
+    <span>·</span>
+    <a href="../SMHE-SectionHub-Taxonomy-Standard-DRAFT.md">Taxonomy Standard draft</a>
+    <span>·</span>
+    <a href="samples/assembly-wdk.json">Sample output (wire deck)</a>
+    <span>·</span>
+    <span>Codes come only from the loaded dictionaries — this tool never invents or guesses codes.</span>
+  </footer>
+
+  <!-- file:// fallback copy of the CSV dictionaries; ignored when served over http(s) -->
+  <script src="data/embedded.js"></script>
+  <script src="taxonomy.js"></script>
+</body>
+</html>

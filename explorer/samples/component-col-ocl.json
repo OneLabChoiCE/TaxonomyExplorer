@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "SNAP-0.1.0-DEMO",
+  "object_type": "component",
+  "status": "CLASSIFIED",
+  "classification_path": ["MH", "ROL:COL", "SEC:OCL"],
+  "codes": {
+    "domain": "MH",
+    "component_role": "ROL:COL",
+    "section_shape": "SEC:OCL"
+  },
+  "warnings": [],
+  "explanations": [
+    "The part carries vertical load as an upright: role COL.",
+    "Prismatic member: its cross-section is classified next and referenced by the component.",
+    "An open profile was selected, so the open-form families apply.",
+    "A C-form open profile was selected; lip condition decides the terminal code.",
+    "One stiffening lip fold per flange: open C lipped, OCL.",
+    "Product family (FAM) level is outside Phase 1 scope; the path enters at the assembly/role level (rule H3: entry at any level is valid).",
+    "Geometry parameters, CanonicalGeometryID computation, and GSID lookup are outside Phase 1 scope; gsid is emitted as null."
+  ],
+  "identifiers": {
+    "gsid": null,
+    "canonical_geometry_id": null
+  },
+  "designation": "COL SMHE OCL (dimensions not captured in Phase 1) L=PARAM",
+  "db_mapping": {
+    "table": "component",
+    "natural_key": "component_id",
+    "note": "Registered identifiers are issued by the SMHE registry, never by this tool."
+  }
+}

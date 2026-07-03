@@ -1,0 +1,112 @@
+/* SectionHub Taxonomy Explorer — Phase 1 MVP */
+
+:root {
+  --ink: #1c2430;
+  --muted: #5b6675;
+  --line: #d7dde5;
+  --accent: #14532d;
+  --accent-soft: #e7f3ec;
+  --warn-bg: #fdf3e3;
+  --warn-edge: #b45309;
+  --bg: #f7f9fb;
+  --card: #ffffff;
+  --mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0 auto;
+  max-width: 60rem;
+  padding: 1.5rem 1rem 4rem;
+  font: 16px/1.55 system-ui, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+header h1 { margin: 0 0 .25rem; font-size: 1.6rem; }
+.subtitle { margin: 0; color: var(--muted); max-width: 46rem; }
+.meta { color: var(--muted); font-family: var(--mono); font-size: .8rem; }
+
+main { display: grid; gap: 1.25rem; margin-top: 1.5rem; }
+
+#wizard, #result {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+}
+
+h2 { font-size: 1.1rem; margin: 1rem 0 .5rem; }
+#wizard h2:first-child, #result h2:first-child { margin-top: 0; }
+
+.help { color: var(--muted); font-size: .9rem; margin: .25rem 0 .75rem; }
+
+.trail { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .75rem; }
+.chip {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: .15rem .7rem;
+  font-size: .8rem;
+}
+
+.options { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .5rem; }
+.option {
+  font: inherit;
+  padding: .55rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+.option:hover { border-color: var(--accent); background: var(--accent-soft); }
+
+.path { font-family: var(--mono); font-size: 1rem; background: var(--accent-soft); padding: .5rem .75rem; border-radius: 6px; }
+
+table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+th, td { border: 1px solid var(--line); padding: .45rem .6rem; text-align: left; vertical-align: top; }
+th { background: var(--bg); }
+
+.explanations { padding-left: 1.25rem; }
+.explanations li { margin: .25rem 0; }
+
+pre {
+  background: #101418;
+  color: #d8e2ec;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: .82rem;
+}
+
+.warning {
+  background: var(--warn-bg);
+  border-left: 4px solid var(--warn-edge);
+  padding: .6rem .9rem;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: .75rem;
+}
+
+.actions { display: flex; gap: .6rem; margin-top: 1rem; }
+
+footer {
+  margin-top: 2rem;
+  color: var(--muted);
+  font-size: .85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  align-items: baseline;
+}
+footer a { color: var(--accent); }
+.linklike {
+  font: inherit;
+  color: var(--accent);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}
