@@ -4,6 +4,8 @@ All notable dictionary and standard changes, summarized per snapshot release ([G
 
 ## [Unreleased]
 
+- Registry constitutional design added: `docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md` — 30-year registry architecture (record object model, append-only immutability doctrine, proposed general lifecycle reconciled with N5 statuses, public record format, crosswalk/alias/snapshot models, TC–Operator authority boundary, registry anti-patterns RA-1..RA-14, success criteria, R0–R4 roadmap); new mechanisms marked [Proposed] pending adoption; no software/API/database design (2026-07-11).
+
 - Code Dictionary Standard: linked the operational proposal workflow and issue templates from its proposal-rules clause (editorial bridge; completes the standards-split cross-referencing — the split itself landed in commit ee28c98) (2026-07-11).
 
 - Public-readiness audit (`docs/PUBLIC_READINESS_AUDIT.md`): README rewritten for first-time visitors (live Explorer link up top, no-performance-claims disclaimer, status-at-a-glance table, grouped contents); LICENSE placeholder notice added (no license granted yet); dead empty `dictionaries/` PascalCase CSVs and stray `app/` directory removed per repository-structure migration step 2; corrupted `docs/governance-note-demo-code-reconciliation.md` repaired (PowerShell wrapper → intended content + pointer to the authoritative DEFERRED record); live Explorer URL added to explorer/README. No Explorer behavior, dictionary content, or demo-alias decisions changed (2026-07-11).

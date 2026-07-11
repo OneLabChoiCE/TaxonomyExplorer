@@ -38,6 +38,7 @@ Open, vendor-neutral, **deterministic identity and classification infrastructure
 | **Strategy & background** | |
 | [docs/position-paper-why-sectionhub.md](docs/position-paper-why-sectionhub.md) | Public position paper: the identity gap SectionHub fills, and how it complements — never substitutes for — AISC, AISI, RMI, SMA, GS1, and the classification systems |
 | [SECTIONHUB_STRATEGIC_ARCHITECTURE.md](SECTIONHUB_STRATEGIC_ARCHITECTURE.md) | 10-year ecosystem strategy: governance eras, adoption roadmap, external-standards relationships, crosswalk architecture, certification model, failure modes |
+| [docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md](docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md) | Constitutional design for the long-term public registry: object model, immutability doctrine, lifecycle, snapshots, crosswalks, governance boundaries, anti-patterns, roadmap |
 | [ROADMAP.md](ROADMAP.md) | Seven-phase plan from foundation to formal governance |
 | [docs/repository-structure.md](docs/repository-structure.md) | Target repository layout for the data layer and future Explorer application, with rationale and migration plan |
 
