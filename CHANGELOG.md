@@ -4,6 +4,9 @@ All notable dictionary and standard changes, summarized per snapshot release ([G
 
 ## [Unreleased]
 
+- SECTIONHUB_STRATEGIC_ARCHITECTURE.md added: 10-year ecosystem strategy (governance eras G1–G3, adoption stages A1–A7, external-standards relationships, XMAP crosswalk architecture, certification model, failure modes F-1..F-16) (2026-07-11).
+- ROADMAP.md repaired: restored the seven-phase roadmap from commit e8c9c5b (the file had been overwritten with an unexecuted PowerShell fragment in commit d996b85, breaking GOVERNANCE.md's "Phase 7" bootstrap anchor) (2026-07-11).
+
 - Explorer Phase 2 — Rule Traceability & Standards Credibility Layer: machine-readable rule table `explorer/rules/question_nodes.csv`; Decision trace in UI and JSON (`decision_trace`); first-class W-201 refusal panel (why stopped / what's needed / why no guessing); dictionary provenance display with status badges and demo-code banner; refusal sample `explorer/samples/section-indeterminate-w201.json`; demo-alias governance note `proposals/2026-07-03-phase1-demo-alias-deviations.md` (2026-07-03).
 - Explorer Phase 1 MVP under `explorer/`: static deterministic wizard for Section/Component/Assembly with demo dictionary subset `SNAP-0.1.0-DEMO` (2026-07-02).
 - Governance documents established: CONTRIBUTING.md, GOVERNANCE.md, CODE_OF_CONDUCT.md, REJECTIONS.md, proposals/, CHANGELOG.md (2026-07-02).

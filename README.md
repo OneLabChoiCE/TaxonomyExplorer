@@ -14,6 +14,7 @@ Working repository for the **SMHE / SectionHub Material Handling Taxonomy Standa
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Contributor Covenant 2.1 plus project-specific standards for a vendor-neutral standards effort |
 | [ROADMAP.md](ROADMAP.md) | Seven-phase plan from foundation to formal governance |
 | [docs/repository-structure.md](docs/repository-structure.md) | Target repository layout for the data layer and future Explorer application, with rationale and migration plan |
+| [SECTIONHUB_STRATEGIC_ARCHITECTURE.md](SECTIONHUB_STRATEGIC_ARCHITECTURE.md) | 10-year ecosystem strategy: governance eras, adoption roadmap, external-standards relationships, crosswalk architecture, certification model, failure modes |
 | [explorer/](explorer/) | Explorer (Phases 1–2) — pure static, deterministic taxonomy navigation demo with rule traceability (GitHub Pages-ready; see [explorer/README.md](explorer/README.md)) |
 
 ## Why the Explorer is different
