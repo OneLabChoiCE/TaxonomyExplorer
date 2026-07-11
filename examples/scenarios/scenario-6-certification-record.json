@@ -1,0 +1,49 @@
+{
+  "_scenario": {
+    "number": 6,
+    "title": "Future certification workflow — record identity separate from performance rating",
+    "status": "ILLUSTRATIVE_DATA_MODEL",
+    "note": "Illustrates the future registry-resolution model (SECTIONHUB_STRATEGIC_ARCHITECTURE.md §10). No resolution service, certification program, or these records exist yet; all identifiers are illustrative. The attestation boundary shown here is the design's central commitment."
+  },
+  "schema_version": "1.0",
+  "snapshot_id": "SNAP-1.0.0",
+  "resolved_from": "QR label on deck (illustrative)",
+  "object_type": "assembly",
+  "registered_record": {
+    "assembly_product_id": "ASP-000173",
+    "configuration_id": "CF1-8C41D02E97BA",
+    "classification_path": ["MH", "FAM:DKG", "ASM:WDK"],
+    "provenance": "SELF_REPORTED",
+    "configuration": {
+      "CFG:DIM": { "nominal_width_mm": 1160, "nominal_depth_mm": 1170 },
+      "CFG:SUP": { "support_count": 3, "orientation": "LEGS_DOWN" },
+      "CFG:EDG": { "front": "WATERFALL", "rear": "FLUSH", "sides": "FLUSH" },
+      "CFG:JNT": { "method": "RESISTANCE_WELD" }
+    }
+  },
+  "evidence_pointers": {
+    "tests": [
+      { "test_id": "TST-2026-00114", "protocol": "ANSI MH26.2 [clause, edition]", "lab": "(named lab)", "binds_to": "CF1-8C41D02E97BA" }
+    ],
+    "certifications": [],
+    "note": "Pointers only. Report contents and any capacity values live with the issuing laboratory and the engineer of record — not in this record."
+  },
+  "attestation_boundary": {
+    "what_this_record_attests": "Record existence and traceability only: this identifier resolves to a registered, deterministic configuration description with the provenance grade shown.",
+    "what_this_record_does_NOT_attest": [
+      "Load capacity or any performance rating",
+      "Safety, code compliance, or fitness for purpose",
+      "Physical correspondence of the labeled article to this record (no inspection performed or implied)",
+      "Conformance with any design or testing standard — that remains with testing laboratories, engineers of record, and the industry's conformance programs"
+    ],
+    "principle": "A registered deck is an IDENTIFIED deck — nothing more. Identity claims and performance claims are deliberately kept in separate layers so each can be trusted."
+  },
+  "refusals": [
+    { "code": "E-104", "message": "Capacity values are refused as configuration fields; ratings are evidence-layer outputs bound to the cited test records." },
+    { "code": "E-101", "message": "No GSID exists at deck level; geometry identity applies only to member cross-sections referenced by components." }
+  ],
+  "explanations": [
+    "The buyer's two questions are answered by two different layers: 'what is this?' by this record; 'what can it hold?' by the cited evidence, read with the engineer of record.",
+    "Because the identity half refuses to carry the performance half, it can be automated and trusted."
+  ]
+}

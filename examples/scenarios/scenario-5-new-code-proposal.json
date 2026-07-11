@@ -1,0 +1,38 @@
+{
+  "_scenario": {
+    "number": 5,
+    "title": "Standards contributor proposes a new assembly type",
+    "status": "ILLUSTRATIVE_DATA_MODEL",
+    "note": "A proposal record rendered as JSON for illustration. The code 'FLR' is ILLUSTRATIVE ONLY — it is not in any dictionary, is not being proposed by this file, and must not be used in data. Real proposals follow proposals/TEMPLATE-code-change.md and docs/proposal-workflow.md."
+  },
+  "proposal": {
+    "type": "NEW_CODE",
+    "namespace": "ASM:",
+    "proposed_code": "FLR (ILLUSTRATIVE — unregistered)",
+    "title": "Carton flow lane assembly type",
+    "proposer": "example.contributor",
+    "affiliation_disclosed": true,
+    "fields_first_hurdle": {
+      "closest_existing_code": "ASM:SHU",
+      "why_it_fails": "To be argued by the proposer: why a flow lane is not a shelving-unit configuration (inclined rollers, lane dividers, entry/exit geometry as distinct-role members) rather than fields on an existing type. If it CAN be fields, the proposal fails here — by design (P5).",
+      "why_not_a_field": "required — empty submissions are returned at triage"
+    },
+    "evidence_required": "At least two product families that would use the new assembly type; the component-vs-assembly test (§4.9) applied.",
+    "precedent_check": "REJECTIONS.md searched; CFS/PIP/TUB precedents reviewed for analogy.",
+    "proposed_dictionary_row": "FLR,Carton flow lane,RESERVED,<definition>,,<next snapshot>  (ILLUSTRATIVE)"
+  },
+  "lifecycle": {
+    "states": ["DRAFT", "TRIAGED", "EVIDENCE-COMPLETE", "REVIEW", "ACCEPTED | REJECTED | DEFERRED"],
+    "if_accepted": "RESERVED row citing the proposal; ACTIVE only at the next snapshot release; decision recorded in proposals/",
+    "if_rejected": "Recorded in REJECTIONS.md as binding precedent",
+    "if_deferred": "Parked with a named revival condition and NO dictionary row (live example: proposals/2026-07-03-phase1-demo-alias-deviations.md)"
+  },
+  "refusals": [
+    { "code": "structural", "message": "The Explorer cannot mint codes at runtime; no code exists until a recorded decision activates it at a snapshot." },
+    { "code": "P5", "message": "Variation representable as configuration fields is refused as a code, regardless of who proposes it." }
+  ],
+  "explanations": [
+    "The gate is evidence, not access: an outside engineer changes the standard through the public record, without knowing anyone.",
+    "Rejections become binding precedent, so the same argument is never re-run."
+  ]
+}

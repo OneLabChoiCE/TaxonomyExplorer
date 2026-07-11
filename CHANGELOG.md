@@ -4,6 +4,7 @@ All notable dictionary and standard changes, summarized per snapshot release ([G
 
 ## [Unreleased]
 
+- Demo scenario pack added: `docs/demo-scenarios.md` plus `examples/scenarios/` — six audience walkthroughs (manufacturer section, lab wire deck, SKU mapping, inspector W-201 refusal, code proposal, future certification), each tagged EXPLORER_REPRODUCIBLE or ILLUSTRATIVE_DATA_MODEL; no dictionary or Explorer changes (2026-07-11).
 - Public position paper added: `docs/position-paper-why-sectionhub.md` — the deterministic-identity gap relative to AISC/AISI/RMI/SMA/GS1/UNSPSC/ECLASS/ETIM/OmniClass/MasterFormat/SKUs, with explicit non-affiliation and non-substitution posture (2026-07-11).
 - Formal proposal workflow established: `docs/proposal-workflow.md` (lifecycle, evidence gates, decision categories, outcomes, propagation) plus issue templates `proposals/TEMPLATE-code-change.md`, `proposals/TEMPLATE-taxonomy-change.md`, `proposals/TEMPLATE-crosswalk-change.md`; README "How to propose changes" section; GOVERNANCE.md and CONTRIBUTING.md pointers (2026-07-11).
 - Standards split (working copies): populated `standards/GSID_2D_Standard.md`, `standards/Material_Handling_Taxonomy_Standard.md`, and `standards/Code_Dictionary_Standard.md` by verbatim extraction from the unified v0.1 draft, which remains the canonical document of record; original clause numbering and rule IDs retained; editorial bridge text marked; no normative meaning changed (2026-07-11).

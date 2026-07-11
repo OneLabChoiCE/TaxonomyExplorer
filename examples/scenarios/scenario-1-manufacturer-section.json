@@ -1,0 +1,67 @@
+{
+  "_scenario": {
+    "number": 1,
+    "title": "Rack manufacturer classifies a lipped upright section",
+    "status": "EXPLORER_REPRODUCIBLE",
+    "explorer_answers": [
+      "Section",
+      "Open profile",
+      "C-form (web + two flanges, same side)",
+      "Simple lips (one fold per flange)"
+    ],
+    "note": "Remove this _scenario block to compare byte-for-byte with live Explorer output. See docs/demo-scenarios.md."
+  },
+  "schema_version": "1.0",
+  "snapshot_id": "SNAP-0.1.0-DEMO",
+  "object_type": "section",
+  "status": "CLASSIFIED",
+  "classification_path": [
+    "SEC:OCL"
+  ],
+  "codes": {
+    "section_shape": "SEC:OCL"
+  },
+  "warnings": [],
+  "explanations": [
+    "An open profile was selected, so the open-form families apply.",
+    "A C-form open profile was selected; lip condition decides the terminal code.",
+    "One stiffening lip fold per flange: open C lipped, OCL.",
+    "Geometry parameters, CanonicalGeometryID computation, and GSID lookup are outside Phase 1 scope; gsid is emitted as null."
+  ],
+  "decision_trace": [
+    {
+      "rule_id": "R-SEC-001",
+      "input": "Is the cross-section profile open, closed (hollow), or solid? → Open profile",
+      "decision": "continue → next question",
+      "dictionary": "rules/question_nodes.csv",
+      "standard_reference": "Taxonomy Standard draft Part 13.3 (node S1)",
+      "explanation": "An open profile was selected, so the open-form families apply."
+    },
+    {
+      "rule_id": "R-SEC-004",
+      "input": "Which open form is it? → C-form (web + two flanges, same side)",
+      "decision": "continue → next question",
+      "dictionary": "rules/question_nodes.csv",
+      "standard_reference": "Taxonomy Standard draft Part 13.3 (node S2)",
+      "explanation": "A C-form open profile was selected; lip condition decides the terminal code."
+    },
+    {
+      "rule_id": "R-SEC-008",
+      "input": "Are there stiffening lips on the flange ends? → Simple lips (one fold per flange)",
+      "decision": "SEC:OCL",
+      "dictionary": "rules/question_nodes.csv · data/sec_codes.csv",
+      "standard_reference": "Taxonomy Standard draft Part 3.1 (Ruling R1)",
+      "explanation": "One stiffening lip fold per flange: open C lipped, OCL."
+    }
+  ],
+  "identifiers": {
+    "gsid": null,
+    "canonical_geometry_id": null
+  },
+  "designation": "SMHE OCL (dimensions not captured in Phase 1)",
+  "db_mapping": {
+    "table": "section_geometry",
+    "natural_key": "gsid",
+    "note": "Registered identifiers are issued by the SMHE registry, never by this tool."
+  }
+}

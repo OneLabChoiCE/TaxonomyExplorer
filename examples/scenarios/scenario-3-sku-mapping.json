@@ -1,0 +1,50 @@
+{
+  "_scenario": {
+    "number": 3,
+    "title": "Software vendor maps a manufacturer SKU to the neutral identity layer",
+    "status": "ILLUSTRATIVE_DATA_MODEL",
+    "note": "Registry data model per the MH Taxonomy Standard (naming layer, §4.9/§4.11). All identifiers are illustrative; no such registry records exist yet. Names point at identities — never the reverse (rules P3/D-8; Explorer rejects name-driven classification with E-102). See docs/demo-scenarios.md."
+  },
+  "schema_version": "1.0",
+  "snapshot_id": "SNAP-1.0.0",
+  "object_type": "manufacturer_part",
+  "naming_layer_record": {
+    "manufacturer_part_id": "MPN-018233",
+    "manufacturer": "ACME Storage Products (illustrative)",
+    "part_number": "TD-300-16",
+    "points_at": "CMP-000482",
+    "classification_authority": "NONE — naming-layer records never influence classification"
+  },
+  "resolved_component": {
+    "component_id": "CMP-000482",
+    "classification_path": ["MH", "ROL:COL", "SEC:OCL"],
+    "codes": {
+      "domain": "MH",
+      "component_role": "ROL:COL",
+      "section_shape": "SEC:OCL"
+    },
+    "identifiers": {
+      "gsid": "GS-004217",
+      "canonical_geometry_id": "CG1-7B3E91A0C24D"
+    },
+    "configuration": {
+      "CFG:HOL": { "pattern_id": "TEARDROP-A", "pitch_mm": 50.8, "faces": "BOTH_FLANGES" },
+      "CFG:DIM": { "length": "PARAM" }
+    }
+  },
+  "cross_reference_note": "A competitor part with canonically matching geometry resolves to the SAME gsid through its own MPN → CMP chain; geometric equivalence is computed from the registry, not asserted from brand tables.",
+  "warnings": [],
+  "explanations": [
+    "The SKU is recorded as a naming-layer pointer (MPN-018233 → CMP-000482); it carries zero classification authority (P3, D-8).",
+    "Classification came from what the part IS (role + section topology + configuration), established once from the manufacturer's specification.",
+    "A future rename is a one-row naming-layer update; the component, geometry, and every downstream cross-reference are untouched."
+  ],
+  "refusals": [
+    { "code": "E-102", "message": "Classification from the SKU string alone was refused; manufacturer names are never classification inputs." }
+  ],
+  "db_mapping": {
+    "table": "manufacturer_part",
+    "natural_key": "manufacturer_part_id",
+    "foreign_keys": { "points_at": "component" }
+  }
+}
