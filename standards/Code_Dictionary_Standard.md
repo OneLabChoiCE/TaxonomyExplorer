@@ -93,6 +93,8 @@
 
 ## Proposal rules for new codes (unified draft §12.4–12.5)
 
+*[Editorial bridge.]* The operational walkthrough of these rules — lifecycle, evidence tables, decision categories, and outcomes — is [docs/proposal-workflow.md](../docs/proposal-workflow.md), with copyable issue templates in [proposals/](../proposals/README.md) (`TEMPLATE-code-change.md`, `TEMPLATE-taxonomy-change.md`, `TEMPLATE-crosswalk-change.md`).
+
 ### 12.4 Community proposal process
 
 1. Proposals SHALL be submitted via typed issue forms: *new code* (per namespace), *new template field*, *new enum token*, *new designation system*, *erratum*.
