@@ -4,6 +4,7 @@ All notable dictionary and standard changes, summarized per snapshot release ([G
 
 ## [Unreleased]
 
+- Standards split (working copies): populated `standards/GSID_2D_Standard.md`, `standards/Material_Handling_Taxonomy_Standard.md`, and `standards/Code_Dictionary_Standard.md` by verbatim extraction from the unified v0.1 draft, which remains the canonical document of record; original clause numbering and rule IDs retained; editorial bridge text marked; no normative meaning changed (2026-07-11).
 - SECTIONHUB_STRATEGIC_ARCHITECTURE.md added: 10-year ecosystem strategy (governance eras G1–G3, adoption stages A1–A7, external-standards relationships, XMAP crosswalk architecture, certification model, failure modes F-1..F-16) (2026-07-11).
 - ROADMAP.md repaired: restored the seven-phase roadmap from commit e8c9c5b (the file had been overwritten with an unexecuted PowerShell fragment in commit d996b85, breaking GOVERNANCE.md's "Phase 7" bootstrap anchor) (2026-07-11).
 

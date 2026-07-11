@@ -8,7 +8,9 @@ Working repository for the **SMHE / SectionHub Material Handling Taxonomy Standa
 |---|---|
 | [standards/SectionHub-Material-Handling-Taxonomy-Standard-v0.1.md](standards/SectionHub-Material-Handling-Taxonomy-Standard-v0.1.md) | The full draft standard: identity layers, namespaces, code dictionary, decision rules, worked examples, Explorer specification, governance & adoption strategy (Parts 0–15) |
 | [dictionaries/](dictionaries/) | Seed dictionary CSVs (namespaces, section shapes, component roles, assembly types, product families, configuration groups) matching the draft's Part 3 tables, pinned to `SNAP-1.0.0` |
-| [standards/](standards/) | Placeholder homes for the split standards documents (GSID 2D, MH Taxonomy, Code Dictionary) per the draft's Part 15 outlines |
+| [standards/GSID_2D_Standard.md](standards/GSID_2D_Standard.md) | Split working copy — the 2D geometry layer: SEC shape codes and rulings, CanonicalGeometryID, GSID, designation mapping, geometry boundary rules |
+| [standards/Material_Handling_Taxonomy_Standard.md](standards/Material_Handling_Taxonomy_Standard.md) | Split working copy — domain MH above the geometry layer: hierarchy, ROL/ASM/FAM/CFG dictionaries, component/assembly/configuration identity, evidence layer, compatibility, worked examples |
+| [standards/Code_Dictionary_Standard.md](standards/Code_Dictionary_Standard.md) | Split working copy — namespace model, code status lifecycle, proposal/deprecation rules, demo-code handling, dictionary CSV contracts |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | How to propose codes and changes: evidence gates, proposal workflow, determinism & AI policy |
 | [GOVERNANCE.md](GOVERNANCE.md) | Roles, decision rights, release train, industry participation, amendment process |
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Contributor Covenant 2.1 plus project-specific standards for a vendor-neutral standards effort |

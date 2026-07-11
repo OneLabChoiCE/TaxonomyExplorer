@@ -61,10 +61,10 @@ docs/
 
 ```
 standards/
-├── Identifier_Standard.md                    # SMHE Identifier Standard v2.0 (Part 15.1) — NEW
-├── GSID_2D_Standard.md                       # GSID Standard v2.0 (Part 15.2) — existing placeholder
-├── Material_Handling_Taxonomy_Standard.md    # Taxonomy Standard v1.0 (Part 15.3) — existing placeholder
-├── Code_Dictionary_Standard.md               # dictionary file contracts, status lifecycle, namespace rules — existing placeholder
+├── Identifier_Standard.md                    # SMHE Identifier Standard v2.0 (Part 15.1) — NEW, still pending
+├── GSID_2D_Standard.md                       # GSID Standard v2.0 (Part 15.2) — populated 2026-07-11 (split working copy)
+├── Material_Handling_Taxonomy_Standard.md    # Taxonomy Standard v1.0 (Part 15.3) — populated 2026-07-11 (split working copy)
+├── Code_Dictionary_Standard.md               # dictionary contracts, status lifecycle, namespace rules — populated 2026-07-11 (split working copy)
 └── canonicalization/
     └── v1/
         ├── rules.md                          # units, rounding, orientation, hashing (normative)
@@ -156,7 +156,7 @@ explorer/
 | 1 | Create `templates/`, `rules/`, `registry/`, `schemas/`, `examples/` with README stubs (`docs/` already exists and holds this document) | Maintainer |
 | 2 | Delete dead `dictionaries/ShapeCodes.csv`, `ComponentRoles.csv`, `ProductFamilies.csv`, `AssemblyTypes.csv` (flagged in CONTRIBUTING.md) and the stray empty `app/` directory — **or**, if `app/` is the preferred application home, rename `explorer/` to `app/` throughout this design first | Maintainer (editorial; record in CHANGELOG) |
 | 3 | Add `dictionaries/enum_tokens.csv` seeded from the CFG group value lists in standard Part 3.6 | TC (lightweight) |
-| 4 | Add `standards/Identifier_Standard.md` placeholder; populate the three Part 15-outlined standards from their outlines and `Code_Dictionary_Standard.md` from the Part 13.6 contracts + N5 lifecycle; banner the root draft as superseded when done | TC (normative path) |
+| 4 | Add `standards/Identifier_Standard.md` placeholder; populate the three Part 15-outlined standards from their outlines and `Code_Dictionary_Standard.md` from the Part 13.6 contracts + N5 lifecycle; banner the unified draft as superseded when done. *(Partially executed 2026-07-11: the three placeholders populated as split working copies; the unified draft remains canonical; Identifier_Standard.md and the supersession banner pending.)* | TC (normative path) |
 | 5 | Extract `standards/canonicalization/v1/` (rules + per-shape schemas) from the draft's Part 4.3 and Part 13.3 material | TC (normative path) |
 | 6 | Seed the rule tables and templates: `rules/question_nodes.csv` from Part 13.3, `rules/warnings.csv` from Part 13.7, `rules/designation_grammar.md` from Part 13.5; `templates/ASM-WDK.v1.json` from Part 6.5, `templates/ROL-COL.v1.json` from Part 7 and `templates/ROL-DKS.v1.json` from Part 6 | TC |
 | 7 | Convert the draft's Part 6–10 JSON examples into `examples/` fixtures; add the two seed golden sessions (they depend on step 6) | Maintainer + TC review |
