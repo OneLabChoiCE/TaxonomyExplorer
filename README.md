@@ -6,7 +6,7 @@ Working repository for the **SMHE / SectionHub Material Handling Taxonomy Standa
 
 | Path | What it is |
 |---|---|
-| [SMHE-SectionHub-Taxonomy-Standard-DRAFT.md](SMHE-SectionHub-Taxonomy-Standard-DRAFT.md) | The full v1.0 draft standard: identity layers, namespaces, code dictionary, decision rules, worked examples, Explorer specification, governance & adoption strategy (Parts 0–15) |
+| [standards/SectionHub-Material-Handling-Taxonomy-Standard-v0.1.md](standards/SectionHub-Material-Handling-Taxonomy-Standard-v0.1.md) | The full draft standard: identity layers, namespaces, code dictionary, decision rules, worked examples, Explorer specification, governance & adoption strategy (Parts 0–15) |
 | [dictionaries/](dictionaries/) | Seed dictionary CSVs (namespaces, section shapes, component roles, assembly types, product families, configuration groups) matching the draft's Part 3 tables, pinned to `SNAP-1.0.0` |
 | [standards/](standards/) | Placeholder homes for the split standards documents (GSID 2D, MH Taxonomy, Code Dictionary) per the draft's Part 15 outlines |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | How to propose codes and changes: evidence gates, proposal workflow, determinism & AI policy |

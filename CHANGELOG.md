@@ -4,6 +4,8 @@ All notable dictionary and standard changes, summarized per snapshot release ([G
 
 ## [Unreleased]
 
+- Explorer Phase 2 — Rule Traceability & Standards Credibility Layer: machine-readable rule table `explorer/rules/question_nodes.csv`; Decision trace in UI and JSON (`decision_trace`); first-class W-201 refusal panel (why stopped / what's needed / why no guessing); dictionary provenance display with status badges and demo-code banner; refusal sample `explorer/samples/section-indeterminate-w201.json`; demo-alias governance note `proposals/2026-07-03-phase1-demo-alias-deviations.md` (2026-07-03).
+- Explorer Phase 1 MVP under `explorer/`: static deterministic wizard for Section/Component/Assembly with demo dictionary subset `SNAP-0.1.0-DEMO` (2026-07-02).
 - Governance documents established: CONTRIBUTING.md, GOVERNANCE.md, CODE_OF_CONDUCT.md, REJECTIONS.md, proposals/, CHANGELOG.md (2026-07-02).
 
 ## [SNAP-1.0.0] — draft seed, 2026-07-02 (not yet released)

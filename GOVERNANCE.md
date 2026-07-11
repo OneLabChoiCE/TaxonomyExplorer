@@ -1,6 +1,6 @@
 # Governance
 
-This document defines who decides what in the SectionHub Taxonomy project, and how. It implements Part 12 of [the Taxonomy Standard draft](SMHE-SectionHub-Taxonomy-Standard-DRAFT.md) and is designed for the transition from single-maintainer stewardship to formal industry governance (Roadmap Phases 5–7).
+This document defines who decides what in the SectionHub Taxonomy project, and how. It implements Part 12 of [the Taxonomy Standard draft](standards/SectionHub-Material-Handling-Taxonomy-Standard-v0.1.md) and is designed for the transition from single-maintainer stewardship to formal industry governance (Roadmap Phases 5–7).
 
 ## 1. Guiding principles
 

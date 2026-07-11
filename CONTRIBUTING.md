@@ -10,7 +10,7 @@ The project is deterministic.
 - **All new codes require: rationale, examples, and backward-compatibility review.**
 - **Classification must be reproducible:** the same inputs against the same snapshot must always produce the same result.
 
-Everything below elaborates these three commitments. Normative background: [the Taxonomy Standard draft](SMHE-SectionHub-Taxonomy-Standard-DRAFT.md), especially Part 3 (code dictionary), Part 5 (decision rules), Part 12 (adoption strategy), and Part 14 (prohibited anti-patterns). Governance authority and decision rights are defined in [GOVERNANCE.md](GOVERNANCE.md). All participants are bound by the [Code of Conduct](CODE_OF_CONDUCT.md).
+Everything below elaborates these three commitments. Normative background: [the Taxonomy Standard draft](standards/SectionHub-Material-Handling-Taxonomy-Standard-v0.1.md), especially Part 3 (code dictionary), Part 5 (decision rules), Part 12 (adoption strategy), and Part 14 (prohibited anti-patterns). Governance authority and decision rights are defined in [GOVERNANCE.md](GOVERNANCE.md). All participants are bound by the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## What you can contribute
 

@@ -1,6 +1,6 @@
 # Repository Structure — TaxonomyExplorer
 
-**Status:** design, 2026-07-02. Implements Part 12.3 of [the Taxonomy Standard draft](../SMHE-SectionHub-Taxonomy-Standard-DRAFT.md) against the repository as it exists today, and defines where the future application lives. No application code is implied by this document.
+**Status:** design, 2026-07-02. Implements Part 12.3 of [the Taxonomy Standard draft](../standards/SectionHub-Material-Handling-Taxonomy-Standard-v0.1.md) against the repository as it exists today, and defines where the future application lives. No application code is implied by this document.
 
 ## Design principles
 
@@ -18,7 +18,7 @@ TaxonomyExplorer/
 ├── README.md  LICENSE  LICENSE-DATA        # LICENSE: Apache-2.0 (code); LICENSE-DATA (NEW — lands with license finalization): CC-BY-4.0 (data/spec)
 ├── CONTRIBUTING.md  GOVERNANCE.md  CODE_OF_CONDUCT.md
 ├── CHANGELOG.md  REJECTIONS.md  ROADMAP.md
-├── SMHE-SectionHub-Taxonomy-Standard-DRAFT.md   # unified draft; superseded by standards/ when the Part 15 split executes
+│   # unified draft lives at standards/SectionHub-Material-Handling-Taxonomy-Standard-v0.1.md; split per Part 15 pending
 ├── .github/                                # forms + CI (see below)
 ├── docs/                                   # informative documentation
 ├── standards/                              # normative documents
