@@ -12,7 +12,7 @@ A pure static, deterministic taxonomy-navigation demo. No backend, no auth, no c
 
 ## Run
 
-- **GitHub Pages:** enable Pages for this repository (deploy from branch, root). The app serves at `…/TaxonomyExplorer/explorer/`.
+- **Live (GitHub Pages):** <https://onelabchoice.github.io/TaxonomyExplorer/explorer/>
 - **Locally over HTTP:** `python -m http.server` from the repo root, then open `http://localhost:8000/explorer/`. Dictionaries and rules load from the `.csv` files.
 - **Directly from disk:** double-click `index.html`. Browsers block `fetch()` on `file://`, so the app falls back to `data/embedded.js`, a maintained byte-identical copy of the CSV text.
 

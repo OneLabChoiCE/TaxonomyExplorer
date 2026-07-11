@@ -154,7 +154,7 @@ explorer/
 | Step | Action | Owner |
 |---|---|---|
 | 1 | Create `templates/`, `rules/`, `registry/`, `schemas/`, `examples/` with README stubs (`docs/` already exists and holds this document) | Maintainer |
-| 2 | Delete dead `dictionaries/ShapeCodes.csv`, `ComponentRoles.csv`, `ProductFamilies.csv`, `AssemblyTypes.csv` (flagged in CONTRIBUTING.md) and the stray empty `app/` directory — **or**, if `app/` is the preferred application home, rename `explorer/` to `app/` throughout this design first | Maintainer (editorial; record in CHANGELOG) |
+| 2 | Delete dead `dictionaries/ShapeCodes.csv`, `ComponentRoles.csv`, `ProductFamilies.csv`, `AssemblyTypes.csv` (flagged in CONTRIBUTING.md) and the stray empty `app/` directory. *(Executed 2026-07-11 in the public-readiness audit; `explorer/` confirmed as the application home.)* | Maintainer (editorial; record in CHANGELOG) |
 | 3 | Add `dictionaries/enum_tokens.csv` seeded from the CFG group value lists in standard Part 3.6 | TC (lightweight) |
 | 4 | Add `standards/Identifier_Standard.md` placeholder; populate the three Part 15-outlined standards from their outlines and `Code_Dictionary_Standard.md` from the Part 13.6 contracts + N5 lifecycle; banner the unified draft as superseded when done. *(Partially executed 2026-07-11: the three placeholders populated as split working copies; the unified draft remains canonical; Identifier_Standard.md and the supersession banner pending.)* | TC (normative path) |
 | 5 | Extract `standards/canonicalization/v1/` (rules + per-shape schemas) from the draft's Part 4.3 and Part 13.3 material | TC (normative path) |

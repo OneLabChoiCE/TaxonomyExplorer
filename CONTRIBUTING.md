@@ -70,7 +70,7 @@ These are the hard acceptance gates from the standard's decision rules. Proposal
 
 ## Mechanics
 
-- **Dictionary format:** the authoritative files are the populated snake_case CSVs under `dictionaries/` — `namespaces.csv`, `sec_codes.csv`, `rol_codes.csv`, `asm_codes.csv`, `fam_codes.csv`, `cfg_groups.csv` (one per namespace, per standard Part 12.3). The empty PascalCase files (`ShapeCodes.csv`, `ComponentRoles.csv`, `ProductFamilies.csv`, `AssemblyTypes.csv`) are dead scaffolding pending removal; PRs against them are closed. Keep the existing column headers; codes are 3-char uppercase alpha, unique within their namespace, and always written namespace-qualified in prose (`SEC:OCL`, never bare `OCL`).
+- **Dictionary format:** the authoritative files are the snake_case CSVs under `dictionaries/` — `namespaces.csv`, `sec_codes.csv`, `rol_codes.csv`, `asm_codes.csv`, `fam_codes.csv`, `cfg_groups.csv` (one per namespace, per standard Part 12.3). Keep the existing column headers; codes are 3-char uppercase alpha, unique within their namespace, and always written namespace-qualified in prose (`SEC:OCL`, never bare `OCL`).
 - **Enumeration values** are `UPPER_SNAKE` tokens, never 3-char codes.
 - **Normative language:** use SHALL / SHOULD / MAY in rule statements; keep explanation in plain prose.
 - **Commits/PRs:** one logical change per PR; reference the proposal issue (`Proposal: #123`); sign off your commits (`git commit -s`, Developer Certificate of Origin).

@@ -1,0 +1,14 @@
+NO LICENSE GRANTED YET (placeholder)
+
+The licensing for this repository has not been finalized. Until license
+text is added to this file, all rights are reserved and no license is
+granted (see GOVERNANCE.md section 8).
+
+Intended licensing, per the Taxonomy Standard draft Part 12.1:
+
+  - Application code (explorer/):  Apache-2.0
+  - Dictionaries, templates, rule tables, and standards text:  CC-BY-4.0
+  - "SMHE", "SectionHub", and "GSID":  reserved as names/marks
+
+External contributions are not merged until this file is finalized
+(see CONTRIBUTING.md, "Licensing").

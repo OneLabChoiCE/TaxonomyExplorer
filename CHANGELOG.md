@@ -4,6 +4,8 @@ All notable dictionary and standard changes, summarized per snapshot release ([G
 
 ## [Unreleased]
 
+- Public-readiness audit (`docs/PUBLIC_READINESS_AUDIT.md`): README rewritten for first-time visitors (live Explorer link up top, no-performance-claims disclaimer, status-at-a-glance table, grouped contents); LICENSE placeholder notice added (no license granted yet); dead empty `dictionaries/` PascalCase CSVs and stray `app/` directory removed per repository-structure migration step 2; corrupted `docs/governance-note-demo-code-reconciliation.md` repaired (PowerShell wrapper → intended content + pointer to the authoritative DEFERRED record); live Explorer URL added to explorer/README. No Explorer behavior, dictionary content, or demo-alias decisions changed (2026-07-11).
+
 - Demo scenario pack added: `docs/demo-scenarios.md` plus `examples/scenarios/` — six audience walkthroughs (manufacturer section, lab wire deck, SKU mapping, inspector W-201 refusal, code proposal, future certification), each tagged EXPLORER_REPRODUCIBLE or ILLUSTRATIVE_DATA_MODEL; no dictionary or Explorer changes (2026-07-11).
 - Public position paper added: `docs/position-paper-why-sectionhub.md` — the deterministic-identity gap relative to AISC/AISI/RMI/SMA/GS1/UNSPSC/ECLASS/ETIM/OmniClass/MasterFormat/SKUs, with explicit non-affiliation and non-substitution posture (2026-07-11).
 - Formal proposal workflow established: `docs/proposal-workflow.md` (lifecycle, evidence gates, decision categories, outcomes, propagation) plus issue templates `proposals/TEMPLATE-code-change.md`, `proposals/TEMPLATE-taxonomy-change.md`, `proposals/TEMPLATE-crosswalk-change.md`; README "How to propose changes" section; GOVERNANCE.md and CONTRIBUTING.md pointers (2026-07-11).
