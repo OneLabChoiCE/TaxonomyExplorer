@@ -38,6 +38,7 @@ The **GSID boundary** (GSID identifies canonical 2D section geometry only; assem
 
 ## 4. How decisions are made
 
+- **Operational walkthrough:** the step-by-step proposal process, templates, and propagation rules are documented in [docs/proposal-workflow.md](docs/proposal-workflow.md); this section remains normative on any conflict.
 - **Evidence gates first.** A proposal that does not meet its CONTRIBUTING.md evidence requirement is returned at triage; it never reaches a vote.
 - **Fields-first presumption.** The default answer to "new code?" is "new field or token" (P5). The proposal must overcome the presumption.
 - **Precedent binds.** Rejections recorded in `REJECTIONS.md` are binding on future proposals unless materially new evidence is presented.

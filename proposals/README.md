@@ -2,6 +2,8 @@
 
 One file per governance decision, per [GOVERNANCE.md](../GOVERNANCE.md) §5. Records are immutable once merged; corrections are new records that supersede.
 
+**Proposing a change?** Start from the `TEMPLATE-*.md` files in this directory (copy into a new GitHub issue — templates are not decision records) and see [docs/proposal-workflow.md](../docs/proposal-workflow.md) for the full lifecycle.
+
 **Filename:** `YYYY-MM-DD-<short-slug>.md` (e.g., `2026-10-01-sec-new-code-xyz.md`)
 
 **Required contents:**

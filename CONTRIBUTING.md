@@ -48,7 +48,7 @@ These are the hard acceptance gates from the standard's decision rules. Proposal
 
 ## Proposal workflow
 
-1. **Open a typed proposal issue.** GitHub issue forms per proposal type are planned; until they land, copy this skeleton into a new issue: *Proposal type / Namespace / Proposed code or token / The existing code that fails and why / Rule cited (D-1, D-7, …) / Evidence (instances, sources) / Identity-bearing or informative (for fields) / Backward-compatibility impact.* One proposal per issue.
+1. **Open a typed proposal issue** by copying the matching template into a new issue: [proposals/TEMPLATE-code-change.md](proposals/TEMPLATE-code-change.md), [proposals/TEMPLATE-taxonomy-change.md](proposals/TEMPLATE-taxonomy-change.md), or [proposals/TEMPLATE-crosswalk-change.md](proposals/TEMPLATE-crosswalk-change.md). The full lifecycle is documented in [docs/proposal-workflow.md](docs/proposal-workflow.md). One proposal per issue.
 2. **Triage** (monthly): maintainers verify the evidence gate is met and label the proposal; incomplete proposals are returned with the missing item named.
 3. **Decision** (quarterly, or sooner for lightweight items): the Technical Committee accepts or rejects with recorded rationale. Accepted codes enter the dictionary as `RESERVED`. Rejections are recorded in `REJECTIONS.md`.
 4. **Pull request:** after acceptance, submit the dictionary row(s) referencing the proposal issue. Dictionary PRs without an accepted proposal are closed.
