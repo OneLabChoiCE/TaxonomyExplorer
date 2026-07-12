@@ -13,6 +13,7 @@ Open, vendor-neutral, **deterministic identity and classification infrastructure
 | Unified standard | file `v0.1`; document titled toward its **v1.0 ratification target** (titles name targets, filenames name the draft series) | Canonical draft — the document of record |
 | Split standards ([GSID](standards/GSID_2D_Standard.md), [MH Taxonomy](standards/Material_Handling_Taxonomy_Standard.md), [Code Dictionary](standards/Code_Dictionary_Standard.md)) | v2.0 / v1.0 targets | Verbatim split working copies; unified draft wins on divergence |
 | Seed dictionaries ([dictionaries/](dictionaries/)) | `SNAP-1.0.0` | Drafted, **unreleased** — no snapshot has been cut |
+| Registry ([registry/](registry/)) | stage `R0` | Files-as-registry; the six namespace founding records **reserved** (`RESERVED`), no snapshot cut |
 | Explorer ([explorer/](explorer/)) | Phase 2 | **Live demo**; deliberately small demo dictionary subset `SNAP-0.1.0-DEMO`, with 3 labeled demo-code deviations tracked as an [open governance item](proposals/2026-07-03-phase1-demo-alias-deviations.md) |
 | Example identifiers in all docs (`GS-004217`, `CMP-000482`, …) | — | **Illustrative only** — nothing has been registered |
 | [LICENSE](LICENSE) | placeholder | Not yet finalized; no license granted; external PRs are not merged until it lands |
@@ -35,6 +36,7 @@ Open, vendor-neutral, **deterministic identity and classification infrastructure
 | [CONTRIBUTING.md](CONTRIBUTING.md) | How to propose codes and changes: evidence gates, proposal workflow, determinism & AI policy |
 | [docs/proposal-workflow.md](docs/proposal-workflow.md) | The proposal lifecycle end-to-end, with templates in [proposals/](proposals/) |
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Contributor Covenant 2.1 plus project-specific standards for a vendor-neutral standards effort |
+| [docs/ENGINEERING_LOG.md](docs/ENGINEERING_LOG.md) | Append-only steward/registry-operations decision trail (distinct from proposals/, ADRs, and the changelog) |
 | **Strategy & background** | |
 | [docs/position-paper-why-sectionhub.md](docs/position-paper-why-sectionhub.md) | Public position paper: the identity gap SectionHub fills, and how it complements — never substitutes for — AISC, AISI, RMI, SMA, GS1, and the classification systems |
 | [SECTIONHUB_STRATEGIC_ARCHITECTURE.md](SECTIONHUB_STRATEGIC_ARCHITECTURE.md) | 10-year ecosystem strategy: governance eras, adoption roadmap, external-standards relationships, crosswalk architecture, certification model, failure modes |
@@ -42,6 +44,8 @@ Open, vendor-neutral, **deterministic identity and classification infrastructure
 | [docs/SECTIONHUB_DATA_SUBMISSION_MODEL.md](docs/SECTIONHUB_DATA_SUBMISSION_MODEL.md) | Constitutional model for registry submissions: roles, evidence minimums, trust/provenance grades, review paths, refusal rules, corrections, disputes, staged S0–S5 program |
 | [docs/SECTIONHUB_BOOTSTRAP_PLAN.md](docs/SECTIONHUB_BOOTSTRAP_PLAN.md) | Practical bootstrap execution: the first ~110 and 500 records, curation vs import, taxonomy-explosion defenses, readiness milestones, one-year quarter-by-quarter roadmap |
 | [docs/FIRST_100_RECORDS_PLAN.md](docs/FIRST_100_RECORDS_PLAN.md) | The exact founding cohort of `SNAP-1.0.0`: record categories and counts, what already exists implicitly, zero-permission vs governance-gated vs deferred records, creation sequence, cut line, and readiness checklist |
+| [docs/FOUNDING_RECORD_TEMPLATE.md](docs/FOUNDING_RECORD_TEMPLATE.md) | The minimal, standards-aligned format for a single registry record — the fill-in form instantiating the Registry Architecture §4.1 public record format |
+| [registry/](registry/) | The registry itself (stage `R0`, Registry Operator only): canonical per-record source artifacts by type; holds the six `RESERVED` namespace founding records ([registry/namespace/](registry/namespace/)) |
 | [ROADMAP.md](ROADMAP.md) | Seven-phase plan from foundation to formal governance |
 | [docs/repository-structure.md](docs/repository-structure.md) | Target repository layout for the data layer and future Explorer application, with rationale and migration plan |
 
