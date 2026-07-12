@@ -48,17 +48,33 @@ With Batch 2, **four of the five N5 states are now represented in records**: `AC
 
 Every `SEC:` superclass rollup now has all its declared members seeded: `SEC:OCS`→{`OCL`, `OCU`, `OCR`}, `SEC:HSS`→{`RHS`, `SHS`, `CHS`}, `SEC:BAR`→{`RBR`, `FBR`, `SBR`, `HBR`}, `SEC:ZEE`→{`ZLP`, `ZUN`} — parent↔child membership is complete and consistent. N5 coverage is unchanged (Batch 3 deepens `ACTIVE` and parked-`RESERVED`; `DEPRECATED` remains structurally absent).
 
+**Batch 4 (2026-07-12)** completes the `SEC:` namespace with its **9 standalone active shape codes** — the section shapes that belong to no superclass rollup. All are activation-bound (`RESERVED` at R0 → `ACTIVE` at the cut) and cite the §3.2 shape-code table (status `A`):
+
+| Record | Identifier | Form class | `status` @ `SNAP-1.0.0` |
+|---|---|---|---|
+| [SEC-IWF.md](SEC-IWF.md) | `SEC:IWF` | `HOT_ROLLED_FILLETED` | `ACTIVE` |
+| [SEC-ITF.md](SEC-ITF.md) | `SEC:ITF` | `HOT_ROLLED_FILLETED` | `ACTIVE` |
+| [SEC-ANG.md](SEC-ANG.md) | `SEC:ANG` | `HOT_ROLLED_FILLETED` | `ACTIVE` |
+| [SEC-TEE.md](SEC-TEE.md) | `SEC:TEE` | `HOT_ROLLED_FILLETED` | `ACTIVE` |
+| [SEC-PLT.md](SEC-PLT.md) | `SEC:PLT` | `HOT_ROLLED_FILLETED` | `ACTIVE` |
+| [SEC-OMG.md](SEC-OMG.md) | `SEC:OMG` | `FOLDED_UNIFORM_T` | `ACTIVE` |
+| [SEC-SGM.md](SEC-SGM.md) | `SEC:SGM` | `FOLDED_UNIFORM_T` | `ACTIVE` |
+| [SEC-STB.md](SEC-STB.md) | `SEC:STB` | `FOLDED_UNIFORM_T` | `ACTIVE` |
+| [SEC-BXB.md](SEC-BXB.md) | `SEC:BXB` | `FOLDED_UNIFORM_T` | `ACTIVE` |
+
+**The `SEC:` namespace is now complete — all 29 `sec_codes.csv` rows have a founding record**: 2 from Batch 1 (`OCL` active, `SBR` parked), 7 from Batch 2 (`OCS`/`HSS`/`BAR`/`ZEE` `SUPERCLASS`, `CFS`/`PIP`/`TUB` `REJECTED`), 11 members from Batch 3, and these 9 standalone shapes. N5 coverage is unchanged (Batch 4 adds only `ACTIVE` codes).
+
 ## Remaining (seeded in later batches)
 
 | Source CSV | Namespace | Rows | Seeded |
 |---|---|---|---|
-| [sec_codes.csv](../../dictionaries/sec_codes.csv) | `SEC:` | 29 | 20 |
+| [sec_codes.csv](../../dictionaries/sec_codes.csv) | `SEC:` | 29 | **29 ✓ (complete)** |
 | [rol_codes.csv](../../dictionaries/rol_codes.csv) | `ROL:` | 17 | 1 |
 | [asm_codes.csv](../../dictionaries/asm_codes.csv) | `ASM:` | 16 | 2 |
 | [fam_codes.csv](../../dictionaries/fam_codes.csv) | `FAM:` | 12 | 1 |
 | [cfg_groups.csv](../../dictionaries/cfg_groups.csv) | `CFG:` | 12 | 1 |
-| **Total** | | **86** | **25** |
+| **Total** | | **86** | **34** |
 
 Records carry each code's **assigned** status, not a blanket `ACTIVE`: the `SUPERCLASS` rollups, `RESERVED`-parked codes, and `REJECTED` burned-string rows each carry a record for precedent, even though they never activate (First 100 Records Plan §9).
 
-**Remaining within Category B — a sequencing choice, not a doctrine blocker.** With Batch 3 the entire `SEC:` superclass–member structure is seeded; the still-unseeded codes are the nine standalone `SEC:` shapes (`IWF`, `ITF`, `ANG`, `TEE`, `PLT`, `OMG`, `SGM`, `STB`, `BXB`) and the remaining `ACTIVE` codes in the `ROL:` / `ASM:` / `FAM:` / `CFG:` namespaces, held for later batches only to keep each pass small. The `SUPERCLASS`/`REJECTED` codes — once the open question for this layer — were seeded in Batch 2, confirming the settled doctrine: `status` is the assigned registry state; [Registry Architecture §8](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md) gates only the `RESERVED → ACTIVE` transition; and `SUPERCLASS`/`REJECTED` codes are **born in their assigned state directly**, never passing through `RESERVED` ([§5](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md): a `REJECTED` row records a burned string, and such rows never activate).
+**Remaining within Category B — a sequencing choice, not a doctrine blocker.** With Batch 4 the `SEC:` namespace is fully seeded (29 of 29), and every non-`ACTIVE` code in Category B is now on record (the nine `SEC:` `SUPERCLASS`/`REJECTED`/parked rows plus the ASM `DCK` superclass — the only non-`ACTIVE` rows in the whole cohort). The 52 still-unseeded codes are therefore all `ACTIVE` codes in the `ROL:` / `ASM:` / `FAM:` / `CFG:` namespaces, held for later batches only to keep each pass small. This confirms the settled doctrine: `status` is the assigned registry state; [Registry Architecture §8](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md) gates only the `RESERVED → ACTIVE` transition; and `SUPERCLASS`/`REJECTED` codes are **born in their assigned state directly**, never passing through `RESERVED` ([§5](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md): a `REJECTED` row records a burned string, and such rows never activate).

@@ -12,6 +12,42 @@ Entries are append-only and never edited in place (P8); a correction is a new en
 
 ---
 
+## 2026-07-12 — Dictionary founding records, batch 4 (SEC namespace completion)
+
+**Roles:** Standards architect · Registry steward · Documentation maintainer · Release manager · Evidence custodian. Authority: the bootstrap clause (GOVERNANCE §2; [Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §9.3).
+
+**Objective.** Complete the `SEC:` namespace by seeding its nine standalone active shape codes — the section shapes that belong to no superclass rollup — under the corrected assigned-status semantics.
+
+**Records created (9), each a verbatim, sourced restatement of its `dictionaries/sec_codes.csv` row (all status `A` in the §3.2 shape-code table, all standalone):**
+
+| Record | Identifier | Form class | status @ SNAP-1.0.0 |
+|---|---|---|---|
+| `SEC-IWF.md` | `SEC:IWF` | `HOT_ROLLED_FILLETED` | `ACTIVE` |
+| `SEC-ITF.md` | `SEC:ITF` | `HOT_ROLLED_FILLETED` | `ACTIVE` |
+| `SEC-ANG.md` | `SEC:ANG` | `HOT_ROLLED_FILLETED` | `ACTIVE` |
+| `SEC-TEE.md` | `SEC:TEE` | `HOT_ROLLED_FILLETED` | `ACTIVE` |
+| `SEC-PLT.md` | `SEC:PLT` | `HOT_ROLLED_FILLETED` | `ACTIVE` |
+| `SEC-OMG.md` | `SEC:OMG` | `FOLDED_UNIFORM_T` | `ACTIVE` |
+| `SEC-SGM.md` | `SEC:SGM` | `FOLDED_UNIFORM_T` | `ACTIVE` |
+| `SEC-STB.md` | `SEC:STB` | `FOLDED_UNIFORM_T` | `ACTIVE` |
+| `SEC-BXB.md` | `SEC:BXB` | `FOLDED_UNIFORM_T` | `ACTIVE` |
+
+**Decision (the authorizing decision these records cite).** Acting under the bootstrap clause, the nine codes are seeded as activation-bound records: each carries `RESERVED` at the current (R0) lineage point on a single `RESERVED → ACTIVE` trajectory the `SNAP-1.0.0` cut completes (§5/§8). None is a member of a superclass rollup — each §5 records `Superclass: none` (standalone). Citation basis is the §3.2 shape-code table (status `A`); none of the nine is among the §3.1 founding rulings R1–R6 (which cover only OCS/OCL/OCU/OCR/CHN/CFS).
+
+**Namespace completeness (verified).** All 29 `sec_codes.csv` rows now have exactly one founding record: 2 from batch 1 (`OCL`, `SBR`), 7 from batch 2 (`OCS`/`HSS`/`BAR`/`ZEE` `SUPERCLASS`; `CFS`/`PIP`/`TUB` `REJECTED`), 11 from batch 3 (superclass members + `CHN`), and these 9 standalone shapes. **The `SEC:` namespace is complete.** Cross-checked: every non-`ACTIVE` code in Category B is now on record (the 9 `SEC:` non-active rows + ASM `DCK`), so all remaining Category-B codes are `ACTIVE` codes in `ROL:`/`ASM:`/`FAM:`/`CFG:`.
+
+**Effect on coverage.** Category B seeded: **34 of 86** (`SEC:` **29 of 29**, complete). N5-state coverage is unchanged — four of five (`ACTIVE`, `RESERVED`, `SUPERCLASS`, `REJECTED`); batch 4 adds only `ACTIVE` codes. `DEPRECATED` remains structurally absent (requires a later successor-bearing decision, §5).
+
+**Scope discipline (verified).** No status transition undefined in §5; no publication-flag / shadow-"terminal status" framing; each record matches its CSV row exactly (incl. `IWF`'s `AISC W/HP/M; EN HE/IPE; UB/UC; GB/T HW/HM/HN; JIS H` mapping). No new record types, GSID/component/assembly records, snapshot cut, `[Proposed]` adoption, or governance/architecture/standards/Explorer/Bootstrap-Plan change. No performance/capacity/safety/compliance value.
+
+**Files.**
+- **Created (9):** `registry/dictionary/{SEC-IWF,SEC-ITF,SEC-ANG,SEC-TEE,SEC-PLT,SEC-OMG,SEC-SGM,SEC-STB,SEC-BXB}.md`
+- **Modified (3):** `registry/dictionary/README.md`, `CHANGELOG.md`, `docs/ENGINEERING_LOG.md` (this entry).
+
+**Status left:** uncommitted, pending review.
+
+---
+
 ## 2026-07-12 — Dictionary founding records, batch 3 (superclass member codes)
 
 **Roles:** Standards architect · Registry steward · Documentation maintainer · Release manager · Evidence custodian. Authority: the bootstrap clause (GOVERNANCE §2; [Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §9.3).
