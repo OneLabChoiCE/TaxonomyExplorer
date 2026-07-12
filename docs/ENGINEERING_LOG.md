@@ -12,6 +12,32 @@ Entries are append-only and never edited in place (P8); a correction is a new en
 
 ---
 
+## 2026-07-12 — Dictionary founding records, batch 7 (FAM namespace completion)
+
+**Roles:** Standards architect · Registry steward · Documentation maintainer · Release manager · Evidence custodian. Authority: the bootstrap clause (GOVERNANCE §2; [Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §9.3).
+
+**Objective.** Complete the `FAM:` namespace by seeding every remaining product family code from `dictionaries/fam_codes.csv`, under the assigned-status semantics.
+
+**Enumeration (from the CSV directly).** `fam_codes.csv` has 12 code rows: `SPR` (ACTIVE, seeded batch 1) and 11 remaining — all `ACTIVE`: `CLR`, `DKG`, `RSP`, `RPA`, `SHV`, `WPL`, `WKS`, `MDR`, `LCK`, `MBS`, `STC`. The family CSV columns are `code,name,status,domain,industry_anchor,successor,since_snapshot` — `domain` and `industry_anchor` stand in for a free-text definition.
+
+**Records created (11), each a verbatim, sourced restatement of its `dictionaries/fam_codes.csv` row (domain `MH` + industry anchor restated exactly, ANSI standard numbers preserved for `CLR`/`DKG`):** `FAM:CLR` (Cantilever rack), `FAM:DKG` (Industrial storage rack decking), `FAM:RSP` (Rack-supported platforms), `FAM:RPA` (Rack protection & accessories), `FAM:SHV` (Steel shelving), `FAM:WPL` (Industrial work platforms), `FAM:WKS` (Workstations), `FAM:MDR` (Modular drawer storage), `FAM:LCK` (Lockers), `FAM:MBS` (Movable-base storage), `FAM:STC` (Storage containers).
+
+**Decision (the authorizing decision these records cite).** Acting under the bootstrap clause, the eleven codes are seeded as activation-bound records: each carries `RESERVED` at the current (R0) lineage point on a single `RESERVED → ACTIVE` trajectory the `SNAP-1.0.0` cut completes (§5/§8). Citation basis is the Product family codes table (Taxonomy Standard §3.5, status `A`). Each is domain-scoped to `MH`. The `industry_anchor` is recorded as provenance text — the external standard *scope* a family aligns to (e.g. RMI/SMA scopes) — and is explicitly **not** a registered `DSG-`/`XMAP` crosswalk and confers no external authority. No engineering meaning was inferred beyond the governed row.
+
+**Namespace completeness (verified).** All 12 `fam_codes.csv` rows now have exactly one founding record (1 batch 1 + 11 batch 7). No orphan `FAM-*.md` without a CSV row. **The `FAM:` namespace is complete.**
+
+**Effect on coverage.** Category B seeded: **75 of 86** (`SEC:` 29/29, `ASM:` 16/16, `ROL:` 17/17, `FAM:` 12/12 — four namespaces complete). N5-state coverage is unchanged — four of five (`ACTIVE`, `RESERVED`, `SUPERCLASS`, `REJECTED`); batch 7 adds only `ACTIVE` codes. `DEPRECATED` remains structurally absent (§5). Remaining: 11 `ACTIVE` codes in the `CFG:` namespace (the final batch).
+
+**Scope discipline (verified).** No status transition undefined in §5; no publication-flag / shadow-"terminal status" framing; no invented rationale or inferred engineering meaning; each record matches its CSV row exactly. No new record types, GSID/component/assembly records, snapshot cut, `[Proposed]` adoption, or governance/architecture/standards/Explorer/Bootstrap-Plan change. No performance/capacity/safety/compliance value.
+
+**Files.**
+- **Created (11):** `registry/dictionary/{FAM-CLR,FAM-DKG,FAM-RSP,FAM-RPA,FAM-SHV,FAM-WPL,FAM-WKS,FAM-MDR,FAM-LCK,FAM-MBS,FAM-STC}.md`
+- **Modified (3):** `registry/dictionary/README.md`, `CHANGELOG.md`, `docs/ENGINEERING_LOG.md` (this entry).
+
+**Status left:** uncommitted, pending review.
+
+---
+
 ## 2026-07-12 — Dictionary founding records, batch 6 (ROL namespace completion)
 
 **Roles:** Standards architect · Registry steward · Documentation maintainer · Release manager · Evidence custodian. Authority: the bootstrap clause (GOVERNANCE §2; [Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §9.3).

@@ -108,6 +108,24 @@ Every `SEC:` superclass rollup now has all its declared members seeded: `SEC:OCS
 
 **The `ROL:` namespace is now complete — all 17 `rol_codes.csv` rows have a founding record**: 1 from Batch 1 (`COL`) and these 16. N5 coverage is unchanged (Batch 6 adds only `ACTIVE` codes).
 
+**Batch 7 (2026-07-12)** completes the `FAM:` namespace with its **11 remaining product family codes**. All are `ACTIVE` (`RESERVED` at R0 → `ACTIVE` at the cut) and cite the Product family codes table (Taxonomy Standard §3.5); the family CSV carries `domain`/`industry_anchor` in place of a free-text definition (each restated verbatim, with the ANSI standard numbers preserved for `CLR`/`DKG`). All are domain-scoped to `MH`:
+
+| Record | Identifier | Name | Industry anchor | `status` @ `SNAP-1.0.0` |
+|---|---|---|---|---|
+| [FAM-CLR.md](FAM-CLR.md) | `FAM:CLR` | Cantilever rack | RMI cantilever scope (ANSI MH16.3) | `ACTIVE` |
+| [FAM-DKG.md](FAM-DKG.md) | `FAM:DKG` | Industrial storage rack decking | RMI decking scope (ANSI MH26.2) | `ACTIVE` |
+| [FAM-RSP.md](FAM-RSP.md) | `FAM:RSP` | Rack-supported platforms | RMI scope | `ACTIVE` |
+| [FAM-RPA.md](FAM-RPA.md) | `FAM:RPA` | Rack protection & accessories | Rack accessory scope | `ACTIVE` |
+| [FAM-SHV.md](FAM-SHV.md) | `FAM:SHV` | Steel shelving | SMA shelving scope | `ACTIVE` |
+| [FAM-WPL.md](FAM-WPL.md) | `FAM:WPL` | Industrial work platforms | SMA scope | `ACTIVE` |
+| [FAM-WKS.md](FAM-WKS.md) | `FAM:WKS` | Workstations | SMA scope | `ACTIVE` |
+| [FAM-MDR.md](FAM-MDR.md) | `FAM:MDR` | Modular drawer storage | SMA scope | `ACTIVE` |
+| [FAM-LCK.md](FAM-LCK.md) | `FAM:LCK` | Lockers | SMA scope | `ACTIVE` |
+| [FAM-MBS.md](FAM-MBS.md) | `FAM:MBS` | Movable-base storage | SMA scope | `ACTIVE` |
+| [FAM-STC.md](FAM-STC.md) | `FAM:STC` | Storage containers | SMA scope | `ACTIVE` |
+
+**The `FAM:` namespace is now complete — all 12 `fam_codes.csv` rows have a founding record**: 1 from Batch 1 (`SPR`) and these 11. The industry anchor is provenance text (the external standard *scope* a family aligns to), not a registered crosswalk. N5 coverage is unchanged (Batch 7 adds only `ACTIVE` codes).
+
 ## Remaining (seeded in later batches)
 
 | Source CSV | Namespace | Rows | Seeded |
@@ -115,10 +133,10 @@ Every `SEC:` superclass rollup now has all its declared members seeded: `SEC:OCS
 | [sec_codes.csv](../../dictionaries/sec_codes.csv) | `SEC:` | 29 | **29 ✓ (complete)** |
 | [rol_codes.csv](../../dictionaries/rol_codes.csv) | `ROL:` | 17 | **17 ✓ (complete)** |
 | [asm_codes.csv](../../dictionaries/asm_codes.csv) | `ASM:` | 16 | **16 ✓ (complete)** |
-| [fam_codes.csv](../../dictionaries/fam_codes.csv) | `FAM:` | 12 | 1 |
+| [fam_codes.csv](../../dictionaries/fam_codes.csv) | `FAM:` | 12 | **12 ✓ (complete)** |
 | [cfg_groups.csv](../../dictionaries/cfg_groups.csv) | `CFG:` | 12 | 1 |
-| **Total** | | **86** | **64** |
+| **Total** | | **86** | **75** |
 
 Records carry each code's **assigned** status, not a blanket `ACTIVE`: the `SUPERCLASS` rollups, `RESERVED`-parked codes, and `REJECTED` burned-string rows each carry a record for precedent, even though they never activate (First 100 Records Plan §9).
 
-**Remaining within Category B — a sequencing choice, not a doctrine blocker.** With Batch 6 three namespaces are fully seeded — `SEC:` (29 of 29), `ASM:` (16 of 16), and `ROL:` (17 of 17). Every non-`ACTIVE` code in Category B is on record (the nine `SEC:` `SUPERCLASS`/`REJECTED`/parked rows plus the ASM `DCK` superclass — the only non-`ACTIVE` rows in the whole cohort). The 22 still-unseeded codes are therefore all `ACTIVE` codes in the `FAM:` (11) and `CFG:` (11) namespaces, held for later batches only to keep each pass small. This confirms the settled doctrine: `status` is the assigned registry state; [Registry Architecture §8](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md) gates only the `RESERVED → ACTIVE` transition; and `SUPERCLASS`/`REJECTED` codes are **born in their assigned state directly**, never passing through `RESERVED` ([§5](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md): a `REJECTED` row records a burned string, and such rows never activate).
+**Remaining within Category B — a sequencing choice, not a doctrine blocker.** With Batch 7 four namespaces are fully seeded — `SEC:` (29 of 29), `ASM:` (16 of 16), `ROL:` (17 of 17), and `FAM:` (12 of 12). Every non-`ACTIVE` code in Category B is on record (the nine `SEC:` `SUPERCLASS`/`REJECTED`/parked rows plus the ASM `DCK` superclass — the only non-`ACTIVE` rows in the whole cohort). The 11 still-unseeded codes are therefore all `ACTIVE` codes in the `CFG:` namespace, held for the final batch. This confirms the settled doctrine: `status` is the assigned registry state; [Registry Architecture §8](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md) gates only the `RESERVED → ACTIVE` transition; and `SUPERCLASS`/`REJECTED` codes are **born in their assigned state directly**, never passing through `RESERVED` ([§5](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md): a `REJECTED` row records a burned string, and such rows never activate).
