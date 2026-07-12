@@ -12,6 +12,33 @@ Entries are append-only and never edited in place (P8); a correction is a new en
 
 ---
 
+## 2026-07-12 — Canonicalization Rules v1 published (Category D CGID prerequisite)
+
+**Roles:** Standards architect · Registry steward · Evidence custodian · Documentation maintainer · Release manager. Authority: the bootstrap clause (GOVERNANCE §2; [Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §9.3). **Scope: a single, explicitly-authorized standards prerequisite** — it clears the gate that blocked Category D and does nothing else.
+
+**Objective.** Publish the minimum normative canonicalization package that makes founding GSID (Category D) CGIDs *honest* — i.e. recomputable by an independent party from published files alone (P9) — satisfying prerequisite 1 of [registry/gsid/README.md](../registry/gsid/README.md) and [First 100 Records Plan §6 item 1 / §8 step 1](FIRST_100_RECORDS_PLAN.md). Category D itself was **held** in the prior turn precisely because this package did not exist; fabricating a CGID without it would have breached P7/P9 and RA-4/RA-12.
+
+**Foundational design choice (grounds the whole package).** [GSID Standard §4.3](../standards/GSID_2D_Standard.md) defines a CanonicalGeometry as `{shape_code, canonicalization_rules_version, normalized parameter vector}`. v1 takes "parameter vector" literally: it canonicalizes an **intrinsic scalar parameter vector, never a coordinate polygon/CAD outline.** Because no coordinates are serialized, there is no orientation/rotation/translation/point-order/CAD ambiguity to resolve — determinism reduces to fixed parameter order plus fixed decimal formatting. This is what let every one of the seven cohort schemas be specified honestly. The single disclosed simplification is a **sharp-corner idealization** (fillet/bend/corner radii and flange taper excluded in v1 — the worked examples carry no radius values, so v1 invents none); it is stated as the explicit §10 exclusion, not hidden.
+
+**What was published (`standards/canonicalization/v1/`).**
+- `CANONICALIZATION_RULES_V1.md` — the normative rules: scope (CGID support only; no product/component/manufacturer/SKU/capacity/performance/cert/compliance), canonical unit (mm), global + per-shape parameter ordering, a two-class numeric-normalization rule (envelope 0.1 mm → 1 fractional digit; thickness 0.05 mm → 2), orientation (N/A by construction), conservative equivalent-transform table (translation/rotation/mirror/point-order all identity-preserving for these symmetric parameter schemas), a **byte-exact serialization** (UTF-8, no BOM, `|`/`;` separators, case-sensitive, no whitespace, fixed decimals, **no trailing newline**), the **`CG1-` hash procedure** (SHA-256 → first 12 hex, upper-case), explicit exclusions (§10), and a Category D readiness statement (§11).
+- `README.md` — package overview and version semantics (`CG1-` ↔ rules major 1; a future coordinate-geometry or radius-aware version would be `v2`/`CG2-`, GSIDs persisting and re-pointing per RA §3.3).
+- `schemas/` — seven per-shape schemas: `OCL`, `OCU`, `RBR`, `PLT`, `ANG`, `FBR`, `SHS`. Each declares shape code + SEC dictionary relationship, required parameters, fixed order, unit, precision class, justified numeric domain (positivity; ANG descending-leg order; SHS square constraint), excluded fields, and exact serialization contribution. `OCU` serves **both** OCU cohort records (same schema, different values → different CGID — the D-2 behaviour). No schema is published for any non-cohort shape (deliberate minimality, §10).
+
+**Reproducibility proof (verified, not asserted).** The rules carry a **reference test vector using a deliberately NON-cohort geometry** (`SEC:OCU` 100.0×50.0×2.00) so the pipeline is pinned without pre-minting any production CGID: `CANON-V1|SEC:OCU|100.0;50.0;2.00` (32 bytes, no trailing newline) → `SHA-256 8424749059a5…` → **`CG1-8424749059A5`**, computed with `sha256sum` during authoring. A negative control (same string + one trailing `\n` → `204a25cf…`) demonstrates why the no-trailing-newline rule is normative. The eight cohort **serialized input strings** are tabulated (§7.3) to prove schema coverage, but their **CGIDs are deliberately NOT computed here** — that is the Category D task (readiness §11).
+
+**Boundary discipline (verified).** No manufacturer/SKU/product/component/assembly/capacity/performance/test/certification/compliance field appears anywhere in the rules or the seven schemas; each schema lists these as excluded. No GSID redefinition; no new architecture, governance, or doctrine — the package is the published `v1` instance of a derivation the GSID Standard already defines. No modification to the GSID Standard, Registry Architecture, governance, dictionaries, the Explorer, or any registry record (only `registry/gsid/README.md` prerequisite note updated).
+
+**Category D readiness (the point of the task).** CGID honesty is **achieved** — canonicalization is no longer a Category D blocker. Remaining before the eight GSID records are authored (none of it canonicalization work): (1) compute the eight CGIDs via §8; (2) fix the deterministic `GS-000001…` serial-issuance order (First 100 §4); (3) handle the still-`[Proposed]` RA §5 object-record lifecycle — authorable as `RESERVED` with the dependency flagged pending, exactly as the dictionary cohort treats the un-cut snapshot.
+
+**Files.**
+- **Created (9):** `standards/canonicalization/v1/README.md`, `standards/canonicalization/v1/CANONICALIZATION_RULES_V1.md`, `standards/canonicalization/v1/schemas/{OCL,OCU,RBR,PLT,ANG,FBR,SHS}.md`.
+- **Modified (3):** `registry/gsid/README.md` (prerequisite 1 marked satisfied), `CHANGELOG.md`, `docs/ENGINEERING_LOG.md` (this entry).
+
+**Status left:** uncommitted, pending review. No snapshot cut; the package is DRAFT R0 and ratifies into force when first referenced by the `SNAP-1.0.0` cut.
+
+---
+
 ## 2026-07-12 — Dictionary founding records, batch 8 (CFG namespace completion — Category B ratified 86/86)
 
 **Roles:** Standards architect · Registry steward · Documentation maintainer · Release manager · Evidence custodian. Authority: the bootstrap clause (GOVERNANCE §2; [Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §9.3).
