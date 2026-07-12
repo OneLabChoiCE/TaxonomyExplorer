@@ -19,7 +19,7 @@ Per [Registry Architecture §12](../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md), t
 | [component/](component/) | Component identities (`CMP-…`) with `CF1-…` companions | E | No — deferred |
 | [assembly/](assembly/) | Assembly-product identities (`ASP-…`) with `CF1-…` companions | F | No — deferred |
 
-Categories are those of the [First 100 Records Plan](../docs/FIRST_100_RECORDS_PLAN.md) §1. **Configuration templates (Category C)** are *not* here — they live in `templates/` under TC decision (repository-structure §3; that directory is not yet created). Deferred directories carry a README that names their record type, source, and population gate; they are populated in the [creation sequence](../docs/FIRST_100_RECORDS_PLAN.md) §8 order.
+Categories are those of the [First 100 Records Plan](../docs/FIRST_100_RECORDS_PLAN.md) §1. **Configuration templates (Category C)** are *not* here — they live in [`templates/`](../templates/) under TC decision (repository-structure §3), populated 2026-07-12 with the four founding templates (`ASM-WDK.v1`, `ROL-COL.v1`, `ROL-DKS.v1`, `ROL-MSH.v1`). Deferred directories carry a README that names their record type, source, and population gate; they are populated in the [creation sequence](../docs/FIRST_100_RECORDS_PLAN.md) §8 order.
 
 ## Relationship to the snapshot/export view
 

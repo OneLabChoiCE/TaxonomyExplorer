@@ -12,6 +12,35 @@ Entries are append-only and never edited in place (P8); a correction is a new en
 
 ---
 
+## 2026-07-12 — Category C configuration templates seeded (4 founding template records)
+
+**Roles:** Standards architect · Registry steward · Documentation maintainer. Authority: the bootstrap clause (GOVERNANCE §2; a new configuration template version is a Technical-Committee decision, [Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §9.1).
+
+**Objective.** Seed the four founding configuration templates ([First 100 Records Plan §1–2](FIRST_100_RECORDS_PLAN.md) Category C) — the versioned field schemas whose identity-bearing subset a `ConfigurationID` hashes — exactly the set the wire-deck + upright proof (Categories E/F) needs. Principle held throughout: **every field traces to a Taxonomy Standard worked example; no field invented; refusal over fabrication.**
+
+**Where they live and their form.** Created the `templates/` directory (repository-structure migration step 1/6; it did not exist). Templates are **not** under `registry/` — they live in `templates/` under TC decision (Registry Architecture §2, §9.1; repository-structure §3), identifier form `ASM-<code>.v<n>` / `ROL-<code>.v<n>`. Authored as Markdown following [FOUNDING_RECORD_TEMPLATE](FOUNDING_RECORD_TEMPLATE.md) (configuration-template variant), the JSON machine-encoding (`schemas/files/template.schema.json`) deferred — the same precedent set by the canonicalization v1 shape schemas (authored `.md`, not the sketched `.json`). `record_type: configuration_template` instantiates the **Configuration Type** record the Registry Architecture §2 object model already names; no new record type invented. **One flagged format gap (surfaced in adversarial review):** that value is not yet in [FOUNDING_RECORD_TEMPLATE](FOUNDING_RECORD_TEMPLATE.md) §2.1's frontmatter enum or its §4 variant catalog — adding the configuration-template variant is a **pending normative amendment** to that format doc, flagged (not made) here, in each template's §1, and in `templates/README.md`, on the same footing as the cohort's other flagged prerequisites. FOUNDING_RECORD_TEMPLATE.md itself is deliberately left unmodified (out of scope).
+
+**The four templates (one record per planned template).**
+
+| Template | Templates code | Basis in Standard | CFG groups drawn on |
+|---|---|---|---|
+| `ASM-WDK.v1` | `ASM:WDK` (wire deck) | Part 6.5–6.6 | DIM, EDG, FIN, JNT, MAT, MPT, SPD, SUP, WIR |
+| `ROL-COL.v1` | `ROL:COL` (upright / column) | Part 7.3, 7.6 | DIM, END, FIN, HOL, MAT |
+| `ROL-DKS.v1` | `ROL:DKS` (deck-support channel) | Part 6.3–6.4 | DIM, END |
+| `ROL-MSH.v1` | `ROL:MSH` (mesh panel) | Part 6.3, 6.6 | DIM, MAT, MPT, WIR |
+
+`ROL-MSH.v1` is the fourth template First 100 Records Plan §2 added to the three-template Bootstrap sketch (the mesh panel's `ConfigurationID` needs a registered mesh-role template). Each template's Meaning block restates the standard's identity-bearing (**IB**) / informative (**INF**) split verbatim, marks canonical units (mm; `UPPER_SNAKE` enums) and a deterministic field order (ascending CFG group code, then listed field order), links every field's CFG dictionary record, and cites the source Part per field. `CFG:FIN.color` is the one INF field (WDK, COL); channel thickness and load capacity are explicitly excluded per Part 6.5.
+
+**Two honesty boundaries held.**
+1. **No `ConfigurationID` computed.** A template fixes the field schema §4.7 requires; the byte-serialization + numeric-normalization (rounding) rules that turn a bound field set into the hashed `CF1-…` string are a **separate published prerequisite — not yet published**, exactly as Canonicalization Rules v1 was the prerequisite for every `CG1-…`. So Category E/F `ConfigurationID` computation stays gated on that spec (and `dictionaries/enum_tokens.csv`, migration step 3), just as Category D was gated on canonicalization v1. No `CF` hash is computed, embedded, or registered.
+2. **No fabricated fields.** `ROL-DKS.v1` carries only the fields Part 6.3–6.4 enumerates for the channel (section ref, parametric length, end-flare condition); an independent material/finish field the standard does not enumerate for a `ROL:DKS` component was **not** invented — it would enter as a new template version (`.v2`), never an edit (RA §3.3).
+
+**Record discipline (verified).** Section/stock references use the **real registered GSID serials** — `GS-000001` (COL section `SEC:OCL`), `GS-000002` (DKS section `SEC:OCU`), `GS-000004` (WDK/MSH wire stock `SEC:RBR`) — not the standard's illustrative `GS-004217`/`GS-002734`/`GS-000891` placeholders (reconciled per §4). Each links its `ASM:`/`ROL:` dictionary code, its CFG group dictionary records, and the GSID records it references. Status is `RESERVED` on the single `RESERVED → ACTIVE` trajectory; activation waits on the template-adoption decision (§6 item 2) and the object-record lifecycle adoption (§6 item 6). **No template activated; no snapshot cut.**
+
+**Scope (verified).** New: `templates/` (4 records + README). Modified: this log, `CHANGELOG.md`, and `registry/README.md` (the one stale "that directory is not yet created" clause). No change to `dictionaries/*`, `registry/dictionary/*`, the GSID records, the canonicalization package, the standards, governance, the Explorer, or the Bootstrap Plan. **Founding cohort now A(6)+B(86)+C(4)+D(8) = 104 registered records seeded; remaining E+F (3 CMP + 1 ASP), gated on the configuration-hashing rules and the steward-seeding decision (§6 item 5).**
+
+---
+
 ## 2026-07-12 — Category D GSID proof cohort registered (8 founding geometry records)
 
 **Roles:** Standards architect · Registry steward · Evidence custodian · Documentation maintainer · Release manager. Authority: the bootstrap clause (GOVERNANCE §2; deterministic GS- issuance is the Registry Operator's own role, [Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §9.2–§9.3).
