@@ -4,6 +4,10 @@ All notable dictionary and standard changes, summarized per snapshot release ([G
 
 ## [Unreleased]
 
+- Bootstrap plan added: `docs/SECTIONHUB_BOOTSTRAP_PLAN.md` — practical execution from architecture to useful registry without prior industry adoption (first ~110 records incl. seed-dictionary ratification and worked-example GSIDs; first 500 via legacy-profile, cleared-designation, and decking tranches; avoided sources; curation-vs-import split; SMHE asset leverage; taxonomy-explosion defenses; minimum-usefulness thresholds; S2/S3/S4/A6 readiness checklists; Q1–Q4 roadmap gated on canonicalization, templates, LICENSE, and demo-alias resolution); no code, APIs, schemas, or UI work (2026-07-11).
+
+- Data submission model added: `docs/SECTIONHUB_DATA_SUBMISSION_MODEL.md` — constitutional model for how information enters the future registry (seven submission roles, twelve submission object types, [Proposed] seven-label provenance scheme superseding the two-grade naming on adoption, evidence minimums with data-minimization, public/controlled boundary, review paths per the TC–Operator procedure test, eight refusal rules, correction-by-supersession, [Proposed] dispute mechanics, certification boundary, Explorer-as-view, anti-patterns DS-1..DS-11, staged program S0–S5 with legal/licensing gates); no code, forms, APIs, or Explorer changes (2026-07-11).
+
 - Registry constitutional design added: `docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md` — 30-year registry architecture (record object model, append-only immutability doctrine, proposed general lifecycle reconciled with N5 statuses, public record format, crosswalk/alias/snapshot models, TC–Operator authority boundary, registry anti-patterns RA-1..RA-14, success criteria, R0–R4 roadmap); new mechanisms marked [Proposed] pending adoption; no software/API/database design (2026-07-11).
 
 - Code Dictionary Standard: linked the operational proposal workflow and issue templates from its proposal-rules clause (editorial bridge; completes the standards-split cross-referencing — the split itself landed in commit ee28c98) (2026-07-11).

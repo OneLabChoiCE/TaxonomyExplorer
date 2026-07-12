@@ -39,6 +39,8 @@ Open, vendor-neutral, **deterministic identity and classification infrastructure
 | [docs/position-paper-why-sectionhub.md](docs/position-paper-why-sectionhub.md) | Public position paper: the identity gap SectionHub fills, and how it complements — never substitutes for — AISC, AISI, RMI, SMA, GS1, and the classification systems |
 | [SECTIONHUB_STRATEGIC_ARCHITECTURE.md](SECTIONHUB_STRATEGIC_ARCHITECTURE.md) | 10-year ecosystem strategy: governance eras, adoption roadmap, external-standards relationships, crosswalk architecture, certification model, failure modes |
 | [docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md](docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md) | Constitutional design for the long-term public registry: object model, immutability doctrine, lifecycle, snapshots, crosswalks, governance boundaries, anti-patterns, roadmap |
+| [docs/SECTIONHUB_DATA_SUBMISSION_MODEL.md](docs/SECTIONHUB_DATA_SUBMISSION_MODEL.md) | Constitutional model for registry submissions: roles, evidence minimums, trust/provenance grades, review paths, refusal rules, corrections, disputes, staged S0–S5 program |
+| [docs/SECTIONHUB_BOOTSTRAP_PLAN.md](docs/SECTIONHUB_BOOTSTRAP_PLAN.md) | Practical bootstrap execution: the first ~110 and 500 records, curation vs import, taxonomy-explosion defenses, readiness milestones, one-year quarter-by-quarter roadmap |
 | [ROADMAP.md](ROADMAP.md) | Seven-phase plan from foundation to formal governance |
 | [docs/repository-structure.md](docs/repository-structure.md) | Target repository layout for the data layer and future Explorer application, with rationale and migration plan |
 
