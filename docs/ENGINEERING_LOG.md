@@ -12,6 +12,32 @@ Entries are append-only and never edited in place (P8); a correction is a new en
 
 ---
 
+## 2026-07-12 — Dictionary founding records, batch 6 (ROL namespace completion)
+
+**Roles:** Standards architect · Registry steward · Documentation maintainer · Release manager · Evidence custodian. Authority: the bootstrap clause (GOVERNANCE §2; [Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §9.3).
+
+**Objective.** Complete the `ROL:` namespace by seeding every remaining component role code from `dictionaries/rol_codes.csv`, under the assigned-status semantics.
+
+**Enumeration (from the CSV directly).** `rol_codes.csv` has 17 code rows: `COL` (ACTIVE, seeded batch 1) and 16 remaining — all `ACTIVE`: `BEM`, `BRC`, `ARM`, `BAS`, `BPL`, `DKS`, `MSH`, `PAN`, `SHF`, `CON`, `CLP`, `ADP`, `GRD`, `STP`, `SPC`, `ANC`.
+
+**Records created (16), each a verbatim, sourced restatement of its `dictionaries/rol_codes.csv` row (the `ROL:` dictionary carries `definition`/`successor` only):** `ROL:BEM` (Beam / load member), `ROL:BRC` (Brace), `ROL:ARM` (Arm), `ROL:BAS` (Base member), `ROL:BPL` (Base plate / footplate), `ROL:DKS` (Deck support member), `ROL:MSH` (Wire mesh panel), `ROL:PAN` (Panel), `ROL:SHF` (Shelf), `ROL:CON` (Connector), `ROL:CLP` (Clip / retainer), `ROL:ADP` (Adapter), `ROL:GRD` (Guard member), `ROL:STP` (Stop), `ROL:SPC` (Spacer), `ROL:ANC` (Anchor).
+
+**Decision (the authorizing decision these records cite).** Acting under the bootstrap clause, the sixteen codes are seeded as activation-bound records: each carries `RESERVED` at the current (R0) lineage point on a single `RESERVED → ACTIVE` trajectory the `SNAP-1.0.0` cut completes (§5/§8). Citation basis is the Component role codes table (Taxonomy Standard §3.3, status `A`). Component roles have no `ROL:` superclass (no rollups in this namespace), so each is standalone; per the DAG hierarchy (H2), a role is orthogonal to section shape (`SEC:`) and product family (`FAM:`). No engineering meaning was inferred beyond the governed `definition` text.
+
+**Namespace completeness (verified).** All 17 `rol_codes.csv` rows now have exactly one founding record (1 batch 1 + 16 batch 6). No orphan `ROL-*.md` without a CSV row. **The `ROL:` namespace is complete.**
+
+**Effect on coverage.** Category B seeded: **64 of 86** (`SEC:` 29/29, `ASM:` 16/16, `ROL:` 17/17 — three namespaces complete). N5-state coverage is unchanged — four of five (`ACTIVE`, `RESERVED`, `SUPERCLASS`, `REJECTED`); batch 6 adds only `ACTIVE` codes. `DEPRECATED` remains structurally absent (§5). Remaining: 22 `ACTIVE` codes in `FAM:` (11) and `CFG:` (11).
+
+**Scope discipline (verified).** No status transition undefined in §5; no publication-flag / shadow-"terminal status" framing; no invented rationale or inferred engineering meaning; each record matches its CSV row exactly. No new record types, GSID/component/assembly records, snapshot cut, `[Proposed]` adoption, or governance/architecture/standards/Explorer/Bootstrap-Plan change. No performance/capacity/safety/compliance value.
+
+**Files.**
+- **Created (16):** `registry/dictionary/{ROL-BEM,ROL-BRC,ROL-ARM,ROL-BAS,ROL-BPL,ROL-DKS,ROL-MSH,ROL-PAN,ROL-SHF,ROL-CON,ROL-CLP,ROL-ADP,ROL-GRD,ROL-STP,ROL-SPC,ROL-ANC}.md`
+- **Modified (3):** `registry/dictionary/README.md`, `CHANGELOG.md`, `docs/ENGINEERING_LOG.md` (this entry).
+
+**Status left:** uncommitted, pending review.
+
+---
+
 ## 2026-07-12 — Dictionary founding records, batch 5 (ASM namespace completion)
 
 **Roles:** Standards architect · Registry steward · Documentation maintainer · Release manager · Evidence custodian. Authority: the bootstrap clause (GOVERNANCE §2; [Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §9.3).

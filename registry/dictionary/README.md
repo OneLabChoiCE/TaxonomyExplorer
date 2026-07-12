@@ -85,17 +85,40 @@ Every `SEC:` superclass rollup now has all its declared members seeded: `SEC:OCS
 
 **The `ASM:` namespace is now complete — all 16 `asm_codes.csv` rows have a founding record**: 1 from Batch 1 (`WDK`), 1 from Batch 2 (`DCK` `SUPERCLASS`), and these 14. The `ASM:DCK` deck rollup now has all four declared members seeded (`WDK`/`SDK`/`PDK`/`BGD`); `WDK`'s §5 was aligned to the reciprocal-back-reference convention (additive cross-reference — no status/CSV value changed). N5 coverage is unchanged (Batch 5 adds only `ACTIVE` codes).
 
+**Batch 6 (2026-07-12)** completes the `ROL:` namespace with its **16 remaining component role codes**. All are `ACTIVE` (`RESERVED` at R0 → `ACTIVE` at the cut) and cite the Component role codes table (Taxonomy Standard §3.3); the `ROL:` dictionary carries only `definition`/`successor`. Component roles are standalone (no `ROL:` superclass) and orthogonal to section shape (`SEC:`) and product family (`FAM:`):
+
+| Record | Identifier | Name | `status` @ `SNAP-1.0.0` |
+|---|---|---|---|
+| [ROL-BEM.md](ROL-BEM.md) | `ROL:BEM` | Beam / load member | `ACTIVE` |
+| [ROL-BRC.md](ROL-BRC.md) | `ROL:BRC` | Brace | `ACTIVE` |
+| [ROL-ARM.md](ROL-ARM.md) | `ROL:ARM` | Arm | `ACTIVE` |
+| [ROL-BAS.md](ROL-BAS.md) | `ROL:BAS` | Base member | `ACTIVE` |
+| [ROL-BPL.md](ROL-BPL.md) | `ROL:BPL` | Base plate / footplate | `ACTIVE` |
+| [ROL-DKS.md](ROL-DKS.md) | `ROL:DKS` | Deck support member | `ACTIVE` |
+| [ROL-MSH.md](ROL-MSH.md) | `ROL:MSH` | Wire mesh panel | `ACTIVE` |
+| [ROL-PAN.md](ROL-PAN.md) | `ROL:PAN` | Panel | `ACTIVE` |
+| [ROL-SHF.md](ROL-SHF.md) | `ROL:SHF` | Shelf | `ACTIVE` |
+| [ROL-CON.md](ROL-CON.md) | `ROL:CON` | Connector | `ACTIVE` |
+| [ROL-CLP.md](ROL-CLP.md) | `ROL:CLP` | Clip / retainer | `ACTIVE` |
+| [ROL-ADP.md](ROL-ADP.md) | `ROL:ADP` | Adapter | `ACTIVE` |
+| [ROL-GRD.md](ROL-GRD.md) | `ROL:GRD` | Guard member | `ACTIVE` |
+| [ROL-STP.md](ROL-STP.md) | `ROL:STP` | Stop | `ACTIVE` |
+| [ROL-SPC.md](ROL-SPC.md) | `ROL:SPC` | Spacer | `ACTIVE` |
+| [ROL-ANC.md](ROL-ANC.md) | `ROL:ANC` | Anchor | `ACTIVE` |
+
+**The `ROL:` namespace is now complete — all 17 `rol_codes.csv` rows have a founding record**: 1 from Batch 1 (`COL`) and these 16. N5 coverage is unchanged (Batch 6 adds only `ACTIVE` codes).
+
 ## Remaining (seeded in later batches)
 
 | Source CSV | Namespace | Rows | Seeded |
 |---|---|---|---|
 | [sec_codes.csv](../../dictionaries/sec_codes.csv) | `SEC:` | 29 | **29 ✓ (complete)** |
-| [rol_codes.csv](../../dictionaries/rol_codes.csv) | `ROL:` | 17 | 1 |
+| [rol_codes.csv](../../dictionaries/rol_codes.csv) | `ROL:` | 17 | **17 ✓ (complete)** |
 | [asm_codes.csv](../../dictionaries/asm_codes.csv) | `ASM:` | 16 | **16 ✓ (complete)** |
 | [fam_codes.csv](../../dictionaries/fam_codes.csv) | `FAM:` | 12 | 1 |
 | [cfg_groups.csv](../../dictionaries/cfg_groups.csv) | `CFG:` | 12 | 1 |
-| **Total** | | **86** | **48** |
+| **Total** | | **86** | **64** |
 
 Records carry each code's **assigned** status, not a blanket `ACTIVE`: the `SUPERCLASS` rollups, `RESERVED`-parked codes, and `REJECTED` burned-string rows each carry a record for precedent, even though they never activate (First 100 Records Plan §9).
 
-**Remaining within Category B — a sequencing choice, not a doctrine blocker.** With Batch 5 the `SEC:` (29 of 29) and `ASM:` (16 of 16) namespaces are both fully seeded, and every non-`ACTIVE` code in Category B is on record (the nine `SEC:` `SUPERCLASS`/`REJECTED`/parked rows plus the ASM `DCK` superclass — the only non-`ACTIVE` rows in the whole cohort). The 38 still-unseeded codes are therefore all `ACTIVE` codes in the `ROL:` (16), `FAM:` (11), and `CFG:` (11) namespaces, held for later batches only to keep each pass small. This confirms the settled doctrine: `status` is the assigned registry state; [Registry Architecture §8](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md) gates only the `RESERVED → ACTIVE` transition; and `SUPERCLASS`/`REJECTED` codes are **born in their assigned state directly**, never passing through `RESERVED` ([§5](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md): a `REJECTED` row records a burned string, and such rows never activate).
+**Remaining within Category B — a sequencing choice, not a doctrine blocker.** With Batch 6 three namespaces are fully seeded — `SEC:` (29 of 29), `ASM:` (16 of 16), and `ROL:` (17 of 17). Every non-`ACTIVE` code in Category B is on record (the nine `SEC:` `SUPERCLASS`/`REJECTED`/parked rows plus the ASM `DCK` superclass — the only non-`ACTIVE` rows in the whole cohort). The 22 still-unseeded codes are therefore all `ACTIVE` codes in the `FAM:` (11) and `CFG:` (11) namespaces, held for later batches only to keep each pass small. This confirms the settled doctrine: `status` is the assigned registry state; [Registry Architecture §8](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md) gates only the `RESERVED → ACTIVE` transition; and `SUPERCLASS`/`REJECTED` codes are **born in their assigned state directly**, never passing through `RESERVED` ([§5](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md): a `REJECTED` row records a burned string, and such rows never activate).
