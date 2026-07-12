@@ -12,6 +12,51 @@ Entries are append-only and never edited in place (P8); a correction is a new en
 
 ---
 
+## 2026-07-12 — Dictionary founding records, batch 5 (ASM namespace completion)
+
+**Roles:** Standards architect · Registry steward · Documentation maintainer · Release manager · Evidence custodian. Authority: the bootstrap clause (GOVERNANCE §2; [Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §9.3).
+
+**Objective.** Complete the `ASM:` namespace by seeding every remaining assembly type code from `dictionaries/asm_codes.csv`, under the corrected assigned-status semantics.
+
+**Enumeration (from the CSV directly).** `asm_codes.csv` has 16 code rows: `DCK` (SUPERCLASS, seeded batch 2), `WDK` (ACTIVE, seeded batch 1), and 14 remaining — all `ACTIVE`: `SDK`, `PDK`, `BGD`, `FRM`, `BMA`, `CBA`, `ACA`, `CVB`, `SHU`, `WPF`, `GDA`, `CNT`, `DRW`, `LKR`.
+
+**Records created (14), each a verbatim, sourced restatement of its `dictionaries/asm_codes.csv` row (the `ASM:` dictionary carries `definition`/`successor` only — no `form_class`/`maps_from`):**
+
+| Record | Identifier | Superclass | status @ SNAP-1.0.0 |
+|---|---|---|---|
+| `ASM-SDK.md` | `ASM:SDK` | `ASM:DCK` | `ACTIVE` |
+| `ASM-PDK.md` | `ASM:PDK` | `ASM:DCK` | `ACTIVE` |
+| `ASM-BGD.md` | `ASM:BGD` | `ASM:DCK` | `ACTIVE` |
+| `ASM-FRM.md` | `ASM:FRM` | — | `ACTIVE` |
+| `ASM-BMA.md` | `ASM:BMA` | — | `ACTIVE` |
+| `ASM-CBA.md` | `ASM:CBA` | — | `ACTIVE` |
+| `ASM-ACA.md` | `ASM:ACA` | — | `ACTIVE` |
+| `ASM-CVB.md` | `ASM:CVB` | — | `ACTIVE` |
+| `ASM-SHU.md` | `ASM:SHU` | — | `ACTIVE` |
+| `ASM-WPF.md` | `ASM:WPF` | — | `ACTIVE` |
+| `ASM-GDA.md` | `ASM:GDA` | — | `ACTIVE` |
+| `ASM-CNT.md` | `ASM:CNT` | — | `ACTIVE` |
+| `ASM-DRW.md` | `ASM:DRW` | — | `ACTIVE` |
+| `ASM-LKR.md` | `ASM:LKR` | — | `ACTIVE` |
+
+**Decision (the authorizing decision these records cite).** Acting under the bootstrap clause, the fourteen codes are seeded as activation-bound records: each carries `RESERVED` at the current (R0) lineage point on a single `RESERVED → ACTIVE` trajectory the `SNAP-1.0.0` cut completes (§5/§8). Citation basis is the Assembly type codes table (Taxonomy Standard §3.4, status `A`). `SDK`/`PDK`/`BGD` are members of the `ASM:DCK` deck rollup and name it in §5; the other eleven are standalone assembly types (`Superclass: none`). No engineering meaning was inferred beyond the governed `definition` text.
+
+**Parent–child consistency (verified).** `ASM:DCK` (batch 2) declares members `WDK`/`SDK`/`PDK`/`BGD`; all four are now seeded and each names `ASM:DCK` in §5. `ASM:WDK` (batch 1) previously described `ASM:DCK` as a "deferred `SUPERCLASS` record" — stale since batch 2 created it — so its §5 was aligned to the reciprocal-back-reference convention (additive cross-reference only; no `status`, provenance, or CSV value changed). No orphan child; no member declared-but-missing.
+
+**Namespace completeness (verified).** All 16 `asm_codes.csv` rows now have exactly one founding record (1 batch 1 + 1 batch 2 + 14 batch 5). **The `ASM:` namespace is complete.**
+
+**Effect on coverage.** Category B seeded: **48 of 86** (`SEC:` 29/29, `ASM:` 16/16 — two namespaces complete). N5-state coverage is unchanged — four of five (`ACTIVE`, `RESERVED`, `SUPERCLASS`, `REJECTED`); batch 5 adds only `ACTIVE` codes. `DEPRECATED` remains structurally absent (§5). Remaining: 38 `ACTIVE` codes in `ROL:` (16), `FAM:` (11), `CFG:` (11).
+
+**Scope discipline (verified).** No status transition undefined in §5; no publication-flag / shadow-"terminal status" framing; no invented rationale or inferred engineering meaning; each record matches its CSV row exactly. No new record types, GSID/component/assembly records, snapshot cut, `[Proposed]` adoption, or governance/architecture/standards/Explorer/Bootstrap-Plan change. No performance/capacity/safety/compliance value.
+
+**Files.**
+- **Created (14):** `registry/dictionary/{ASM-SDK,ASM-PDK,ASM-BGD,ASM-FRM,ASM-BMA,ASM-CBA,ASM-ACA,ASM-CVB,ASM-SHU,ASM-WPF,ASM-GDA,ASM-CNT,ASM-DRW,ASM-LKR}.md`
+- **Modified (4):** `registry/dictionary/README.md`, `CHANGELOG.md`, `docs/ENGINEERING_LOG.md` (this entry), and `registry/dictionary/ASM-WDK.md` (§5 reciprocal back-reference alignment).
+
+**Status left:** uncommitted, pending review.
+
+---
+
 ## 2026-07-12 — Dictionary founding records, batch 4 (SEC namespace completion)
 
 **Roles:** Standards architect · Registry steward · Documentation maintainer · Release manager · Evidence custodian. Authority: the bootstrap clause (GOVERNANCE §2; [Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §9.3).

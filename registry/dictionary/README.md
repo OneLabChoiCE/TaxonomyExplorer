@@ -64,17 +64,38 @@ Every `SEC:` superclass rollup now has all its declared members seeded: `SEC:OCS
 
 **The `SEC:` namespace is now complete — all 29 `sec_codes.csv` rows have a founding record**: 2 from Batch 1 (`OCL` active, `SBR` parked), 7 from Batch 2 (`OCS`/`HSS`/`BAR`/`ZEE` `SUPERCLASS`, `CFS`/`PIP`/`TUB` `REJECTED`), 11 members from Batch 3, and these 9 standalone shapes. N5 coverage is unchanged (Batch 4 adds only `ACTIVE` codes).
 
+**Batch 5 (2026-07-12)** completes the `ASM:` namespace with its **14 remaining assembly type codes**. All are `ACTIVE` (`RESERVED` at R0 → `ACTIVE` at the cut) and cite the Assembly type codes table (Taxonomy Standard §3.4); the `ASM:` dictionary carries only `definition`/`successor` (no `form_class`/`maps_from`). Three are decking members of the `ASM:DCK` rollup; eleven are standalone assembly types:
+
+| Record | Identifier | Superclass | `status` @ `SNAP-1.0.0` |
+|---|---|---|---|
+| [ASM-SDK.md](ASM-SDK.md) | `ASM:SDK` | [`ASM:DCK`](ASM-DCK.md) | `ACTIVE` |
+| [ASM-PDK.md](ASM-PDK.md) | `ASM:PDK` | [`ASM:DCK`](ASM-DCK.md) | `ACTIVE` |
+| [ASM-BGD.md](ASM-BGD.md) | `ASM:BGD` | [`ASM:DCK`](ASM-DCK.md) | `ACTIVE` |
+| [ASM-FRM.md](ASM-FRM.md) | `ASM:FRM` | — (standalone) | `ACTIVE` |
+| [ASM-BMA.md](ASM-BMA.md) | `ASM:BMA` | — (standalone) | `ACTIVE` |
+| [ASM-CBA.md](ASM-CBA.md) | `ASM:CBA` | — (standalone) | `ACTIVE` |
+| [ASM-ACA.md](ASM-ACA.md) | `ASM:ACA` | — (standalone) | `ACTIVE` |
+| [ASM-CVB.md](ASM-CVB.md) | `ASM:CVB` | — (standalone) | `ACTIVE` |
+| [ASM-SHU.md](ASM-SHU.md) | `ASM:SHU` | — (standalone) | `ACTIVE` |
+| [ASM-WPF.md](ASM-WPF.md) | `ASM:WPF` | — (standalone) | `ACTIVE` |
+| [ASM-GDA.md](ASM-GDA.md) | `ASM:GDA` | — (standalone) | `ACTIVE` |
+| [ASM-CNT.md](ASM-CNT.md) | `ASM:CNT` | — (standalone) | `ACTIVE` |
+| [ASM-DRW.md](ASM-DRW.md) | `ASM:DRW` | — (standalone) | `ACTIVE` |
+| [ASM-LKR.md](ASM-LKR.md) | `ASM:LKR` | — (standalone) | `ACTIVE` |
+
+**The `ASM:` namespace is now complete — all 16 `asm_codes.csv` rows have a founding record**: 1 from Batch 1 (`WDK`), 1 from Batch 2 (`DCK` `SUPERCLASS`), and these 14. The `ASM:DCK` deck rollup now has all four declared members seeded (`WDK`/`SDK`/`PDK`/`BGD`); `WDK`'s §5 was aligned to the reciprocal-back-reference convention (additive cross-reference — no status/CSV value changed). N5 coverage is unchanged (Batch 5 adds only `ACTIVE` codes).
+
 ## Remaining (seeded in later batches)
 
 | Source CSV | Namespace | Rows | Seeded |
 |---|---|---|---|
 | [sec_codes.csv](../../dictionaries/sec_codes.csv) | `SEC:` | 29 | **29 ✓ (complete)** |
 | [rol_codes.csv](../../dictionaries/rol_codes.csv) | `ROL:` | 17 | 1 |
-| [asm_codes.csv](../../dictionaries/asm_codes.csv) | `ASM:` | 16 | 2 |
+| [asm_codes.csv](../../dictionaries/asm_codes.csv) | `ASM:` | 16 | **16 ✓ (complete)** |
 | [fam_codes.csv](../../dictionaries/fam_codes.csv) | `FAM:` | 12 | 1 |
 | [cfg_groups.csv](../../dictionaries/cfg_groups.csv) | `CFG:` | 12 | 1 |
-| **Total** | | **86** | **34** |
+| **Total** | | **86** | **48** |
 
 Records carry each code's **assigned** status, not a blanket `ACTIVE`: the `SUPERCLASS` rollups, `RESERVED`-parked codes, and `REJECTED` burned-string rows each carry a record for precedent, even though they never activate (First 100 Records Plan §9).
 
-**Remaining within Category B — a sequencing choice, not a doctrine blocker.** With Batch 4 the `SEC:` namespace is fully seeded (29 of 29), and every non-`ACTIVE` code in Category B is now on record (the nine `SEC:` `SUPERCLASS`/`REJECTED`/parked rows plus the ASM `DCK` superclass — the only non-`ACTIVE` rows in the whole cohort). The 52 still-unseeded codes are therefore all `ACTIVE` codes in the `ROL:` / `ASM:` / `FAM:` / `CFG:` namespaces, held for later batches only to keep each pass small. This confirms the settled doctrine: `status` is the assigned registry state; [Registry Architecture §8](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md) gates only the `RESERVED → ACTIVE` transition; and `SUPERCLASS`/`REJECTED` codes are **born in their assigned state directly**, never passing through `RESERVED` ([§5](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md): a `REJECTED` row records a burned string, and such rows never activate).
+**Remaining within Category B — a sequencing choice, not a doctrine blocker.** With Batch 5 the `SEC:` (29 of 29) and `ASM:` (16 of 16) namespaces are both fully seeded, and every non-`ACTIVE` code in Category B is on record (the nine `SEC:` `SUPERCLASS`/`REJECTED`/parked rows plus the ASM `DCK` superclass — the only non-`ACTIVE` rows in the whole cohort). The 38 still-unseeded codes are therefore all `ACTIVE` codes in the `ROL:` (16), `FAM:` (11), and `CFG:` (11) namespaces, held for later batches only to keep each pass small. This confirms the settled doctrine: `status` is the assigned registry state; [Registry Architecture §8](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md) gates only the `RESERVED → ACTIVE` transition; and `SUPERCLASS`/`REJECTED` codes are **born in their assigned state directly**, never passing through `RESERVED` ([§5](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md): a `REJECTED` row records a burned string, and such rows never activate).
