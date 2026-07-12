@@ -15,17 +15,32 @@
 | [FAM-SPR.md](FAM-SPR.md) | `FAM:SPR` | `FAM:` | `ACTIVE` |
 | [CFG-DIM.md](CFG-DIM.md) | `CFG:DIM` | `CFG:` | `ACTIVE` |
 
+**Batch 2 (2026-07-11)** seeds the 8 non-activation-bound codes, exercising the two born-in-terminal-state statuses (`SUPERCLASS`, `REJECTED`). Unlike Batch 1's activation-bound codes (which sit `RESERVED` at R0 → `ACTIVE` at the cut), these are **born directly in their assigned terminal state** and hold it at every lineage point — [Registry Architecture §8](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md) gates only `RESERVED → ACTIVE`, which does not apply to them, so their `status` column matches the CSV directly with no lineage-point caveat:
+
+| Record | Identifier | Namespace | Born status |
+|---|---|---|---|
+| [SEC-OCS.md](SEC-OCS.md) | `SEC:OCS` | `SEC:` | `SUPERCLASS` |
+| [SEC-HSS.md](SEC-HSS.md) | `SEC:HSS` | `SEC:` | `SUPERCLASS` |
+| [SEC-BAR.md](SEC-BAR.md) | `SEC:BAR` | `SEC:` | `SUPERCLASS` |
+| [SEC-ZEE.md](SEC-ZEE.md) | `SEC:ZEE` | `SEC:` | `SUPERCLASS` |
+| [ASM-DCK.md](ASM-DCK.md) | `ASM:DCK` | `ASM:` | `SUPERCLASS` |
+| [SEC-CFS.md](SEC-CFS.md) | `SEC:CFS` | `SEC:` | `REJECTED` |
+| [SEC-PIP.md](SEC-PIP.md) | `SEC:PIP` | `SEC:` | `REJECTED` |
+| [SEC-TUB.md](SEC-TUB.md) | `SEC:TUB` | `SEC:` | `REJECTED` |
+
+With Batch 2, **four of the five N5 states are now represented in records**: `ACTIVE` (Batch 1, at the `SNAP-1.0.0` lineage point), `RESERVED` in both its pending-activation and parked senses (Batch 1), and `SUPERCLASS` + `REJECTED` (Batch 2). The fifth, `DEPRECATED`, has no founding-cohort record — deprecation requires a later decision naming a successor ([Registry Architecture §5](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md)) — so no seed code carries it.
+
 ## Remaining (seeded in later batches)
 
 | Source CSV | Namespace | Rows | Seeded |
 |---|---|---|---|
-| [sec_codes.csv](../../dictionaries/sec_codes.csv) | `SEC:` | 29 | 2 |
+| [sec_codes.csv](../../dictionaries/sec_codes.csv) | `SEC:` | 29 | 9 |
 | [rol_codes.csv](../../dictionaries/rol_codes.csv) | `ROL:` | 17 | 1 |
-| [asm_codes.csv](../../dictionaries/asm_codes.csv) | `ASM:` | 16 | 1 |
+| [asm_codes.csv](../../dictionaries/asm_codes.csv) | `ASM:` | 16 | 2 |
 | [fam_codes.csv](../../dictionaries/fam_codes.csv) | `FAM:` | 12 | 1 |
 | [cfg_groups.csv](../../dictionaries/cfg_groups.csv) | `CFG:` | 12 | 1 |
-| **Total** | | **86** | **6** |
+| **Total** | | **86** | **14** |
 
 Records carry each code's **assigned** status, not a blanket `ACTIVE`: the `SUPERCLASS` rollups, `RESERVED`-parked codes, and `REJECTED` burned-string rows each carry a record for precedent, even though they never activate (First 100 Records Plan §9).
 
-**Deferred within Category B — a sequencing choice, not a doctrine blocker.** The `SUPERCLASS` rollups (SEC `OCS`/`HSS`/`BAR`/`ZEE`, ASM `DCK`) and `REJECTED` burned-string rows (`CFS`/`PIP`/`TUB`) are held for a later batch only to keep this pass small. No unresolved status question blocks them: `status` is the assigned registry state, and these records are **born in their assigned state** — `SUPERCLASS` or `REJECTED` — directly. [Registry Architecture §8](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md) gates only the `RESERVED → ACTIVE` transition; `SUPERCLASS`/`REJECTED` codes are not activation-bound and do not pass through `RESERVED` ([§5](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md): a `REJECTED` row records a burned string, and such rows never activate). They can be seeded whenever the sequencing calls for it.
+**Remaining within Category B — a sequencing choice, not a doctrine blocker.** The still-unseeded codes are the remaining `ACTIVE` codes across all five namespaces plus the parked-`RESERVED` `SEC:HBR`, held for later batches only to keep each pass small. The `SUPERCLASS`/`REJECTED` codes — once the open question for this layer — were seeded in Batch 2, confirming the settled doctrine: `status` is the assigned registry state; [Registry Architecture §8](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md) gates only the `RESERVED → ACTIVE` transition; and `SUPERCLASS`/`REJECTED` codes are **born in their assigned state directly**, never passing through `RESERVED` ([§5](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md): a `REJECTED` row records a burned string, and such rows never activate).

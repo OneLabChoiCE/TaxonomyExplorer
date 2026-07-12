@@ -12,6 +12,39 @@ Entries are append-only and never edited in place (P8); a correction is a new en
 
 ---
 
+## 2026-07-11 — Dictionary founding records, batch 2 (SUPERCLASS + REJECTED)
+
+**Roles:** Standards architect · Registry steward · Documentation maintainer · Release manager · Evidence custodian. Authority: the bootstrap clause (GOVERNANCE §2; [Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §9.3).
+
+**Objective.** Exercise the registry status model across its two born-in-terminal-state statuses (`SUPERCLASS`, `REJECTED`) — the states not yet in records after batch 1 — by seeding the non-activation-bound dictionary codes (five `SUPERCLASS` rollups, three `REJECTED` burned strings) under the assigned-status semantics settled in the prior status-semantics correction.
+
+**Records created (8), each a verbatim, sourced restatement of its `dictionaries/*.csv` row:**
+
+| Record | Identifier | Born status | Source CSV |
+|---|---|---|---|
+| `SEC-OCS.md` | `SEC:OCS` | `SUPERCLASS` | sec_codes.csv |
+| `SEC-HSS.md` | `SEC:HSS` | `SUPERCLASS` | sec_codes.csv |
+| `SEC-BAR.md` | `SEC:BAR` | `SUPERCLASS` | sec_codes.csv |
+| `SEC-ZEE.md` | `SEC:ZEE` | `SUPERCLASS` | sec_codes.csv |
+| `ASM-DCK.md` | `ASM:DCK` | `SUPERCLASS` | asm_codes.csv |
+| `SEC-CFS.md` | `SEC:CFS` | `REJECTED` | sec_codes.csv |
+| `SEC-PIP.md` | `SEC:PIP` | `REJECTED` | sec_codes.csv |
+| `SEC-TUB.md` | `SEC:TUB` | `REJECTED` | sec_codes.csv |
+
+**Decision (the authorizing decision these records cite).** Acting under the bootstrap clause, the eight codes are recorded **born in their assigned state** — `SUPERCLASS` or `REJECTED` — directly, matching their governing CSV `status` at every lineage point. This is the assigned-status model applied to non-activation-bound codes: [Registry Architecture §8](SECTIONHUB_REGISTRY_ARCHITECTURE.md) gates only the `RESERVED → ACTIVE` transition, which does not apply to these codes; §5 gives no `RESERVED → SUPERCLASS` or `RESERVED → REJECTED` transition, so they never pass through `RESERVED`. `REJECTED` records carry **no activation language** — a burned string never activates and is never reused (N7, RA-2). `SEC:OCS` etc. cite their founding rulings (the OCS demotion and family rollups, standard Part 3.1); their rollup role was assigned pre-registry, so no in-registry `ACTIVE → SUPERCLASS` transition occurs.
+
+**Effect on coverage.** Four of the five N5 states now appear in records: `ACTIVE` (batch 1 @ `SNAP-1.0.0`), `RESERVED` (pending-activation and parked; batch 1), and `SUPERCLASS` + `REJECTED` (batch 2). The fifth, `DEPRECATED`, has **no** founding record — deprecation requires a later successor-bearing decision ([Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §5) — so full N5 coverage is not attainable from the founding cohort. Category B seeded: 14 of 86.
+
+**Scope discipline (verified).** No status transition undefined in §5 introduced; no publication-flag / shadow-"terminal status" framing; no activation language on `REJECTED` records; each record matches its CSV row exactly (incl. the empty `name` on `CFS`/`PIP`/`TUB` and `PIP`'s `successor=CHS`). No new record types, GSID/component/assembly records, snapshot cut, `[Proposed]` adoption, or governance/architecture/standards/Explorer/Bootstrap-Plan change. No performance/capacity/safety/compliance value.
+
+**Files.**
+- **Created (8):** `registry/dictionary/{SEC-OCS,SEC-HSS,SEC-BAR,SEC-ZEE,ASM-DCK,SEC-CFS,SEC-PIP,SEC-TUB}.md`
+- **Modified (3):** `registry/dictionary/README.md`, `CHANGELOG.md`, `docs/ENGINEERING_LOG.md` (this entry).
+
+**Status left:** uncommitted, pending review.
+
+---
+
 ## 2026-07-11 — Status-semantics framing correction (doctrine alignment)
 
 **Roles:** Standards architect · Registry steward · Documentation maintainer · Release manager · Evidence custodian. Authority: interpretation of existing architecture under the bootstrap clause (GOVERNANCE §2); **no new architecture, governance, or doctrine document created.**
