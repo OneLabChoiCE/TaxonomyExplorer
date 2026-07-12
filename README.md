@@ -41,6 +41,7 @@ Open, vendor-neutral, **deterministic identity and classification infrastructure
 | [docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md](docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md) | Constitutional design for the long-term public registry: object model, immutability doctrine, lifecycle, snapshots, crosswalks, governance boundaries, anti-patterns, roadmap |
 | [docs/SECTIONHUB_DATA_SUBMISSION_MODEL.md](docs/SECTIONHUB_DATA_SUBMISSION_MODEL.md) | Constitutional model for registry submissions: roles, evidence minimums, trust/provenance grades, review paths, refusal rules, corrections, disputes, staged S0–S5 program |
 | [docs/SECTIONHUB_BOOTSTRAP_PLAN.md](docs/SECTIONHUB_BOOTSTRAP_PLAN.md) | Practical bootstrap execution: the first ~110 and 500 records, curation vs import, taxonomy-explosion defenses, readiness milestones, one-year quarter-by-quarter roadmap |
+| [docs/FIRST_100_RECORDS_PLAN.md](docs/FIRST_100_RECORDS_PLAN.md) | The exact founding cohort of `SNAP-1.0.0`: record categories and counts, what already exists implicitly, zero-permission vs governance-gated vs deferred records, creation sequence, cut line, and readiness checklist |
 | [ROADMAP.md](ROADMAP.md) | Seven-phase plan from foundation to formal governance |
 | [docs/repository-structure.md](docs/repository-structure.md) | Target repository layout for the data layer and future Explorer application, with rationale and migration plan |
 
