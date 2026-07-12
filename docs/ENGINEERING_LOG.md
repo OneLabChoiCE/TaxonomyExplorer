@@ -12,6 +12,43 @@ Entries are append-only and never edited in place (P8); a correction is a new en
 
 ---
 
+## 2026-07-12 — Category D GSID proof cohort registered (8 founding geometry records)
+
+**Roles:** Standards architect · Registry steward · Evidence custodian · Documentation maintainer · Release manager. Authority: the bootstrap clause (GOVERNANCE §2; deterministic GS- issuance is the Registry Operator's own role, [Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §9.2–§9.3).
+
+**Objective.** Register the eight founding GSID proof records ([First 100 Records Plan §4](FIRST_100_RECORDS_PLAN.md) Category D) — the flagship worked-example geometries — now that [Canonicalization Rules v1](../standards/canonicalization/v1/CANONICALIZATION_RULES_V1.md) makes each CGID honestly computable (the prior blocker). Principle held throughout: **no CGID that cannot be reproduced from published files alone; fabrication refused.**
+
+**Serial-ordering rule (confirmed before assigning).** The plan issues real serials by deterministic procedure and reconciles the illustrative `GS-004217`-style placeholders away (§4: "the first geometry registered becomes `GS-000001`"). The plan does not restate a registration order in §8, but §4 **enumerates** the eight geometries in a fixed table order — that table *is* the deterministic order. Adopted: **First 100 Records Plan §4 top-to-bottom enumeration order** → `GS-000001…GS-000008`. The illustrative placeholders are non-ascending, confirming they never encoded order. (Had the order been genuinely unspecified it would have been surfaced, not guessed; it is specified.)
+
+**CGID computation (deterministic, verified with `sha256sum`; not hand-written).** Each record's normalized byte string is the published Canonicalization Rules v1 §7 serialization; `SHA-256` → first 12 hex, upper-case → `CG1-`:
+
+| Serial | Shape | Normalized byte string (UTF-8, no trailing NL) | CGID |
+|---|---|---|---|
+| GS-000001 | `SEC:OCL` | `CANON-V1\|SEC:OCL\|76.2;41.3;12.7;1.90` (36 B) | `CG1-8EF31CC7EA1F` |
+| GS-000002 | `SEC:OCU` | `CANON-V1\|SEC:OCU\|32.0;25.0;1.50` (31 B) | `CG1-710171128D0C` |
+| GS-000003 | `SEC:OCU` | `CANON-V1\|SEC:OCU\|40.0;40.0;1.50` (31 B) | `CG1-7076AF79DD56` |
+| GS-000004 | `SEC:RBR` | `CANON-V1\|SEC:RBR\|4.0` (20 B) | `CG1-8728D6FACFC3` |
+| GS-000005 | `SEC:PLT` | `CANON-V1\|SEC:PLT\|152.0;6.40` (27 B) | `CG1-F6C764B089B4` |
+| GS-000006 | `SEC:ANG` | `CANON-V1\|SEC:ANG\|38.0;38.0;2.70` (31 B) | `CG1-686CDC3CB280` |
+| GS-000007 | `SEC:FBR` | `CANON-V1\|SEC:FBR\|25.0;3.00` (26 B) | `CG1-648776464448` |
+| GS-000008 | `SEC:SHS` | `CANON-V1\|SEC:SHS\|76.0;3.20` (26 B) | `CG1-8B0B6C97B279` |
+
+(The `\|` is Markdown escaping; the literal separator byte is a single `|`.) All eight CGIDs are distinct. The two `SEC:OCU` records (same schema, different values) yield different CGIDs — the D-2 behaviour; `GS-000005`/`GS-000007` show `SEC:PLT` vs `SEC:FBR` distinguished by the shape code as a hashed field despite an identical two-parameter schema shape.
+
+**Record discipline (verified).** One GSID record per geometry; each `subject` is **geometry only** (shape code + canonical parameters) — no product, component, assembly, manufacturer, SKU, capacity, performance, test, or certification field anywhere (GSID Standard P2; boundary AP-3/AP-4). Each record's product context (rack upright, deck channel, frame brace, base plate, shelving post, sway strap, platform column, mesh wire) is recorded **only** as illustrative worked-example provenance with an explicit "identifies the geometry, never that object" affirmation (AP-3). Each record links its `SEC:` dictionary code and its canonicalization v1 schema, carries `derived_id` = its `CG1-` companion (1:1, GSID Standard §4.4), and gives the full recompute path (byte string + SHA-256 + prefix, P9). Status is `RESERVED` on the single `RESERVED → ACTIVE` trajectory; the RA §5 object-record lifecycle is flagged as the cohort's one `[Proposed]` dependency (§6 item 6). **No record activated; no snapshot cut.**
+
+**Scope (verified).** No change to `dictionaries/*`, `registry/dictionary/*`, the canonicalization package, the standards, governance, the Explorer, or the Bootstrap Plan. Only `registry/gsid/README.md` (populated), this log, and `CHANGELOG.md` updated alongside the 8 new records.
+
+**Files.**
+- **Created (8):** `registry/gsid/GS-000001.md` … `registry/gsid/GS-000008.md`.
+- **Modified (3):** `registry/gsid/README.md`, `CHANGELOG.md`, `docs/ENGINEERING_LOG.md` (this entry).
+
+**Founding cohort status.** Categories A (6) + B (86) + D (8) now seeded = 100 registered founding records (+8 derived CGIDs). Remaining: Category C (4 templates) and E+F (3 `CMP` + 1 `ASP`), which depend on the `templates/` directory (not yet created) and the steward-seeding decision.
+
+**Status left:** uncommitted, pending review.
+
+---
+
 ## 2026-07-12 — Canonicalization Rules v1 published (Category D CGID prerequisite)
 
 **Roles:** Standards architect · Registry steward · Evidence custodian · Documentation maintainer · Release manager. Authority: the bootstrap clause (GOVERNANCE §2; [Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §9.3). **Scope: a single, explicitly-authorized standards prerequisite** — it clears the gate that blocked Category D and does nothing else.
