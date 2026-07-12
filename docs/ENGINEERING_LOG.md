@@ -12,6 +12,36 @@ Entries are append-only and never edited in place (P8); a correction is a new en
 
 ---
 
+## 2026-07-12 — Dictionary founding records, batch 8 (CFG namespace completion — Category B ratified 86/86)
+
+**Roles:** Standards architect · Registry steward · Documentation maintainer · Release manager · Evidence custodian. Authority: the bootstrap clause (GOVERNANCE §2; [Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §9.3).
+
+**Objective.** Complete the `CFG:` namespace by seeding every remaining configuration-group code from `dictionaries/cfg_groups.csv`, closing Category B of the First 100 Records Plan at 86/86.
+
+**Note on the source file.** The batch request named `cfg_codes.csv`; the governing dictionary in the repository is `dictionaries/cfg_groups.csv` (the configuration-group dictionary). Enumeration and provenance are taken from that actual file.
+
+**Enumeration (from the CSV directly).** `cfg_groups.csv` has 12 code rows: `DIM` (ACTIVE, seeded batch 1) and 11 remaining — all `ACTIVE`: `MAT`, `EDG`, `MPT`, `WIR`, `SPD`, `SUP`, `JNT`, `FIN`, `PRF`, `HOL`, `END`. The configuration-group CSV columns are `code,name,status,example_fields,since_snapshot` — there is **no `successor` column** and no free-text definition; `example_fields` stands in.
+
+**Records created (11), each a verbatim, sourced restatement of its `dictionaries/cfg_groups.csv` row (`example_fields` restated exactly, including the enumeration tokens and the `|` alternations):** `CFG:MAT` (Material specification), `CFG:EDG` (Edge condition), `CFG:MPT` (Mesh pattern), `CFG:WIR` (Wire specification), `CFG:SPD` (Span direction), `CFG:SUP` (Support arrangement), `CFG:JNT` (Joining / attachment), `CFG:FIN` (Finish system), `CFG:PRF` (Perforation pattern), `CFG:HOL` (Hole / punch pattern), `CFG:END` (End condition).
+
+**Decision (the authorizing decision these records cite).** Acting under the bootstrap clause, the eleven codes are seeded as activation-bound records: each carries `RESERVED` at the current (R0) lineage point on a single `RESERVED → ACTIVE` trajectory the `SNAP-1.0.0` cut completes (§5/§8). Each code is **listed in** the Configuration group codes table (Taxonomy Standard §3.6); because that table carries **no status column**, the `ACTIVE` status is read from the `cfg_groups.csv` seed row — the citation attributes the code listing to §3.6 and the status to the CSV, without asserting a status letter the table does not contain. Configuration groups are **schema organizers that never identify objects** (§3.6); each record records that it groups identity-bearing/informative fields for the versioned templates and is never itself an object identifier. No engineering meaning was inferred beyond the governed row.
+
+**Namespace completeness (verified).** All 12 `cfg_groups.csv` rows now have exactly one founding record (1 batch 1 + 11 batch 8). No orphan `CFG-*.md` without a CSV row. **The `CFG:` namespace is complete.**
+
+**Category-B completeness (verified — the mandate is closed).** Every dictionary row in every namespace now has exactly one founding record: `SEC:` 29/29, `ROL:` 17/17, `ASM:` 16/16, `FAM:` 12/12, `CFG:` 12/12 = **86/86**. First 100 Records Plan §1 Category B is fully seeded.
+
+**Lifecycle-state counts across the full 86-code cohort (assigned status at the `SNAP-1.0.0` lineage point; counted from the `status` column of the five governing CSVs).** `ACTIVE` — 76 (activation-bound: `RESERVED` at R0 → `ACTIVE` at the cut). `RESERVED`-parked — 2 (`SEC:SBR`, `SEC:HBR`). `SUPERCLASS` — 5 (`SEC:OCS`/`HSS`/`BAR`/`ZEE`, `ASM:DCK`). `REJECTED` — 3 (`SEC:CFS`/`PIP`/`TUB`). `DEPRECATED` — 0 (structurally absent; requires a later decision naming a successor, §5). Total 76 + 2 + 5 + 3 = 86. Four of the five N5 states are represented; batch 8 adds only `ACTIVE` codes.
+
+**Scope discipline (verified).** No status transition undefined in §5; no publication-flag / shadow-"terminal status" framing; no invented rationale or inferred engineering meaning; each record matches its CSV row exactly. No new record types, GSID/component/assembly records, snapshot cut, `[Proposed]` adoption, or governance/architecture/standards/Explorer/Bootstrap-Plan change. No performance/capacity/safety/compliance value.
+
+**Files.**
+- **Created (11):** `registry/dictionary/{CFG-MAT,CFG-EDG,CFG-MPT,CFG-WIR,CFG-SPD,CFG-SUP,CFG-JNT,CFG-FIN,CFG-PRF,CFG-HOL,CFG-END}.md`
+- **Modified (3):** `registry/dictionary/README.md`, `CHANGELOG.md`, `docs/ENGINEERING_LOG.md` (this entry).
+
+**Status left:** uncommitted, pending review.
+
+---
+
 ## 2026-07-12 — Dictionary founding records, batch 7 (FAM namespace completion)
 
 **Roles:** Standards architect · Registry steward · Documentation maintainer · Release manager · Evidence custodian. Authority: the bootstrap clause (GOVERNANCE §2; [Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §9.3).

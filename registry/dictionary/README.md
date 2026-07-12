@@ -2,7 +2,7 @@
 
 **Dictionary code records** — Category B of the [First 100 Records Plan](../../docs/FIRST_100_RECORDS_PLAN.md) §1 (86 records). One record per code, each a verbatim, sourced restatement of its `dictionaries/*.csv` row. Format: [FOUNDING_RECORD_TEMPLATE](../../docs/FOUNDING_RECORD_TEMPLATE.md). Files use `<NS>-<CODE>.md` naming (`:` → `-` for the filesystem; each record's identifier keeps the canonical `SEC:OCL` form).
 
-## Population: in progress
+## Population: complete — Category B seeded 86 / 86
 
 **Batch 1 (2026-07-11)** seeds 6 representative records — one code per namespace, plus one `RESERVED`-parked SEC code. Every record's **assigned status** at the current (R0, pre-snapshot) lineage point is `RESERVED` — the assigned registry state, not a publication flag; per [Registry Architecture §8](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md), `ACTIVE` is reached only through the `RESERVED → ACTIVE` release transition. The `status` value each code's CSV pins at `SNAP-1.0.0` (the same field, read at that snapshot) is shown below:
 
@@ -126,7 +126,25 @@ Every `SEC:` superclass rollup now has all its declared members seeded: `SEC:OCS
 
 **The `FAM:` namespace is now complete — all 12 `fam_codes.csv` rows have a founding record**: 1 from Batch 1 (`SPR`) and these 11. The industry anchor is provenance text (the external standard *scope* a family aligns to), not a registered crosswalk. N5 coverage is unchanged (Batch 7 adds only `ACTIVE` codes).
 
-## Remaining (seeded in later batches)
+**Batch 8 (2026-07-12)** completes the `CFG:` namespace — and with it all of Category B — with its **11 remaining configuration-group codes**. All are `ACTIVE` (`RESERVED` at R0 → `ACTIVE` at the cut). Configuration groups are **schema organizers** that never identify objects; they are listed in the Configuration group codes table (Taxonomy Standard §3.6), which carries no status column, so each record's `ACTIVE` status is read from the `cfg_groups.csv` seed row (the CSV also has no `successor` column — groups are superseded by version, not by row succession). Each restates its CSV `example_fields` verbatim:
+
+| Record | Identifier | Name | `status` @ `SNAP-1.0.0` |
+|---|---|---|---|
+| [CFG-MAT.md](CFG-MAT.md) | `CFG:MAT` | Material specification | `ACTIVE` |
+| [CFG-EDG.md](CFG-EDG.md) | `CFG:EDG` | Edge condition | `ACTIVE` |
+| [CFG-MPT.md](CFG-MPT.md) | `CFG:MPT` | Mesh pattern | `ACTIVE` |
+| [CFG-WIR.md](CFG-WIR.md) | `CFG:WIR` | Wire specification | `ACTIVE` |
+| [CFG-SPD.md](CFG-SPD.md) | `CFG:SPD` | Span direction | `ACTIVE` |
+| [CFG-SUP.md](CFG-SUP.md) | `CFG:SUP` | Support arrangement | `ACTIVE` |
+| [CFG-JNT.md](CFG-JNT.md) | `CFG:JNT` | Joining / attachment | `ACTIVE` |
+| [CFG-FIN.md](CFG-FIN.md) | `CFG:FIN` | Finish system | `ACTIVE` |
+| [CFG-PRF.md](CFG-PRF.md) | `CFG:PRF` | Perforation pattern | `ACTIVE` |
+| [CFG-HOL.md](CFG-HOL.md) | `CFG:HOL` | Hole / punch pattern | `ACTIVE` |
+| [CFG-END.md](CFG-END.md) | `CFG:END` | End condition | `ACTIVE` |
+
+**The `CFG:` namespace is now complete — all 12 `cfg_groups.csv` rows have a founding record**: 1 from Batch 1 (`DIM`) and these 11. **This closes Category B: all 86 dictionary codes across all five namespaces now have exactly one founding record.** N5 coverage is unchanged (Batch 8 adds only `ACTIVE` codes).
+
+## Category B coverage — complete (86 / 86)
 
 | Source CSV | Namespace | Rows | Seeded |
 |---|---|---|---|
@@ -134,9 +152,9 @@ Every `SEC:` superclass rollup now has all its declared members seeded: `SEC:OCS
 | [rol_codes.csv](../../dictionaries/rol_codes.csv) | `ROL:` | 17 | **17 ✓ (complete)** |
 | [asm_codes.csv](../../dictionaries/asm_codes.csv) | `ASM:` | 16 | **16 ✓ (complete)** |
 | [fam_codes.csv](../../dictionaries/fam_codes.csv) | `FAM:` | 12 | **12 ✓ (complete)** |
-| [cfg_groups.csv](../../dictionaries/cfg_groups.csv) | `CFG:` | 12 | 1 |
-| **Total** | | **86** | **75** |
+| [cfg_groups.csv](../../dictionaries/cfg_groups.csv) | `CFG:` | 12 | **12 ✓ (complete)** |
+| **Total** | | **86** | **86 ✓ (complete)** |
 
 Records carry each code's **assigned** status, not a blanket `ACTIVE`: the `SUPERCLASS` rollups, `RESERVED`-parked codes, and `REJECTED` burned-string rows each carry a record for precedent, even though they never activate (First 100 Records Plan §9).
 
-**Remaining within Category B — a sequencing choice, not a doctrine blocker.** With Batch 7 four namespaces are fully seeded — `SEC:` (29 of 29), `ASM:` (16 of 16), `ROL:` (17 of 17), and `FAM:` (12 of 12). Every non-`ACTIVE` code in Category B is on record (the nine `SEC:` `SUPERCLASS`/`REJECTED`/parked rows plus the ASM `DCK` superclass — the only non-`ACTIVE` rows in the whole cohort). The 11 still-unseeded codes are therefore all `ACTIVE` codes in the `CFG:` namespace, held for the final batch. This confirms the settled doctrine: `status` is the assigned registry state; [Registry Architecture §8](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md) gates only the `RESERVED → ACTIVE` transition; and `SUPERCLASS`/`REJECTED` codes are **born in their assigned state directly**, never passing through `RESERVED` ([§5](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md): a `REJECTED` row records a burned string, and such rows never activate).
+**Category B is complete — all 86 codes seeded, across all five namespaces:** `SEC:` (29 of 29), `ROL:` (17 of 17), `ASM:` (16 of 16), `FAM:` (12 of 12), `CFG:` (12 of 12). Every code carries its **assigned** registry state, not a blanket `ACTIVE`: the four `SUPERCLASS` rollups (`SEC:OCS`/`HSS`/`BAR`/`ZEE`, `ASM:DCK`), the two `RESERVED`-parked shape codes (`SEC:SBR`/`HBR`), and the three `REJECTED` burned strings (`SEC:CFS`/`PIP`/`TUB`) each hold a record for precedent even though they never activate. This confirms the settled doctrine: `status` is the assigned registry state; [Registry Architecture §8](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md) gates only the `RESERVED → ACTIVE` transition; and `SUPERCLASS`/`REJECTED` codes are **born in their assigned state directly**, never passing through `RESERVED` ([§5](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md): a `REJECTED` row records a burned string, and such rows never activate). Four of the five N5 states appear in the cohort (`ACTIVE`, `RESERVED`, `SUPERCLASS`, `REJECTED`); `DEPRECATED` remains structurally absent — deprecation requires a later decision naming a successor.
