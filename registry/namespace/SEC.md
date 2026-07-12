@@ -25,7 +25,7 @@ authorizing_decision: "Founding seed under the bootstrap clause (GOVERNANCE §2)
 - A namespace is registered by TC decision (Registry Architecture §2); this record has no derived component.
 
 ## 3. Lifecycle
-- **Current status:** `RESERVED` (N5) — allocated, pending activation at the `SNAP-1.0.0` cut. No snapshot has been cut, so nothing is `ACTIVE` yet ([Registry Architecture §8](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md)).
+- **Current status:** `RESERVED` — the assigned state pending the `SNAP-1.0.0` release; per [Registry Architecture §8](../../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md), `ACTIVE` is reached only through the `RESERVED → ACTIVE` release transition, so nothing is `ACTIVE` before the cut. Namespaces are registered-by-decision records (§2); this record cites no code-status set (N5) as its authority — whether N5 governs namespaces is unsettled in the architecture and is not decided here.
 - **Event history:**
   - *Reserved* — 2026-07-11, founding seed under the bootstrap clause (GOVERNANCE §2); authorizing decision recorded in [ENGINEERING_LOG](../../docs/ENGINEERING_LOG.md). Basis: Standard Part 3; seed row in `dictionaries/namespaces.csv`.
 - **Next transition:** `RESERVED → ACTIVE` at the `SNAP-1.0.0` release ([First 100 Records Plan §9](../../docs/FIRST_100_RECORDS_PLAN.md)), pending the readiness checklist (§10).

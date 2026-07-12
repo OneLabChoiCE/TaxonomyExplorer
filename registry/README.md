@@ -6,7 +6,7 @@
 
 ## Stage: R0 — files-as-registry
 
-Per [Registry Architecture §12](../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md), the registry is at **R0**: records live as source files under git, discipline enforced by process and machine gates, **no snapshot cut yet**. Every record here is therefore `RESERVED` — allocated and pending the `SNAP-1.0.0` release that will activate it (§8; nothing activates between snapshots). Nothing in this tree is `ACTIVE`, released, or citable as current.
+Per [Registry Architecture §12](../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md), the registry is at **R0**: records live as source files under git, discipline enforced by process and machine gates, **no snapshot cut yet**. A record's `status` is its **assigned registry state at the current lineage point**, not a publication flag. The founding cohort seeded so far is entirely activation-bound or parked, so every seeded record's assigned state is `RESERVED`; per [§8](../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md) `ACTIVE` is reached only through the `RESERVED → ACTIVE` release transition, so nothing here is `ACTIVE`, released, or citable as current. (Records whose assigned state is `SUPERCLASS` or `REJECTED` — not yet seeded — are born in that state directly, not `RESERVED`.)
 
 ## Layout
 
