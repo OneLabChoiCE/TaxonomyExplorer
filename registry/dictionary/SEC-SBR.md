@@ -41,6 +41,7 @@ A dictionary code is registered by TC decision (Registry Architecture §2); it h
 
 ## 5. Relationships
 - **Namespace:** member of [`SEC:`](../namespace/SEC.md).
+- **Superclass:** member of the [`SEC:BAR`](SEC-BAR.md) solid-bar superclass rollup (classifier-only, N6) — `SEC:BAR` rolls up `SEC:RBR` / `SEC:FBR` (active) plus the parked-`RESERVED` `SEC:SBR` / `SEC:HBR`. As a parked-`RESERVED` code, `SEC:SBR` is not an assignable member until activated.
 - **Predecessor / successor:** none (first issuance; CSV `successor` empty).
 - **Crosswalks / aliases:** none at issuance.
 

@@ -12,6 +12,44 @@ Entries are append-only and never edited in place (P8); a correction is a new en
 
 ---
 
+## 2026-07-12 — Dictionary founding records, batch 3 (superclass member codes)
+
+**Roles:** Standards architect · Registry steward · Documentation maintainer · Release manager · Evidence custodian. Authority: the bootstrap clause (GOVERNANCE §2; [Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §9.3).
+
+**Objective.** Populate the member codes under the four existing `SEC:` `SUPERCLASS` records — the leaf shapes each rollup declares — plus the standalone hot-rolled channel `SEC:CHN`, under the corrected assigned-status semantics.
+
+**Records created (11), each a verbatim, sourced restatement of its `dictionaries/sec_codes.csv` row:**
+
+| Record | Identifier | Parent superclass | status @ SNAP-1.0.0 | Basis |
+|---|---|---|---|---|
+| `SEC-OCU.md` | `SEC:OCU` | `SEC:OCS` | `ACTIVE` | Ruling R2 (§3.1) |
+| `SEC-OCR.md` | `SEC:OCR` | `SEC:OCS` | `ACTIVE` | Ruling R4 (§3.1) |
+| `SEC-CHN.md` | `SEC:CHN` | — (standalone) | `ACTIVE` | Ruling R5 (§3.1) |
+| `SEC-RHS.md` | `SEC:RHS` | `SEC:HSS` | `ACTIVE` | §3.2 table (A) |
+| `SEC-SHS.md` | `SEC:SHS` | `SEC:HSS` | `ACTIVE` | §3.2 table (A) |
+| `SEC-CHS.md` | `SEC:CHS` | `SEC:HSS` | `ACTIVE` | §3.2 table (A) |
+| `SEC-RBR.md` | `SEC:RBR` | `SEC:BAR` | `ACTIVE` | §3.2 table (A) |
+| `SEC-FBR.md` | `SEC:FBR` | `SEC:BAR` | `ACTIVE` | §3.2 table (A) |
+| `SEC-HBR.md` | `SEC:HBR` | `SEC:BAR` | `RESERVED` (parked) | §3.2 table (R) |
+| `SEC-ZLP.md` | `SEC:ZLP` | `SEC:ZEE` | `ACTIVE` | §3.2 table (A) |
+| `SEC-ZUN.md` | `SEC:ZUN` | `SEC:ZEE` | `ACTIVE` | §3.2 table (A) |
+
+**Decision (the authorizing decision these records cite).** Acting under the bootstrap clause, the eleven codes are seeded under the assigned-status semantics: the ten activation-bound codes carry `RESERVED` at the current (R0) lineage point on a single `RESERVED → ACTIVE` trajectory the `SNAP-1.0.0` cut completes (§5/§8); `SEC:HBR` is born parked-`RESERVED` (the SBR/HBR precedent, §5) and holds it. Citation basis is grounded per code: `OCU`/`OCR`/`CHN` carry explicit founding rulings (R2/R4/R5, GSID Standard §3.1); the eight hollow/bar/Z leaves are §3.2 shape-code-table designations (status `A`, or `R` for `HBR`). `SEC:CHN` is recorded as a **standalone** active code, not a member of the `SEC:OCS` folded rollup — Ruling R5 adopts it as a distinct hot-rolled family with a different canonical parameter schema.
+
+**Parent–child consistency (verified).** Each child names its parent rollup in §5, and every member list the four `SUPERCLASS` records declared in batch 2 is now fully seeded: `SEC:OCS`→{OCL, OCU, OCR}, `SEC:HSS`→{RHS, SHS, CHS}, `SEC:BAR`→{RBR, FBR, SBR, HBR}, `SEC:ZEE`→{ZLP, ZUN}. No orphan child; no member declared-but-missing. Adversarial verification surfaced that two **batch-1** members — `SEC:OCL` and `SEC:SBR` — lacked the reciprocal §5 superclass bullet the batch-3 siblings carry (their parents declared them, but they did not name their parent); both were given the back-reference, making parent↔child linkage uniform and bidirectional across the entire `SEC:` rollup structure. This was an additive §5 cross-reference only — no `status`, provenance, or CSV value changed on either record.
+
+**Effect on coverage.** Category B seeded: **25 of 86** (`SEC:` 20 of 29). N5-state coverage is unchanged — four of five (`ACTIVE`, `RESERVED`, `SUPERCLASS`, `REJECTED`); batch 3 deepens `ACTIVE` (+10) and parked-`RESERVED` (+1, `HBR`). `DEPRECATED` remains structurally absent (requires a later successor-bearing decision, §5).
+
+**Scope discipline (verified).** No status transition undefined in §5; no publication-flag / shadow-"terminal status" framing; each record matches its CSV row exactly (incl. `CHN`'s `AS/NZS PFC` mapping and the `WELDED` form class on the hollow codes). No new record types, GSID/component/assembly records, snapshot cut, `[Proposed]` adoption, or governance/architecture/standards/Explorer/Bootstrap-Plan change. No performance/capacity/safety/compliance value.
+
+**Files.**
+- **Created (11):** `registry/dictionary/{SEC-OCU,SEC-OCR,SEC-CHN,SEC-RHS,SEC-SHS,SEC-CHS,SEC-RBR,SEC-FBR,SEC-HBR,SEC-ZLP,SEC-ZUN}.md`
+- **Modified (5):** `registry/dictionary/README.md`, `CHANGELOG.md`, `docs/ENGINEERING_LOG.md` (this entry); and `registry/dictionary/{SEC-OCL,SEC-SBR}.md` — added the reciprocal §5 superclass back-reference (see Parent–child consistency).
+
+**Status left:** uncommitted, pending review.
+
+---
+
 ## 2026-07-11 — Dictionary founding records, batch 2 (SUPERCLASS + REJECTED)
 
 **Roles:** Standards architect · Registry steward · Documentation maintainer · Release manager · Evidence custodian. Authority: the bootstrap clause (GOVERNANCE §2; [Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md) §9.3).
