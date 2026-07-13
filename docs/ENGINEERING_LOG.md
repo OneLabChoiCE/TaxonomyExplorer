@@ -12,6 +12,22 @@ Entries are append-only and never edited in place (P8); a correction is a new en
 
 ---
 
+## 2026-07-12 — Steward-seeding decision recorded (`DECISION-EF-SEED-001`) — Category E/F unblocked
+
+**Roles:** Standards architect · Registry steward · Documentation maintainer. Authority: the bootstrap clause (GOVERNANCE §2; the founding maintainer acting as Technical Committee and Registry Operator, [Registry Architecture §9.3](SECTIONHUB_REGISTRY_ARCHITECTURE.md)).
+
+**Objective.** Record the final Category E/F prerequisite — the steward-seeding decision [First 100 Records Plan §6 item 5 / §8 step 3](FIRST_100_RECORDS_PLAN.md) mandates and the §10 readiness checklist requires ("Every record cites its authorizing decision: … steward-seeding (E+F)"). This closes the **authorization** gap; it authors no records.
+
+**What it authorizes (narrow).** Exactly the four planned Category E/F founding proof records — the rack-upright (`ROL:COL`), mesh-panel (`ROL:MSH`), and deck-support-channel (`ROL:DKS`) components, and the wire-deck (`ASM:WDK`/`FAM:DKG`) assembly — bound to their published Category-C templates, referencing the registered GSIDs (`GS-000001`/`GS-000002`/`GS-000004`), each `RESERVED`, each citing `DECISION-EF-SEED-001`, each carrying a `CF1-` ConfigurationID recomputable from published files. Nothing else.
+
+**What it does NOT do (boundaries held).** Does not open Submission-Model stage S3 or any stage; does not create a general or interim submission pathway; does not weaken, amend, or reinterpret any Submission-Model rule, refusal, or gate; is not a precedent for third-party data. The reconciliation is honest: a `CMP-`/`ASP-` product-instance registration is normally S3-gated ([Submission Model §7](SECTIONHUB_DATA_SUBMISSION_MODEL.md)), whose prerequisites (SMHE legal entity, signed data licenses) exist to govern **third parties** registering **their** products — none of which applies to the steward registering the project's **own** published worked examples under the bootstrap clause. The decision records a bounded exception for exactly these four project-authored records and sunsets when they are authored; all refusal rules (§8) and the §11 certification boundary remain in force. **No performance/capacity/safety/compliance/certification language is introduced except as explicit exclusions and constraints.**
+
+**Prerequisites confirmed present (readiness §6).** GSID records (8, `registry/gsid/`), the four Category-C templates (`templates/`), Configuration Canonicalization Rules v1 (`standards/canonicalization/configuration/v1/`), and `dictionaries/enum_tokens.csv` (24 tokens) all exist and are cited by real relative links in the decision.
+
+**Scope (verified).** New: `docs/STEWARD_SEEDING_DECISION_EF.md` (the standalone, citable decision record, ID `DECISION-EF-SEED-001`). Modified: `registry/component/README.md`, `registry/assembly/README.md` (steward-seeding now shown satisfied — all E/F prerequisites met), this log, `CHANGELOG.md`. **No component (`CMP-`) or assembly (`ASP-`) record authored. No production `ConfigurationID` computed. No new architecture, record type, submission pathway, or governance rule. No activation; no snapshot cut.** No change to standards' normative text, dictionaries, templates' field schemas, GSID records, the Submission Model, or the Explorer. **Category E/F is now authorable; the remaining gates are the `SNAP-1.0.0` readiness checklist items (object-record lifecycle adoption §6 item 6, finalized `LICENSE`), which govern the cut, not the authoring.**
+
+---
+
 ## 2026-07-12 — `dictionaries/enum_tokens.csv` published (Category E prerequisite #2 of 2)
 
 **Roles:** Standards architect · Registry steward · Documentation maintainer. Authority: the bootstrap clause (GOVERNANCE §2; a `dictionaries/` vocabulary is a TC-owned data file, GOVERNANCE §3, seeded per repository-structure migration step 3).
