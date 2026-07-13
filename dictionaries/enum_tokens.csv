@@ -1,0 +1,25 @@
+cfg_group,field,token,status,definition,source,since_snapshot
+EDG,edge_style,FLUSH,ACTIVE,edge finishes flush with the support,Part 3.6 EDG; Part 6.5/6.6 worked example,SNAP-1.0.0
+EDG,edge_style,WATERFALL,ACTIVE,edge waterfalls down over the front support,Part 3.6 EDG; Part 6.5/6.6 worked example,SNAP-1.0.0
+EDG,edge_style,REVERSE_WATERFALL,ACTIVE,edge turned up (reverse waterfall),Part 3.6 EDG,SNAP-1.0.0
+EDG,edge_style,BOXED,ACTIVE,edge fully boxed/closed,Part 3.6 EDG,SNAP-1.0.0
+FIN,system,POWDER,ACTIVE,powder-coat finish system,Part 3.6 FIN; Part 6.5/6.6 and 7.6 worked examples,SNAP-1.0.0
+FIN,system,PAINT,ACTIVE,liquid paint finish system,Part 3.6 FIN,SNAP-1.0.0
+FIN,system,PRE_GALV,ACTIVE,pre-galvanized finish system,Part 3.6 FIN,SNAP-1.0.0
+FIN,system,HOT_DIP_GALV,ACTIVE,hot-dip galvanized finish system,Part 3.6 FIN,SNAP-1.0.0
+FIN,system,ZINC_PLATE,ACTIVE,zinc-plated finish system,Part 3.6 FIN,SNAP-1.0.0
+JNT,method,RESISTANCE_WELD,ACTIVE,resistance-welded joint,Part 3.6 JNT; Part 6.5/6.6 worked example,SNAP-1.0.0
+JNT,method,FUSION_WELD,ACTIVE,fusion-welded joint,Part 3.6 JNT,SNAP-1.0.0
+JNT,method,CLINCH,ACTIVE,clinched joint,Part 3.6 JNT,SNAP-1.0.0
+JNT,method,BOLT,ACTIVE,bolted joint,Part 3.6 JNT,SNAP-1.0.0
+JNT,method,RIVET,ACTIVE,riveted joint,Part 3.6 JNT,SNAP-1.0.0
+JNT,method,INTERLOCK,ACTIVE,interlocked joint,Part 3.6 JNT,SNAP-1.0.0
+MPT,pattern,SQUARE,ACTIVE,square mesh aperture pattern,Part 3.6 MPT,SNAP-1.0.0
+MPT,pattern,RECT,ACTIVE,rectangular mesh aperture pattern,Part 3.6 MPT; Part 6.6 worked example,SNAP-1.0.0
+SPD,span,FRONT_TO_BACK,ACTIVE,deck spans front to back,Part 3.6 SPD; Part 6.5/6.6 worked example,SNAP-1.0.0
+SPD,span,SIDE_TO_SIDE,ACTIVE,deck spans side to side,Part 3.6 SPD,SNAP-1.0.0
+SUP,orientation,LEGS_DOWN,ACTIVE,support channel legs oriented down,Part 3.6 SUP; Part 6.5/6.6 worked example,SNAP-1.0.0
+SUP,orientation,LEGS_UP,ACTIVE,support channel legs oriented up,Part 3.6 SUP,SNAP-1.0.0
+WIR,wire_condition,PRE_GALV,ACTIVE,pre-galvanized wire,Part 3.6 WIR (pre-galvanized); Part 6.5/6.6 worked example,SNAP-1.0.0
+WIR,wire_condition,POST_GALV,ACTIVE,post-galvanized wire,Part 3.6 WIR (post-galvanized),SNAP-1.0.0
+WIR,wire_condition,PLAIN,ACTIVE,plain uncoated wire,templates ROL-MSH.v1 and ASM-WDK.v1 wire_condition domain (not in Part 3.6),SNAP-1.0.0

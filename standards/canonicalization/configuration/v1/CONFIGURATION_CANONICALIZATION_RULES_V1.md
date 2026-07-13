@@ -95,7 +95,7 @@ Serialized as the literal token `TRUE` or `FALSE` (exact case). The sole IB bool
 
 ### 8.1 Closed enum tokens
 
-Fields whose template entry states a closed domain (`FLUSH | WATERFALL | REVERSE_WATERFALL | BOXED`, `POWDER | PAINT | PRE_GALV | HOT_DIP_GALV | ZINC_PLATE`, `RESISTANCE_WELD | FUSION_WELD | CLINCH | BOLT | RIVET | INTERLOCK`, `SQUARE | RECT`, `FRONT_TO_BACK | SIDE_TO_SIDE`, `LEGS_DOWN | LEGS_UP`, `PRE_GALV | POST_GALV | PLAIN`) serialize as the **exact `UPPER_SNAKE` token bound**, case-sensitive, verbatim. No synonym normalization is performed here — the governed superset of valid tokens per `CFG:` group is a separate, not-yet-published artifact (`dictionaries/enum_tokens.csv`, First 100 Records Plan §6 item 2), out of scope for this package (§12).
+Fields whose template entry states a closed domain (`FLUSH | WATERFALL | REVERSE_WATERFALL | BOXED`, `POWDER | PAINT | PRE_GALV | HOT_DIP_GALV | ZINC_PLATE`, `RESISTANCE_WELD | FUSION_WELD | CLINCH | BOLT | RIVET | INTERLOCK`, `SQUARE | RECT`, `FRONT_TO_BACK | SIDE_TO_SIDE`, `LEGS_DOWN | LEGS_UP`, `PRE_GALV | POST_GALV | PLAIN`) serialize as the **exact `UPPER_SNAKE` token bound**, case-sensitive, verbatim. No synonym normalization is performed here — the governed superset of valid tokens per `CFG:` group is the separate dictionary artifact [`dictionaries/enum_tokens.csv`](../../../../dictionaries/enum_tokens.csv) (First 100 Records Plan §6 item 2), against which a producer validates a bound token *before* serialization; this package fixes only *how* an already-valid token becomes bytes, not *which* tokens are valid (that authority boundary is preserved by keeping the vocabulary in `dictionaries/`, not here).
 
 ### 8.2 Open string/token fields
 
@@ -204,7 +204,7 @@ To demonstrate `ASM-WDK.v1`'s two remaining field kinds — the integer count an
 
 **Scope exclusions (future rules-version or template candidates):**
 - **Any template other than the four founding templates** (`ASM-WDK.v1`, `ROL-COL.v1`, `ROL-DKS.v1`, `ROL-MSH.v1`). A future template (e.g. `ROL:BRC`, `ASM:FRM`) receives a class assignment only when it is published (First 100 Records Plan §7 deferred products).
-- **The governed `dictionaries/enum_tokens.csv` superset.** This package fixes *how* an enum token already bound by a template is serialized (§8.1) — verbatim, case-sensitive — but does **not** publish or validate the full governed token vocabulary per `CFG:` group. That is a separate, First-100-named prerequisite (§6 item 2), unaffected by this package.
+- **Validating tokens against the governed vocabulary.** This package fixes *how* an enum token already bound by a template is serialized (§8.1) — verbatim, case-sensitive — but does **not** itself perform vocabulary validation. The governed token superset now lives in [`dictionaries/enum_tokens.csv`](../../../../dictionaries/enum_tokens.csv) (published separately); checking a bound token against it is the producer's step, upstream of serialization. Keeping the vocabulary in `dictionaries/` and the encoding here preserves the enum-token-authority vs field-schema/encoding-authority boundary.
 - **Toleranced equivalence beyond the §5 rounding steps** — no tolerance-band, no "within X%" merging, mirroring geometry v1's own exclusion.
 - **Geometry canonicalization** of any kind — that is [Canonicalization Rules v1](../../v1/CANONICALIZATION_RULES_V1.md), a distinct package for a distinct identifier (`CG1-…`).
 
@@ -217,14 +217,14 @@ To demonstrate `ASM-WDK.v1`'s two remaining field kinds — the integer count an
 
 ## 12. Category E readiness statement
 
-**After this package is published, can Category E component records be authored honestly? — Partially cleared; two independent prerequisites remain.**
+**After this package is published, can Category E component records be authored honestly? — The canonicalization blocker is cleared; one governance prerequisite remains.**
 
 The ConfigurationID serialization/rounding/field-order/hash procedure — the gap every published Category-C template already flagged and the primary blocker a same-session Category E readiness assessment identified — **is cleared** for the four founding templates: every identity-bearing field kind they use (numeric, integer, boolean, enum, open string, list, reference) now has a defined precision class or serialization rule (§5–§8), a byte-exact grammar (§9), and a hash procedure with independently reproducible test vectors (§10).
 
-**What remains required before any Category E `CMP-…` record is authored (neither is canonicalization work):**
+**What remains required before any Category E `CMP-…` record is authored (not canonicalization work):**
 
-1. **`dictionaries/enum_tokens.csv`** — the governed `UPPER_SNAKE` token superset per `CFG:` group (First 100 Records Plan §6 item 2, §8 step 2). This package serializes whatever token a template binds (§8.1); it does not publish or freeze the governed vocabulary those tokens must belong to.
-2. **The steward-seeding decision** authorizing Category E + F intake (First 100 Records Plan §6 item 5; `registry/component/README.md`) — a governance decision, not a canonicalization gap.
+1. ~~`dictionaries/enum_tokens.csv`~~ — **satisfied.** The governed `UPPER_SNAKE` token superset per `CFG:` group is now published at [`dictionaries/enum_tokens.csv`](../../../../dictionaries/enum_tokens.csv) (First 100 Records Plan §6 item 2, §8 step 2), covering the closed-enum domains of all four founding templates; §8.1 validates against it.
+2. **The steward-seeding decision** authorizing Category E + F intake (First 100 Records Plan §6 item 5; `registry/component/README.md`) — a governance decision, not a canonicalization gap. **This is now the sole remaining Category E prerequisite.**
 
 **No production ConfigurationID is computed, embedded, or registered by this package.** §10.2's three vectors and §10.3's fragment are reference/test data only, built from deliberately synthetic values and explicitly non-registered placeholder identifiers, precisely so they cannot be mistaken for — or later reused as — a real Category E or F ConfigurationID. Computing the actual `CF1-…` values for the rack upright, the mesh panel, the deck-support channel, and the wire deck is Category E/F's task, to run only after items 1–2 above are also satisfied.
 
