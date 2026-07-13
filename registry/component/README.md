@@ -2,12 +2,12 @@
 
 **Component identities** (`CMP-<serial6>`) — Category E of the [First 100 Records Plan](../../docs/FIRST_100_RECORDS_PLAN.md) §1 (3 worked-example components: the rack upright, the mesh panel, the deck-support channel). Each `CMP-` record carries its derived `CF1-<hash12>` ConfigurationID companion. Format: [FOUNDING_RECORD_TEMPLATE](../../docs/FOUNDING_RECORD_TEMPLATE.md) (component variant).
 
-**Not populated yet.** Component records require, as prerequisites (First 100 Records Plan §6, §7, §8):
+**Populated (2026-07-12) — Category E seeded, 3/3.** All five prerequisites (Category-D geometries, Category-C templates, Configuration Canonicalization Rules v1, `dictionaries/enum_tokens.csv`, and the steward-seeding decision [`DECISION-EF-SEED-001`](../../docs/STEWARD_SEEDING_DECISION_EF.md)) were satisfied before authoring. Serials issued in First 100 Records Plan §1/§4 Category-E enumeration order (upright · mesh panel · deck-support channel):
 
-1. The Category-D geometries they reference (registry/gsid/). **Satisfied** — 8 GSID records seeded 2026-07-12.
-2. The Category-C configuration templates they bind (`ROL-COL.v1`, `ROL-DKS.v1`, `ROL-MSH.v1`) — in `templates/`. **Satisfied** — seeded 2026-07-12.
-3. The `ConfigurationID` byte-serialization, rounding, and hash procedure. **Satisfied** — [Configuration Canonicalization Rules v1](../../standards/canonicalization/configuration/v1/CONFIGURATION_CANONICALIZATION_RULES_V1.md) published 2026-07-12 (the gap every published Category-C template already flagged; not named as a numbered item anywhere in First 100 Records Plan §6, an omission this package's Engineering Log entry flags without editing the plan itself).
-4. `dictionaries/enum_tokens.csv` — the governed `UPPER_SNAKE` token superset (First 100 Records Plan §6 item 2, §8 step 2). **Satisfied** — [published](../../dictionaries/enum_tokens.csv) 2026-07-12, covering the closed-enum domains of all four founding templates.
-5. The recorded **steward-seeding decision** authorizing Category E + F (a narrow, bounded reconciliation with the Submission Model's stage-S3 intake rule). **Satisfied** — [`DECISION-EF-SEED-001`](../../docs/STEWARD_SEEDING_DECISION_EF.md), recorded 2026-07-12.
+| Record | Role | Section (GSID) | Bound template | ConfigurationID |
+|---|---|---|---|---|
+| [`CMP-000001`](CMP-000001.md) | [`ROL:COL`](../dictionary/ROL-COL.md) rack upright | [`GS-000001`](../gsid/GS-000001.md) (`SEC:OCL`) | [`ROL-COL.v1`](../../templates/ROL-COL.v1.md) | `CF1-671CAD0B9F50` |
+| [`CMP-000002`](CMP-000002.md) | [`ROL:MSH`](../dictionary/ROL-MSH.md) mesh panel | stock [`GS-000004`](../gsid/GS-000004.md) (`SEC:RBR`) | [`ROL-MSH.v1`](../../templates/ROL-MSH.v1.md) | `CF1-296722274C4A` |
+| [`CMP-000003`](CMP-000003.md) | [`ROL:DKS`](../dictionary/ROL-DKS.md) deck-support channel | [`GS-000002`](../gsid/GS-000002.md) (`SEC:OCU`) | [`ROL-DKS.v1`](../../templates/ROL-DKS.v1.md) | `CF1-265CDD59847D` |
 
-All five prerequisites are now satisfied. Category E may be authored: each record names its bound template version and identity-bearing field values, cites `DECISION-EF-SEED-001`, is `RESERVED`, and gives the path to **recompute the ConfigurationID** (P9) from published files (Configuration Canonicalization Rules v1 + `enum_tokens.csv` + the bound template). Production ConfigurationID computation and `CMP-` serial issuance are the authoring task; the `SNAP-1.0.0` cut still gates activation.
+Each `CMP-` record is `RESERVED`, cites `DECISION-EF-SEED-001`, binds its Category-C template, references only registered GSIDs (real serials, not the standards' illustrative `CMP-000482`/`-000611`/`-000612` placeholders), and embeds the normalized byte string + full SHA-256 so its ConfigurationID recomputes from published files alone (P9). The `SNAP-1.0.0` cut still gates activation (`RESERVED → ACTIVE`).

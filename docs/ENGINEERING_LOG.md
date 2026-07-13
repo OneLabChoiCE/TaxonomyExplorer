@@ -12,6 +12,35 @@ Entries are append-only and never edited in place (P8); a correction is a new en
 
 ---
 
+## 2026-07-12 — Category E/F founding proof records seeded (3 CMP + 1 ASP) — cohort 108/108
+
+**Roles:** Standards architect · Registry steward · Evidence custodian · Release manager. Authority: `DECISION-EF-SEED-001` under the bootstrap clause (GOVERNANCE §2; Registry Architecture §9.2–§9.3).
+
+**Objective.** Author the final four founding records — the worked-example stack proof — completing the cohort at 108/108. Principle held: **every CF1 computed from published rules via `sha256sum`, never hand-written; refusal over fabrication.**
+
+**Serial rule (deterministic).** First 100 Records Plan §1/§4 Category-E enumeration order (upright · mesh panel · deck-support channel), the same rule used for the Category-D GSIDs, gives real ascending serials `CMP-000001`/`-000002`/`-000003`; Category F gives `ASP-000001`. The standards' illustrative placeholders (`CMP-000482`/`-000611`/`-000612`, `ASP-000173`) are **not** used as assigned IDs (reconciled per §4). The deck (F) references the channel (`CMP-000003`) via `CFG:SUP.support_component`, and the channel serial is assigned first (E before F) — no circular dependency.
+
+**Records + production ConfigurationIDs (each computed via `sha256sum`, embedded byte string + full SHA-256 in the record):**
+
+| Record | Subject | Bound template | GSID ref | CF1 (production) |
+|---|---|---|---|---|
+| `CMP-000001` | `ROL:COL` rack upright, bound L=4267 mm | `ROL-COL.v1` | `GS-000001` (`SEC:OCL`) | `CF1-671CAD0B9F50` |
+| `CMP-000002` | `ROL:MSH` mesh panel, 1160×1170 mm | `ROL-MSH.v1` | stock `GS-000004` (`SEC:RBR`) | `CF1-296722274C4A` |
+| `CMP-000003` | `ROL:DKS` deck-support channel, L=1170 mm | `ROL-DKS.v1` | `GS-000002` (`SEC:OCU`) | `CF1-265CDD59847D` |
+| `ASP-000001` | `ASM:WDK`/`FAM:DKG` wire deck, 1160×1170 mm | `ASM-WDK.v1` | none (assembly, P2) | `CF1-17E80499A7EE` |
+
+None equals a synthetic reference vector from the canonicalization package (`CF1-4861…`/`CB4F…`/`FD32…`). The channel shares Vector A's grammar but binds `length_mm=1170.0` (not `2000.0`), so a distinct production hash.
+
+**Field-value provenance (honesty).** The deck (Part 6.5/6.6) and upright (Part 7.6) are fully specified in the Standard's structured records — every IB field is a bound worked-example value. The mesh and channel derive two values by **transparent, documented** binding rather than a standalone number, each stated in the record: the mesh **sheet size** = the deck envelope 1160×1170 (Part 6.1; §6.3 "sheet size"); the channel **length** = deck depth 1170 (Part 6.3 "parametric length, bound per deck depth" + Part 6.1 "1170 mm deep"). All other values are verbatim from Part 6/7. No value invented from memory.
+
+**Boundary discipline.** Every record: `RESERVED`; cites `DECISION-EF-SEED-001`, its template, its GSID(s), its dictionary codes, Configuration Canonicalization Rules v1, and (where enum tokens are used) `enum_tokens.csv`; carries no manufacturer/SKU/brand identity, no certification/compliance claim, no capacity/performance/safety/test-result data; and states "identity is not certification; classification is not performance". Every closed-enum value used (`POWDER`, `RECT`, `PRE_GALV`, `WATERFALL`, `FLUSH`, `RESISTANCE_WELD`, `FRONT_TO_BACK`, `LEGS_DOWN`) is present in `enum_tokens.csv`; open-string fields (`SAE 1008`, `ASTM A1011 SS`, `GR50`, `TEARDROP-A`, `BOTH_FLANGES`, `PLAIN`, `WS-2`) serialize verbatim (rules §8.2) and are correctly not enum-validated; the channel's only categorical field is the boolean `end_flare` (no enum), so it draws no `enum_tokens.csv` entry.
+
+**Stack proof demonstrable.** `GS-000002`/`GS-000004` (geometry, `CG1-` recomputable) → `CMP-000003`/`CMP-000002` (components, `CF1-` recomputable) → `ASP-000001` (assembly, `CF1-17E80499A7EE`, embedding `CMP-000003` by reference) → all links resolve, all hashes recompute from published files alone (P9).
+
+**Scope (verified).** New: `registry/component/CMP-000001.md`, `CMP-000002.md`, `CMP-000003.md`, `registry/assembly/ASP-000001.md`. Modified: `registry/component/README.md`, `registry/assembly/README.md`, this log, `CHANGELOG.md`. **Exactly 4 records authored — no more.** **No snapshot cut; nothing activated (all `RESERVED`).** No change to standards, dictionaries, templates, GSID records, governance, the Submission Model, or the Explorer. **Founding cohort: A(6)+B(86)+C(4)+D(8)+E(3)+F(1) = 108 registered records seeded (+12 derived: 8 CGID + 4 ConfigurationID).** `SNAP-1.0.0` remains uncut, gated on the object-record lifecycle adoption (§6 item 6) and finalized `LICENSE` (§10).
+
+---
+
 ## 2026-07-12 — Steward-seeding decision recorded (`DECISION-EF-SEED-001`) — Category E/F unblocked
 
 **Roles:** Standards architect · Registry steward · Documentation maintainer. Authority: the bootstrap clause (GOVERNANCE §2; the founding maintainer acting as Technical Committee and Registry Operator, [Registry Architecture §9.3](SECTIONHUB_REGISTRY_ARCHITECTURE.md)).
