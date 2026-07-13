@@ -6,18 +6,18 @@
 
 ## Stage: R0 — files-as-registry
 
-Per [Registry Architecture §12](../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md), the registry is at **R0**: records live as source files under git, discipline enforced by process and machine gates, **no snapshot cut yet**. A record's `status` is its **assigned registry state at the current lineage point**, not a publication flag. The founding cohort seeded so far is entirely activation-bound or parked, so every seeded record's assigned state is `RESERVED`; per [§8](../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md) `ACTIVE` is reached only through the `RESERVED → ACTIVE` release transition, so nothing here is `ACTIVE`, released, or citable as current. (Records whose assigned state is `SUPERCLASS` or `REJECTED` — not yet seeded — are born in that state directly, not `RESERVED`.)
+Per [Registry Architecture §12](../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md), the registry is at **R0**: records live as source files under git, discipline enforced by process and machine gates, **no snapshot cut yet**. A record's `status` is its **assigned registry state at the current lineage point**, not a publication flag. The **full founding cohort is seeded (108/108, Categories A–F)**: activation-bound and parked records carry `RESERVED` as their assigned state, while the 5 `SUPERCLASS` and 3 `REJECTED` dictionary rows are **born in that state directly** (not `RESERVED`). Per [§8](../docs/SECTIONHUB_REGISTRY_ARCHITECTURE.md) `ACTIVE` is reached only through the `RESERVED → ACTIVE` release transition — so **nothing here is `ACTIVE`, released, or citable as current**, and no snapshot has been cut. (The cut remains blocked on a finalized `LICENSE` and the RA §5 object-record lifecycle adoption — [First 100 Records Plan §10](../docs/FIRST_100_RECORDS_PLAN.md).)
 
 ## Layout
 
 | Directory | Record type | Cohort category | Populated? |
 |---|---|---|---|
-| [namespace/](namespace/) | Namespace records (`SEC:`, `FAM:`, `ASM:`, `ROL:`, `CFG:`, Domain) | A | **Yes** — the six founding records |
+| [namespace/](namespace/) | Namespace records (`SEC:`, `FAM:`, `ASM:`, `ROL:`, `CFG:`, Domain) | A | **Yes** — 6 founding records |
 | [status/](status/) | Lifecycle-status reference records | — | No — deferred (see its README) |
-| [dictionary/](dictionary/) | Dictionary code records (SEC/ROL/ASM/FAM/CFG rows) | B | No — deferred |
-| [gsid/](gsid/) | Registered geometry identities (`GS-…`) with their `CG1-…` companions | D | No — deferred |
-| [component/](component/) | Component identities (`CMP-…`) with `CF1-…` companions | E | No — deferred |
-| [assembly/](assembly/) | Assembly-product identities (`ASP-…`) with `CF1-…` companions | F | No — deferred |
+| [dictionary/](dictionary/) | Dictionary code records (SEC/ROL/ASM/FAM/CFG rows) | B | **Yes** — 86 (2026-07-12) |
+| [gsid/](gsid/) | Registered geometry identities (`GS-…`) with their `CG1-…` companions | D | **Yes** — 8 (2026-07-12) |
+| [component/](component/) | Component identities (`CMP-…`) with `CF1-…` companions | E | **Yes** — 3 (2026-07-12) |
+| [assembly/](assembly/) | Assembly-product identities (`ASP-…`) with `CF1-…` companions | F | **Yes** — 1 (2026-07-12) |
 
 Categories are those of the [First 100 Records Plan](../docs/FIRST_100_RECORDS_PLAN.md) §1. **Configuration templates (Category C)** are *not* here — they live in [`templates/`](../templates/) under TC decision (repository-structure §3), populated 2026-07-12 with the four founding templates (`ASM-WDK.v1`, `ROL-COL.v1`, `ROL-DKS.v1`, `ROL-MSH.v1`). Deferred directories carry a README that names their record type, source, and population gate; they are populated in the [creation sequence](../docs/FIRST_100_RECORDS_PLAN.md) §8 order.
 

@@ -1,9 +1,9 @@
 # Phase 1/2 Explorer demo-alias deviations — open governance item
 
-- **Proposal:** (no issue yet — this record documents a known, deliberate deviation awaiting a proposal)
+- **Proposal:** (no issue yet — this record documents a known, deliberate deviation)
 - **Type:** erratum / dictionary alignment (future)
-- **Decision:** DEFERRED — documented, not yet decided
-- **Decided by:** bootstrap maintainer, 2026-07-03 (documentation only)
+- **Decision:** **RESOLVED 2026-07-13** — [`DECISION-DEMO-ALIAS-001`](../docs/DEMO_ALIAS_RESOLUTION_DECISION.md): the three demo codes remain **demo-only** and never enter `SNAP-1.0.0`; no dictionary rows or registry records are created; Explorer re-alignment (option 1 below) is post-cut editorial; future reconsideration takes the normal governance path. Closes the G1 exit blocker. *(Originally DEFERRED 2026-07-03; superseded by the recorded decision.)*
+- **Decided by:** bootstrap maintainer, 2026-07-03 (documented); resolved 2026-07-13 (recorded decision)
 - **Method:** n/a (no dictionary rows created or changed)
 - **Rules applied:** P5 (fields-first), N7/P8 (no silent re-meaning), Part 3.1 Rulings R3–R5, Part 3.2 statuses
 

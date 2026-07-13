@@ -4,6 +4,8 @@
 
 **Status:** execution plan, 2026-07-11. This is the practical companion to the constitutional stack ([Registry Architecture](SECTIONHUB_REGISTRY_ARCHITECTURE.md), [Data Submission Model](SECTIONHUB_DATA_SUBMISSION_MODEL.md), [GOVERNANCE.md](../GOVERNANCE.md), the [standards](../standards/GSID_2D_Standard.md)). It changes no rules and adopts nothing — it sequences work a single motivated founder can do, under the gates the constitution already sets. Where a number is a target, it is a planning target, not a promise.
 
+> **⚠ Superseded on three points — see [Bootstrap Plan Errata](BOOTSTRAP_PLAN_ERRATA.md).** The [First 100 Records Plan](FIRST_100_RECORDS_PLAN.md) refines this sketch and **governs** the founding cohort: the count is **exactly 108** (not "~110"), there are **four** seed templates (this plan's §1 names three — `ROL-MSH.v1` was added), and the `SNAP-1.0.0` cut activates **≈98** records while 10 dictionary rows take terminal statuses (not "everything"). This plan is retained unchanged as historical planning context.
+
 **The bootstrap thesis:** a registry becomes real the day its identifiers resolve to something people actually look up. Nobody's adoption is required for that — the founder can seed genuinely useful content (the project's own worked examples made live, the used-rack identification wedge, a cleared designation subset) and let usefulness recruit the first outsiders. Every record follows the constitution from day one, so the audit trail never has a "before we were serious" era.
 
 ---

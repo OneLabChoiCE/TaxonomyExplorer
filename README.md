@@ -13,10 +13,12 @@ Open, vendor-neutral, **deterministic identity and classification infrastructure
 | Unified standard | file `v0.1`; document titled toward its **v1.0 ratification target** (titles name targets, filenames name the draft series) | Canonical draft — the document of record |
 | Split standards ([GSID](standards/GSID_2D_Standard.md), [MH Taxonomy](standards/Material_Handling_Taxonomy_Standard.md), [Code Dictionary](standards/Code_Dictionary_Standard.md)) | v2.0 / v1.0 targets | Verbatim split working copies; unified draft wins on divergence |
 | Seed dictionaries ([dictionaries/](dictionaries/)) | `SNAP-1.0.0` | Drafted, **unreleased** — no snapshot has been cut |
-| Registry ([registry/](registry/)) | stage `R0` | Files-as-registry; the six namespace founding records **reserved** (`RESERVED`), no snapshot cut |
-| Explorer ([explorer/](explorer/)) | Phase 2 | **Live demo**; deliberately small demo dictionary subset `SNAP-0.1.0-DEMO`, with 3 labeled demo-code deviations tracked as an [open governance item](proposals/2026-07-03-phase1-demo-alias-deviations.md) |
-| Example identifiers in all docs (`GS-004217`, `CMP-000482`, …) | — | **Illustrative only** — nothing has been registered |
+| Registry ([registry/](registry/)) | stage `R0` | Files-as-registry; the **full founding cohort seeded 108/108** (Categories A–F) as `RESERVED` — **no snapshot cut, nothing activated** |
+| Explorer ([explorer/](explorer/)) | Phase 2 | **Live demo**; deliberately small demo dictionary subset `SNAP-0.1.0-DEMO`, with 3 labeled demo-code deviations — **resolved as demo-only** ([decision](docs/DEMO_ALIAS_RESOLUTION_DECISION.md)): they never enter `SNAP-1.0.0`; Explorer re-alignment is post-cut editorial |
+| Example identifiers in the standards (`GS-004217`, `CMP-000482`, `ASP-000173`, …) | — | **Illustrative, non-binding** — real serials govern; the cohort registered `GS-000001…`, `CMP-000001…`, `ASP-000001` ([reconciliation decision](docs/ILLUSTRATIVE_SERIAL_RECONCILIATION_DECISION.md)) |
 | [LICENSE](LICENSE) | placeholder | Not yet finalized; no license granted; external PRs are not merged until it lands |
+
+**Release readiness — `SNAP-1.0.0` is _not_ cut.** The founding cohort is seeded **108/108** (A 6 · B 86 · C 4 · D 8 · E 3 · F 1) and fully recomputable (every `CG1-`/`CF1-` reproducible from published files, P9), but the release remains **blocked**: it needs a **finalized [LICENSE](LICENSE)** and the **Registry Architecture §5 object-record `RESERVED → ACTIVE` lifecycle** adopted by normative-path decision (TC supermajority + 30-day public comment), followed by a snapshot-procedure dry run. Until then every record stays `RESERVED` and nothing is activated ([readiness checklist](docs/FIRST_100_RECORDS_PLAN.md) §10).
 
 ## Contents
 
@@ -45,7 +47,7 @@ Open, vendor-neutral, **deterministic identity and classification infrastructure
 | [docs/SECTIONHUB_BOOTSTRAP_PLAN.md](docs/SECTIONHUB_BOOTSTRAP_PLAN.md) | Practical bootstrap execution: the first ~110 and 500 records, curation vs import, taxonomy-explosion defenses, readiness milestones, one-year quarter-by-quarter roadmap |
 | [docs/FIRST_100_RECORDS_PLAN.md](docs/FIRST_100_RECORDS_PLAN.md) | The exact founding cohort of `SNAP-1.0.0`: record categories and counts, what already exists implicitly, zero-permission vs governance-gated vs deferred records, creation sequence, cut line, and readiness checklist |
 | [docs/FOUNDING_RECORD_TEMPLATE.md](docs/FOUNDING_RECORD_TEMPLATE.md) | The minimal, standards-aligned format for a single registry record — the fill-in form instantiating the Registry Architecture §4.1 public record format |
-| [registry/](registry/) | The registry itself (stage `R0`, Registry Operator only): canonical per-record source artifacts by type; holds the six `RESERVED` namespace founding records ([registry/namespace/](registry/namespace/)) |
+| [registry/](registry/) | The registry itself (stage `R0`, Registry Operator only): canonical per-record source artifacts by type; holds the **108 `RESERVED` founding records** across Categories A–F (namespaces, dictionary codes, GSIDs, components, assembly) |
 | [ROADMAP.md](ROADMAP.md) | Seven-phase plan from foundation to formal governance |
 | [docs/repository-structure.md](docs/repository-structure.md) | Target repository layout for the data layer and future Explorer application, with rationale and migration plan |
 

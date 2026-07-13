@@ -12,6 +12,24 @@ Entries are append-only and never edited in place (P8); a correction is a new en
 
 ---
 
+## 2026-07-13 — Cleared the cheap SNAP-1.0.0 readiness blockers (docs/decisions only)
+
+**Roles:** Documentation maintainer · Registry steward · Release manager. Authority: bootstrap clause (GOVERNANCE §2; RA §9.3). Follows the 2026-07-13 SNAP-1.0.0 release-readiness review, which found the 108-record cohort data-clean (all CG1/CF1 recompute, 928/928 links resolve, no placeholders) and blocked only on governance/documentation gates.
+
+**Scope of this task:** the four **non-time-gated** blockers only. Deliberately untouched: `LICENSE` (still placeholder), the RA §5 object-record lifecycle adoption (still `[Proposed]`, needs the normative path + 30-day comment), the snapshot-procedure dry run, and **every registry record** (no record changed — no link/citation defect was found).
+
+**1. README status currency.** `README.md` "Status at a glance" updated: the Registry row now reads **108/108 seeded (A–F) as `RESERVED`, no snapshot cut, nothing activated**; a new **Release-readiness** paragraph states `SNAP-1.0.0` is not cut and remains blocked on a finalized `LICENSE` + the RA §5 lifecycle adoption (30-day comment) + a snapshot dry run. The "example identifiers" and Explorer-demo rows now point to the two decisions below. `registry/README.md` currency fixed (its "Populated? No — deferred" table and "not yet seeded" line were stale).
+
+**2. Bootstrap erratum.** New `docs/BOOTSTRAP_PLAN_ERRATA.md` records that the First 100 Records Plan supersedes the Bootstrap Plan sketch on three points — cohort count (~110 → exactly 108), template count (3 → 4, `ROL-MSH.v1` added), and activation semantics ("activate everything" → ≈98 activate, 10 take terminal statuses). A one-line pointer banner added at the head of `SECTIONHUB_BOOTSTRAP_PLAN.md`; its body is **not** rewritten (retained as historical planning context). No registry record change.
+
+**3. Demo-alias resolution — `DECISION-DEMO-ALIAS-001`** (`docs/DEMO_ALIAS_RESOLUTION_DECISION.md`). Resolves the deferred `proposals/2026-07-03-phase1-demo-alias-deviations.md`: `SEC:ZED`, terminal `SEC:HSS`, `ROL:CHL` remain **demo-only** (confined to the Explorer `SNAP-0.1.0-DEMO` subset), never enter `SNAP-1.0.0`; no dictionary rows or registry records created; Explorer re-alignment is post-cut editorial; future reconsideration takes the normal governance path. Closes the G1 exit gate (First 100 §6 item 3 / §10). The proposal's `Decision:` line updated DEFERRED → RESOLVED with the pointer.
+
+**4. Illustrative-serial reconciliation — `DECISION-SERIAL-RECON-001`** (`docs/ILLUSTRATIVE_SERIAL_RECONCILIATION_DECISION.md`). Records that real registered serials govern; the standards' illustrative IDs (`GS-004217`/`CMP-000482`/`ASP-000173`/…) are non-binding examples; no assigned identifier reuses a placeholder unless actually issued; `SNAP-1.0.0` uses the real serials already registered; and standards cleanup happens **post-cut as editorial erratum or crosswalk, never by renumbering seeded records** (append-only, N7/P8). Includes the illustrative→real mapping table for the future crosswalk. Closes the First 100 §4/§10 gate.
+
+**Blockers cleared:** 4 of the readiness gates (README currency, Bootstrap erratum, demo-alias resolution, serial reconciliation). **Blockers remaining (unchanged, correctly still open):** finalized `LICENSE`; RA §5 object-record `RESERVED→ACTIVE` lifecycle adoption (normative path + 30-day comment); snapshot-procedure dry run. **`SNAP-1.0.0` remains uncut; nothing activated; no registry record modified; no governance rule weakened.** Files: new `docs/BOOTSTRAP_PLAN_ERRATA.md`, `docs/DEMO_ALIAS_RESOLUTION_DECISION.md`, `docs/ILLUSTRATIVE_SERIAL_RECONCILIATION_DECISION.md`; modified `README.md`, `registry/README.md`, `docs/SECTIONHUB_BOOTSTRAP_PLAN.md` (banner only), `proposals/2026-07-03-phase1-demo-alias-deviations.md`, this log, `CHANGELOG.md`.
+
+---
+
 ## 2026-07-12 — Category E/F founding proof records seeded (3 CMP + 1 ASP) — cohort 108/108
 
 **Roles:** Standards architect · Registry steward · Evidence custodian · Release manager. Authority: `DECISION-EF-SEED-001` under the bootstrap clause (GOVERNANCE §2; Registry Architecture §9.2–§9.3).
